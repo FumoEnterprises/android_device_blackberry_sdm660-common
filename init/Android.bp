@@ -1,0 +1,5 @@
+sh_binary {
+    name: "loggy.sh",
+    src: "loggy.sh",
+    vendor: true,
+}
