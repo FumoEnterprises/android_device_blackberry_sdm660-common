@@ -28,6 +28,8 @@ if [[ ! -d "$MY_DIR" ]]; then MY_DIR="$PWD"; fi
 
 LINEAGE_ROOT="$MY_DIR"/../../..
 
+PATCHELF="$(which patchelf)"
+
 HELPER="$LINEAGE_ROOT"/vendor/lineage/build/tools/extract_utils.sh
 if [ ! -f "$HELPER" ]; then
     echo "Unable to find helper script at $HELPER"
@@ -63,8 +65,26 @@ fi
 echo $SRC
 
 function blob_fixup() {
-	return 0
+    case "${1}" in
+        # Fix missing symbols for GNSS
+        vendor/lib64/vendor.qti.gnss@1.0_vendor.so)
+            for GNSS_SHIM in $(grep -L "libshim_gnss.so" "${2}"); do
+                "${PATCHELF}" --add-needed "libshim_gnss.so" "${GNSS_SHIM}"
+            done
+            ;;
+        vendor/bin/imsrcsd)
+            if ! "${PATCHELF}" --print-needed "${2}" | grep -q "libshim_logmsg.so"; then
+                "${PATCHELF}" --add-needed "libshim_logmsg.so" "${2}"
+            fi
+            ;;
+        vendor/bin/hw/android.hardware.drm@1.0-service.widevine)
+            if ! "${PATCHELF}" --print-needed "${2}" | grep -q "libshim_logmsg.so"; then
+                "${PATCHELF}" --add-needed "libshim_logmsg.so" "${2}"
+            fi
+            ;;
+    esac
 }
+
 
 # Initialize the helper for common device
 setup_vendor "$DEVICE_COMMON" "$VENDOR" "$LINEAGE_ROOT" true $CLEAN_VENDOR

@@ -13,10 +13,19 @@
 // limitations under the License.
 
 cc_library_shared {
-    srcs: ["drm_shim.cpp"],
+    srcs: ["logmsg_shim.cpp"],
     shared_libs: [
         "libbase",
     ],
-    name: "libshim_drm",
-    compile_multilib: "32",
+    name: "libshim_logmsg",
+    compile_multilib: "both",
+}
+
+cc_library_shared {
+    srcs: ["gnss_shim.cpp"],
+    shared_libs: [
+        "libbase",
+    ],
+    name: "libshim_gnss",
+    compile_multilib: "both",
 }
