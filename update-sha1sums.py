@@ -21,7 +21,7 @@ import sys
 from hashlib import sha1
 
 device='sdm660-common'
-vendor='nokia'
+vendor='blackberry'
 
 with open('proprietary-files.txt', 'r') as f:
     lines = f.read().splitlines()
