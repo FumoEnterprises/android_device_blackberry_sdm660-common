@@ -210,6 +210,10 @@ PRODUCT_PACKAGES += \
 
 # TODO - LiveDisplay
 
+# loggy
+PRODUCT_PACKAGES += \
+    loggy.sh
+
 # Media
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/media/media_profiles_V1_0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_V1_0.xml \
@@ -268,7 +272,6 @@ PRODUCT_PACKAGES += \
 # Ramdisk
 PRODUCT_PACKAGES += \
     fstab.qcom \
-    init.msm.usb.configfs.rc \
     init.qcom.rc \
     init.qcom.usb.rc \
     init.target.rc \

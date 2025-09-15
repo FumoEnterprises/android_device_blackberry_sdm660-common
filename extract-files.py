@@ -158,10 +158,6 @@ blob_fixups: blob_fixups_user_type = {
         .add_needed('libhidlbase-v32.so'),
     'vendor/lib64/vendor.display.postproc@1.0_vendor.so': blob_fixup()
         .add_needed('libhidlbase-v32.so'),
-    'vendor/lib/vendor.qti.hardware.qteeconnector@1.0_vendor.so': blob_fixup()
-        .add_needed('libhidlbase-v32.so'),
-    'vendor/lib64/vendor.qti.hardware.qteeconnector@1.0_vendor.so': blob_fixup()
-        .add_needed('libhidlbase-v32.so'),
     'system/lib/libantradio.so': blob_fixup()
         .add_needed('libnativehelper_shim.so'),
     'system/lib64/libantradio.so': blob_fixup()
@@ -208,14 +204,6 @@ blob_fixups: blob_fixups_user_type = {
     'vendor/lib64/lib-uceservice.so': blob_fixup()
         .add_needed('libbase_shim.so')
         .add_needed('libhidlbase-v32.so'),
-    'vendor/lib/hw/libicuuc-v28.so': blob_fixup()
-        .fix_soname(),
-    'vendor/lib64/hw/libicuuc-v28.so': blob_fixup()
-        .fix_soname(),
-    'vendor/lib64/hw/vendor.qti.hardware.qteeconnector@1.0-impl.so': blob_fixup()
-        .replace_needed('libicuuc.so', 'libicuuc-v28.so'),
-    'vendor/lib/hw/vendor.qti.hardware.qteeconnector@1.0-impl.so': blob_fixup()
-        .replace_needed('libicuuc.so', 'libicuuc-v28.so'),
 }  # fmt: skip
 
 module = ExtractUtilsModule(
