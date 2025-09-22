@@ -138,11 +138,11 @@ ENABLE_VENDOR_RIL_SERVICE := true
 TARGET_USES_OLD_MNC_FORMAT := true
 
 # Root Directories
-BOARD_ROOT_EXTRA_SYMLINKS := \
-    /mnt/vendor/persist:/persist \
-    /vendor/bt_firmware:/bt_firmware \
-    /vendor/dsp:/dsp \
-    /vendor/firmware_mnt:/firmware
+# BOARD_ROOT_EXTRA_SYMLINKS := \
+#    /mnt/vendor/persist:/persist \
+#    /vendor/bt_firmware:/bt_firmware \
+#    /vendor/dsp:/dsp \
+#    /vendor/firmware_mnt:/firmware
 
 # Telephony
 TARGET_PROVIDES_QTI_TELEPHONY_JAR := true
