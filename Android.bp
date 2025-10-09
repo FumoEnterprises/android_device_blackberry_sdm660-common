@@ -11,6 +11,13 @@ soong_namespace {
 }
 
 install_symlink {
+    name: "persist_symlink",
+    vendor: false,
+    installed_location: "persist",
+    symlink_target: "/mnt/vendor/persist",
+}
+
+install_symlink {
     name: "rfs_msm_mpss_fih_rfs_data_vendor_symlink",
     vendor: true,
     installed_location: "rfs/msm/mpss/fih_rfs/data/vendor",

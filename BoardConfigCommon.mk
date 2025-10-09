@@ -138,8 +138,8 @@ ENABLE_VENDOR_RIL_SERVICE := true
 TARGET_USES_OLD_MNC_FORMAT := true
 
 # Root Directories
-# BOARD_ROOT_EXTRA_SYMLINKS := \
-#    /mnt/vendor/persist:/persist \
+BOARD_ROOT_EXTRA_SYMLINKS := \
+    /mnt/vendor/persist:/persist
 #    /vendor/bt_firmware:/bt_firmware \
 #    /vendor/dsp:/dsp \
 #    /vendor/firmware_mnt:/firmware
@@ -154,6 +154,7 @@ BOARD_USES_QC_TIME_SERVICES := true
 include device/qcom/sepolicy-legacy-um/SEPolicy.mk
 include device/lineage/sepolicy/libperfmgr/sepolicy.mk
 BOARD_VENDOR_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy/vendor
+PRODUCT_PRIVATE_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/private
 
 # Vendor Security Patch Level
 VENDOR_SECURITY_PATCH := 2020-05-01

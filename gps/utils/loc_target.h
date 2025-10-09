@@ -42,6 +42,11 @@
 extern "C"
 {
 #endif
+/*Reads the property ro.lean to identify if this is a lean target
+  Returns:
+  0 if not a lean and mean target
+  1 if this is a lean and mean target*/
+int loc_identify_lean_target();
 
 unsigned int loc_get_target(void);
 

@@ -3,3 +3,9 @@ sh_binary {
     src: "loggy.sh",
     vendor: true,
 }
+
+sh_binary {
+    name: "loggy2.sh",
+    src: "loggy2.sh",
+    vendor: true,
+}

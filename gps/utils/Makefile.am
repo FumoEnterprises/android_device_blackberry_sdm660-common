@@ -19,6 +19,7 @@ libgps_utils_la_h_sources = \
         loc_target.h \
         loc_timer.h \
         MsgTask.h \
+        MsgTaskOld.h \
         LocHeap.h \
         LocThread.h \
         LocTimer.h \
@@ -46,6 +47,7 @@ libgps_utils_la_c_sources = \
         LocIpc.cpp \
         LogBuffer.cpp \
         MsgTask.cpp \
+        MsgTaskOld.cpp \
         loc_misc_utils.cpp \
         loc_nmea.cpp
 

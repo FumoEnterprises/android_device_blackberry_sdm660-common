@@ -1,4 +1,4 @@
-# Copyright (c) 2013-2017, The Linux Foundation. All rights reserved.
+# Copyright (c) 2013-2018, The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
@@ -31,7 +31,6 @@ on early-init
     mkdir /firmware 0771 system system
     mkdir /bt_firmware 0771 system system
     mkdir /dsp 0771 media media
-    mkdir /oempersist 0771 system system
 
 on init
     write /dev/stune/foreground/schedtune.sched_boost_no_override 1
@@ -47,53 +46,16 @@ on fs
     symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
     mount_all /vendor/etc/fstab.qcom
     swapon_all /vendor/etc/fstab.qcom
-
-    # Keeping following partitions outside fstab file. As user may not have
-    # these partition flashed on the device. Failure to mount any partition in fstab file
-    # results in failure to launch late-start class.
-
-    wait /dev/block/bootdevice/by-name/persist
-    mount ext4 /dev/block/bootdevice/by-name/persist /persist nosuid nodev noatime barrier=1
-    mkdir /persist/data 0700 system system
-    mkdir /persist/bms 0700 root system
-    restorecon_recursive /persist
+    symlink /mnt/vendor/persist /persist
+    chown root system /mnt/vendor/persist
+    chmod 0771 /mnt/vendor/persist
+    mkdir /mnt/vendor/persist/data 0700 system system
+    mkdir /mnt/vendor/persist/bms 0700 root system
+    restorecon_recursive /mnt/vendor/persist
     write /sys/kernel/boot_adsp/boot 1
 
-    #[FEATURE]-Add-BEGIN by TCTNB.(fan.wang), 11/20/2017, Task-5626779, Porting from Task-3333049
-    wait /dev/block/bootdevice/by-name/persist
-    mount ext4 /dev/block/bootdevice/by-name/persist /persist nosuid nodev barrier=1
-    mkdir /persist/phone 1777 system system
-    restorecon_recursive /persist
-    #[FEATURE]-Add-BEGIN by TCTNB.(fan.wang), Task-5626779
-
-#ADD-begin by TCTNB.lijiang minilog
-    wait /dev/block/bootdevice/by-name/oempersist
-    mount ext4 /dev/block/bootdevice/by-name/oempersist /oempersist nosuid nodev noatime barrier=1
-    restorecon_recursive /oempersist
-    chmod 0771 /oempersist
-#ADD-end by TCTNB.lijiang
-
-#ADD-begin by TCTNB.pjl call duration
-    mkdir /bbpersist/phone 1777 system system
-#ADD-end by TCTNB.pjl call duration
-
-# BBRY_ANDROID_START
-# ADD-begin by TCTNB.linjian.xiang, 2017-11-02, task-5423522
-    wait /dev/block/bootdevice/by-name/bbpersist
-    mount ext4 /dev/block/bootdevice/by-name/bbpersist /bbpersist nosuid nodev noatime barrier=1
-    # We chown/chmod /bbpersist again because mount is run as root + defaults
-    chown root system /bbpersist
-    chmod 0771 /bbpersist
-    # restorecon /bbpersist in case the bbpartition partition has been reset.
-    restorecon_recursive /bbpersist
-# ADD-end by linjian.xiang, task-5423522
-# BBRY_ANDROID_END
-
-    wait /dev/block/bootdevice/by-name/oem
-    mount ext4 /dev/block/bootdevice/by-name/oem /oem ro nosuid nodev barrier=1
-
 on post-fs
-    start qseecomd
+    start vendor.qseecomd
     exec - system system -- /vendor/bin/init.qti.qseecomd.sh
     write /dev/ipa 1
 
@@ -106,17 +68,8 @@ on post-fs-data
     mkdir /data/tombstones/wcnss 0771 system system
     mkdir /data/tombstones/dsps 0771 system system
     mkdir /data/vendor/hbtp 0750 system system
-    mkdir /persist/qti_fp 0700 system system
     mkdir /data/misc/seemp 0700 system system
-    mkdir /data/misc/tloc 0700 system drmrpc
-    mkdir /data/jrdlog 0700 system system
-    mkdir /data/jrdrecord 0700 system system
-    mkdir /data/jrdrecord_ddt 0770 system system
-    chmod 0664 /bbpersist/phone/calltimesaver
-    #[FEATURE]-Add-BEGIN by TCTNB.(fan.wang), 11/20/2017, Task-5626779, Porting from Task-3333049
-    #read/write calltimesaver even if factory reset
-    chmod 0664 /persist/phone/calltimesaver
-    #[FEATURE]-Add-BEGIN by TCTNB.(fan.wang), Task-5626779
+    mkdir /data/vendor/tloc 0700 system drmrpc
 
 on boot
     start rmt_storage
@@ -143,63 +96,41 @@ on boot
     chown system system /persist/speccfg/vendor_persist.prop
     chown system system /persist/speccfg/submask
     chown system system /persist/speccfg/partition
-    chown system system /sys/devices/soc/c178000.i2c/i2c-4/4-0038/fts_wakeup_gesture
-    chown system system /sys/class/tp_device/tp_gesture/gesture_enable
-    chown system system /sys/devices/touch_keypad/buildid
-    chown system system /sys/devices/touch_keypad/config_id
-    chown system system /sys/devices/touch_keypad/product_id
-    chown system system /sys/devices/touch_keypad/BIST
-    chown system system /sys/devices/touch_keypad/full_raw_rt78
-    chown system system /sys/devices/touch_keypad/open_rt78
-    chown system system /sys/class/ftm_cal/LOHM
-    chown system system /sys/class/ftm_cal/top_imp_max
-    chown system system /sys/class/ftm_cal/top_imp_min
-    chown system system /sys/class/ftm_cal/status
-    chown system system /sys/class/ftm_spr_res/LRES
-    chown system system /sys/class/ftm_spr_res/top_res_max
-    chown system system /sys/class/ftm_spr_res/top_res_min
-    chown system system /sys/class/ftm_spr_res/status
-    chown system system /sys/devices/synaptics_dsx/buildid
-    chown system system /sys/devices/synaptics_dsx/config_id
 
-#Task-4795884, permissions for lowmemorykiller count
-    chown system system /sys/module/lowmemorykiller/parameters/count
-    chmod 0644 /sys/module/lowmemorykiller/parameters/count
-#end
-
-# BBRY Added for touch_pad
-    chown system system /sys/devices/touch_keypad/turn_off
-    chown system system /sys/devices/touch_keypad/pointer_type
-    chown system system /sys/devices/touch_keypad/info
-    chown system system /sys/devices/touch_keypad/stats
-    chown system system /sys/devices/touch_keypad/touch_ready
-    chown system system /sys/devices/touch_keypad/events
-
-# BBRY Added trigger the touch FW upgrade for CKB touch_pad
-    write /sys/devices/touch_keypad/doreflash 1
+#Create folder dump yuv images while debugging
+    mkdir /data/vendor/camera 0770 camera camera
 
 #Load WLAN driver
    insmod /vendor/lib/modules/qca_cld3/qca_cld3_wlan.ko
-   setprop wlan.driver.status "ok"
+
+#USB controller configuration
+    setprop vendor.usb.rndis.func.name "rndis_bam"
+    setprop vendor.usb.rmnet.func.name "rmnet_bam"
+    setprop vendor.usb.rmnet.inst.name "rmnet"
+    setprop vendor.usb.dpl.inst.name "dpl"
+    write /sys/module/usb_f_qcrndis/parameters/rndis_dl_max_xfer_size 15916
+    setprop sys.usb.configfs 1
 
 #Peripheral manager
-service per_mgr /system/vendor/bin/pm-service
+service vendor.per_mgr /system/vendor/bin/pm-service
     class core
     user system
     group system
     ioprio rt 4
+#KRAB_HACK
+    disabled
 
-service per_proxy /system/vendor/bin/pm-proxy
+service vendor.per_proxy /system/vendor/bin/pm-proxy
     class core
     user system
     group system
     disabled
 
-on property:init.svc.per_mgr=running
-    start per_proxy
+on property:init.svc.vendor.per_mgr=running
+    start vendor.per_proxy
 
 on property:sys.shutdown.requested=*
-    stop per_proxy
+    stop vendor.per_proxy
 
 #start camera server as daemon
 #service qcamerasvr /system/bin/mm-qcamera-daemon
@@ -233,7 +164,7 @@ on property:sys.shutdown.requested=*
 #on property:sys.boot_completed=1
 #    start qrngp
 #
-service qseecomd /vendor/bin/qseecomd
+service vendor.qseecomd /vendor/bin/qseecomd
    class core
    user root
    group root
@@ -247,27 +178,14 @@ service qseecomd /vendor/bin/qseecomd
 #   group system
 #   disabled
 #
-# BBRY_ANDROID_START
 service thermal-engine /system/vendor/bin/thermal-engine
    class main
-   disabled
    user root
    socket thermal-send-client stream 0666 system system
    socket thermal-recv-client stream 0660 system system
    socket thermal-recv-passive-client stream 0666 system system
    socket thermal-send-rule stream 0660 system system
    group root
-
-# BBRY engine start
-service spf-engine /system/bin/spf-engine
-   class main
-   user root
-   group root
-
-on post-fs-data
-    # Folder for SPF logs, cluster settings
-    mkdir /data/thermal-engine 0755 root root
-# BBRY_ANDROID_END
 
 #service security-check1 /sbin/security_boot_check system
 #    class core
@@ -282,7 +200,12 @@ service time_daemon /system/vendor/bin/time_daemon
    user root
    group root
 
-service adsprpcd /system/vendor/bin/adsprpcd audiopd
+service adsprpcd_root /vendor/bin/adsprpcd
+   class main
+   user media
+   group media
+
+service adsprpcd /vendor/bin/adsprpcd audiopd
    class main
    user media
    group media
@@ -297,6 +220,13 @@ service audiod /system/vendor/bin/audiod
    class late_start
    user system
    group system
+
+service vendor.cdsprpcd /vendor/bin/cdsprpcd
+   class main
+   user system
+   group system
+   disabled
+
 #
 #service usf_tester /system/vendor/bin/usf_tester
 #    user system
@@ -359,13 +289,16 @@ service audiod /system/vendor/bin/audiod
 #    chown system drmrpc /sys/devices/f9966000.i2c/i2c-1/1-0020/secure_touch
 #
 #
-service imsqmidaemon /system/vendor/bin/imsqmidaemon
+#
+## imsdatadaemon starts with root and UID will be downgraded to SYSTEM.
+service vendor.imsqmidaemon /system/vendor/bin/imsqmidaemon
     class main
     user system
     socket ims_qmid stream 0660 system radio
     group radio log diag
 
-service imsdatadaemon /system/vendor/bin/imsdatadaemon
+# imsdatadaemon starts with root and UID will be downgraded to SYSTEM.
+service vendor.imsdatadaemon /system/vendor/bin/imsdatadaemon
     class main
     user system
     socket ims_datad stream 0660 system radio
@@ -424,7 +357,7 @@ service mdtpd /system/vendor/bin/mdtpd
     user root
     group system radio drmrpc
 
-service pd_mapper /system/vendor/bin/pd-mapper
+service vendor.pd_mapper /system/vendor/bin/pd-mapper
      class core
 
 #
@@ -441,24 +374,29 @@ service pd_mapper /system/vendor/bin/pd-mapper
 #   disabled
 
 on property:vendor.ims.QMI_DAEMON_STATUS=1
-    start imsdatadaemon
+    start vendor.imsdatadaemon
 
-service ims_rtp_daemon /system/vendor/bin/ims_rtp_daemon
+on property:vold.decrypt=trigger_restart_framework
+   start cnss_diag
+
+service cnss_diag /system/vendor/bin/cnss_diag -q -f -t HELIUM
    class main
    user system
-   socket ims_rtpd stream 0660 system radio
-   group radio diag inet log
-   disabled
+   group system wifi inet sdcard_rw media_rw diag
+   oneshot
 
-service imsrcsservice /system/vendor/bin/imsrcsd
+service vendor.ims_rtp_daemon /system/vendor/bin/ims_rtp_daemon
    class main
    user system
    group radio diag inet log
-   disabled
+
+service vendor.imsrcsservice /system/vendor/bin/imsrcsd
+   class main
+   user system
+   group radio diag inet log wakelock
 
 on property:vendor.ims.DATA_DAEMON_STATUS=1
-    start ims_rtp_daemon
-    start imsrcsservice
+    restart vendor.ims_rtp_daemon
 
 
 service ppd /system/vendor/bin/mm-pp-dpps
@@ -487,9 +425,11 @@ on property:init.svc.zygote=restarting
     stop ppd
 
 on charger
+#    load_system_props
     start qcom-post-boot
-    start hvdcp_opti
+    start vendor.hvdcp_opti
     setprop sys.usb.configfs 1
+    start power_off_alarm
 
 #
 #service nqs /system/bin/nqs
@@ -516,44 +456,18 @@ service seempd /system/bin/seempd
     group system sdcard_rw
     socket seempdw dgram 0666 system system
 
-service qfp-daemon /vendor/bin/qfp-daemon
+service vendor.tlocd /vendor/bin/tloc_daemon
     class late_start
     user system
-    group system drmrpc diag input
+    group drmrpc gps net_raw
 
-service tlocd /system/bin/tloc_daemon
-    class late_start
-    user system
-    group drmrpc
-
-service hvdcp_opti /system/vendor/bin/hvdcp_opti
+service vendor.hvdcp_opti /system/vendor/bin/hvdcp_opti
      class main
      user root
      group system wakelock
 
-service smcinvoked /system/vendor/bin/smcinvoked
+service smcinvoked /system/bin/smcinvoked
    class main
    user system
    group system
 
-#[FEATURE]-Add by Xijun.Zhang,12/04/2017,Task-5715627,Bell disable NSRM
-on property:ro.ecid=10517
-    setprop persist.dpm.feature 3
-
-#[FEATURE]-Add by Xin.Peng,02/12/2018,Properties for Sprint Chameleon.
-on property:ro.ecid=544
-    setprop ro.cdma.home.operator.alpha BlackBerry
-    setprop ro.home.operator.carrierid Blackberry
-    setprop ro.cdma.home.operator.numeric 310000
-    setprop ro.device.wapprofile.url http://device.sprintpcs.com/TCL/BBF100-3-MVNO/default.rdf
-    setprop ro.build.model BBF100-3
-    setprop ro.build.manufacturer Blackberry
-
-# Task: 6554259, Enable device reboot when crash to avoid Full DUMP (Disable download mode for MP SW)
-#TASK 3562920 TCTNB huaidi.feng added for Crash DUMP Flag Management
-#on property:persist.sys.dload.enable=*
-#    write /sys/module/msm_poweroff/parameters/download_mode ${persist.sys.dload.enable}
-
-# keypad language configuration.
-on property:ro.hwf.keypadlanguage=*
-    write /sys/devices/keypad/kl ${ro.hwf.keypadlanguage}
