@@ -6,16 +6,10 @@
 soong_namespace {
     imports: [
     	"hardware/qcom/gps/msm8998",
-	"vendor/blackberry/sdm660-common"
+	"vendor/blackberry/sdm660-common",
     ],
 }
 
-install_symlink {
-    name: "persist_symlink",
-    vendor: false,
-    installed_location: "persist",
-    symlink_target: "/mnt/vendor/persist",
-}
 
 install_symlink {
     name: "rfs_msm_mpss_fih_rfs_data_vendor_symlink",

@@ -73,11 +73,15 @@ PRODUCT_PACKAGES += \
 
 # Audio
 PRODUCT_PACKAGES += \
-    android.hardware.audio.service \
     android.hardware.audio@6.0-impl \
     android.hardware.audio.effect@6.0-impl \
-    android.hardware.soundtrigger@2.1-impl \
-#    android.hardware.audio.sounddose.impl \
+    android.hardware.audio.service \
+    android.hardware.soundtrigger@2.0-impl
+#    audio.bluetooth.default \
+#    liba2dpoffload \
+
+PRODUCT_PACKAGES += \
+    audio.primary.sdm660 \
     audio.r_submix.default \
     audio.usb.default \
     libaudio-resampler \
@@ -127,12 +131,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-impl \
     android.hardware.camera.provider@2.4-service
-
-# KRAB-ATHENA 09/10
-# Thermal
-#PRODUCT_PACKAGES += \
-#    android.hardware.thermal@1.0-impl \
-#    android.hardware.thermal@1.0-service
 
 # Configstore
 PRODUCT_PACKAGES += \
@@ -189,7 +187,9 @@ PRODUCT_COPY_FILES += \
 
 # Lineage Health
 PRODUCT_PACKAGES += \
-    vendor.lineage.health-service.default
+    android.hardware.health@2.1.vendor \
+    android.hardware.health-service.qti
+#    vendor.lineage.health-service.default
 
 $(call soong_config_set,lineage_health,charging_control_charging_path,/sys/class/power_supply/battery/charging_enabled)
 
@@ -242,10 +242,6 @@ PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_telephony.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_video.xml
 
-# Audio
-PRODUCT_PACKAGES += \
-    audio.primary.sdm660
-
 # Net
 PRODUCT_PACKAGES += \
     android.system.net.netd@1.0 \
@@ -261,8 +257,13 @@ PRODUCT_PACKAGES += \
     libstagefrighthw
 
 # Power
+PRODUCT_COPY_FILES += \
+    $(COMMON_PATH)/configs/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
+
+# Power
 PRODUCT_PACKAGES += \
-    libqti-perfd-client
+    android.hardware.power-service.lineage-libperfmgr
+#    libqti-perfd-client
 
 # QMI
 PRODUCT_PACKAGES += \
@@ -318,15 +319,22 @@ PRODUCT_COPY_FILES += \
 # Sensors
 PRODUCT_PACKAGES += \
     android.hardware.sensors@1.0-impl \
-    android.hardware.sensors@1.0-service
+    android.hardware.sensors@1.0-service \
+    android.frameworks.sensorservice@1.0 \
+    android.frameworks.sensorservice@1.0.vendor
+#     android.hardware.sensors@1.0-service-qti
 
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/sensors/sensor_def_qcomdev.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/sensor_def_qcomdev.conf \
     $(COMMON_PATH)/sensors/hals.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/hals.conf
 
-# Soong namespaces
+# Soong
 PRODUCT_SOONG_NAMESPACES += \
-    $(COMMON_PATH)
+    $(LOCAL_PATH) \
+    hardware/google/interfaces \
+    hardware/google/pixel \
+    hardware/lineage/interfaces/power-libperfmgr
+#    hardware/qcom-caf/common/libqti-perfd-client
 
 # Telephony-ext
 PRODUCT_PACKAGES += \
@@ -360,6 +368,14 @@ PRODUCT_PACKAGES += \
     android.hardware.vibrator@1.0-impl \
     android.hardware.vibrator@1.0-service
 
+# VNDK
+# Update this list with what each blob is actually for
+# libstdc++: camera.sdm660
+#PRODUCT_PACKAGES += \
+#    libstdc++.vendor \
+#    libgui_vendor \
+#    vndk_package
+
 # Weaver
 PRODUCT_PACKAGES += \
     android.hardware.weaver@1.0
@@ -372,17 +388,13 @@ PRODUCT_PACKAGES += \
     wpa_supplicant.conf
 
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/wifi/p2p_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/p2p_supplicant_overlay.conf \
-    $(COMMON_PATH)/wifi/wpa_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant_overlay.conf \
-    $(COMMON_PATH)/wifi/WCNSS_qcom_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/firmware/wlan/qca_cld/WCNSS_qcom_cfg.ini
-
-# Health
-PRODUCT_PACKAGES += \
-    android.hardware.health@2.1-impl:64 \
-    android.hardware.health@2.1-impl.recovery \
-    android.hardware.health@2.1-service
+    $(LOCAL_PATH)/wifi/wifi_concurrency_cfg.txt:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wifi_concurrency_cfg.txt \
+    $(LOCAL_PATH)/wifi/p2p_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/p2p_supplicant_overlay.conf \
+    $(LOCAL_PATH)/wifi/wpa_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant_overlay.conf \
+    $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/firmware/wlan/qca_cld/WCNSS_qcom_cfg.ini
 
 # VNDK
+# KRAB - DELETE AFTER GOING TO PIE BLOBS
 PRODUCT_PACKAGES += \
     libhidlbase-v32 \
     libhidlbase-v32.vendor \
