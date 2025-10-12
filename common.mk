@@ -360,8 +360,8 @@ PRODUCT_PACKAGES_DEBUG += \
 
 # USB
 PRODUCT_PACKAGES += \
-    android.hardware.usb@1.3-service.dual_role_usb
-#   android.hardware.usb@1.0-service
+    android.hardware.usb@1.0-service
+#    android.hardware.usb@1.3-service.dual_role_usb
 
 # Vibrator
 PRODUCT_PACKAGES += \
@@ -371,10 +371,22 @@ PRODUCT_PACKAGES += \
 # VNDK
 # Update this list with what each blob is actually for
 # libstdc++: camera.sdm660
-#PRODUCT_PACKAGES += \
-#    libstdc++.vendor \
+PRODUCT_PACKAGES += \
+    libstdc++_vendor
 #    libgui_vendor \
 #    vndk_package
+
+# Thermal
+#PRODUCT_PACKAGES += \
+#    android.hardware.thermal-service.qti
+
+# Thermal
+#PRODUCT_PACKAGES += \
+#    android.hardware.thermal@2.0-impl:64 \
+#    android.hardware.thermal@2.0-service
+
+#PRODUCT_PACKAGES += \
+#    android.hardware.thermal@1.0-service.mock
 
 # Weaver
 PRODUCT_PACKAGES += \

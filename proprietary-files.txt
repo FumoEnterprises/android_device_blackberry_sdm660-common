@@ -167,6 +167,7 @@ vendor/firmware/cpp_firmware_v1_6_0.fw
 vendor/firmware/cpp_firmware_v1_8_0.fw
 
 # Camera (Sensors)
+#KRAB camera.sdm660
 vendor/lib/libmmcamera_nighthawk.so;DISABLE_CHECKELF;DISABLE_DEPS
 vendor/lib/libmmcamera_edgesmooth_lib.so;DISABLE_CHECKELF;DISABLE_DEPS
 vendor/lib/libmmcamera_optizoom_lib.so;DISABLE_CHECKELF;DISABLE_DEPS
@@ -179,6 +180,10 @@ vendor/lib/libmmcamera_stillmore_lib.so;DISABLE_CHECKELF;DISABLE_DEPS
 vendor/lib/libmmcamera_trueportrait_lib.so;DISABLE_CHECKELF;DISABLE_DEPS
 vendor/lib/libtrueportrait_vendor.so;DISABLE_CHECKELF;DISABLE_DEPS
 vendor/lib64/libtrueportrait.so;DISABLE_CHECKELF;DISABLE_DEPS
+vendor/lib/libseemore.so;DISABLE_DEPS
+vendor/lib/libmmcamera_ubifocus_lib.so;DISABLE_DEPS
+vendor/lib/libubifocus.so;DISABLE_DEPS
+#END
 vendor/lib/libmmcamera_hdr_gb_lib.so;DISABLE_CHECKELF;DISABLE_DEPS
 vendor/lib/libmmcamera2_c2d_module.so;DISABLE_CHECKELF
 vendor/lib/libmmcamera2_cpp_module.so;DISABLE_CHECKELF

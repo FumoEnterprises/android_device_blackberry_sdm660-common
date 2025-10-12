@@ -28,6 +28,9 @@ include $(CLEAR_VARS)
 # KRAB-HACK FOR QTEE LIB
 #$(shell ln -sf $(TARGET_OUT_VENDOR)/lib64/libicuuc_vendor.so $(TARGET_OUT_VENDOR)/lib64/libicuuc.so)
 
+# KRAB-HACK FOR CAMERA LIBS
+$(shell ln -sf $(TARGET_OUT_VENDOR)/lib/libstdc++_vendor.so $(TARGET_OUT_VENDOR)/lib64/libstdc++.so)
+
 # Create symbolic links for msadp
 $(shell  mkdir -p $(TARGET_OUT_VENDOR)/firmware; \
 	ln -sf /dev/block/bootdevice/by-name/msadp \
