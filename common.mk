@@ -415,9 +415,9 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/firmware/wlan/qca_cld/WCNSS_qcom_cfg.ini
 
 # WiFi firmware symlinks
-#PRODUCT_PACKAGES += \
-#    firmware_wlan_mac.bin_symlink \
-#    firmware_WCNSS_qcom_cfg.ini_symlink
+PRODUCT_PACKAGES += \
+    firmware_wlan_mac.bin_symlink \
+    firmware_WCNSS_qcom_cfg.ini_symlink
 
 # VNDK
 # KRAB - DELETE AFTER GOING TO PIE BLOBS

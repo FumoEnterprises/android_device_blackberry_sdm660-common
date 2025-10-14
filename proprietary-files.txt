@@ -560,6 +560,7 @@ vendor/lib64/libqti-util.so
 # Peripheral - from FP3 - 6.A.031.2
 vendor/bin/pm-proxy|910437c11108aa66e803bbc760ce3998d141a6b4
 vendor/bin/pm-service|b1dfac9ae838fee8817d827f88540b8667344837
+vendor/lib/libperipheral_client.so
 vendor/lib64/libperipheral_client.so|9bfd41e276e16b8f7c6808f3d87531fc5be4cdd5
 
 # Postprocessing - from FP3 - 6.A.031.2
