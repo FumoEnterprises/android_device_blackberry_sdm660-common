@@ -25,7 +25,6 @@ cc_library_shared {
         "LocTimer.cpp",
         "LocThread.cpp",
         "MsgTask.cpp",
-        "MsgTaskOld.cpp",
         "loc_misc_utils.cpp",
         "loc_nmea.cpp",
         "LocIpc.cpp",

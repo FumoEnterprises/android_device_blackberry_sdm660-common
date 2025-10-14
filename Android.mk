@@ -25,9 +25,6 @@ include $(call all-makefiles-under,$(LOCAL_PATH))
 
 include $(CLEAR_VARS)
 
-# KRAB-HACK FOR QTEE LIB
-#$(shell ln -sf $(TARGET_OUT_VENDOR)/lib64/libicuuc_vendor.so $(TARGET_OUT_VENDOR)/lib64/libicuuc.so)
-
 # Create symbolic links for msadp
 $(shell  mkdir -p $(TARGET_OUT_VENDOR)/firmware; \
 	ln -sf /dev/block/bootdevice/by-name/msadp \
