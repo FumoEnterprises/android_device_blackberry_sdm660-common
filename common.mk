@@ -150,12 +150,12 @@ PRODUCT_PACKAGES += \
 # DRM
 PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-impl \
-    android.hardware.drm@1.0-service \
-    libshim_logmsg
+    android.hardware.drm@1.0-service
 
 # Fingerprint
 PRODUCT_PACKAGES += \
-    android.hardware.biometrics.fingerprint@2.1-service
+    android.hardware.biometrics.fingerprint@2.1 \
+    android.hardware.biometrics.fingerprint@2.1.vendor
 
 # FM
 PRODUCT_PACKAGES += \
@@ -173,10 +173,18 @@ PRODUCT_PACKAGES += \
 
 # GPS
 PRODUCT_PACKAGES += \
-    android.hardware.gnss@1.0 \
-    android.hardware.gnss@1.0.vendor \
-    libwifi-hal-ctrl \
-    libshim_gnss
+    android.hardware.gnss@2.1-impl-qti \
+    android.hardware.gnss@2.1-service-qti \
+    android.hardware.gnss@1.1.vendor \
+    android.hardware.gnss@2.1.vendor \
+    libgnss \
+    libgps.utils \
+    liblocation_api \
+    libsensorndkbridge \
+    libwifi-hal-ctrl
+
+#    libbatching \
+#    libgeofencing \
 
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/gps/apdr.conf:$(TARGET_COPY_OUT_VENDOR)/etc/apdr.conf \
@@ -334,7 +342,6 @@ PRODUCT_SOONG_NAMESPACES += \
     hardware/google/interfaces \
     hardware/google/pixel \
     hardware/lineage/interfaces/power-libperfmgr
-#    hardware/qcom-caf/common/libqti-perfd-client
 
 # Telephony-ext
 PRODUCT_PACKAGES += \
@@ -360,8 +367,9 @@ PRODUCT_PACKAGES_DEBUG += \
 
 # USB
 PRODUCT_PACKAGES += \
-    android.hardware.usb@1.0-service
-#    android.hardware.usb@1.3-service.dual_role_usb
+    android.hardware.usb@1.3-service.dual_role_usb
+#    android.hardware.usb@1.0-service
+
 
 # Vibrator
 PRODUCT_PACKAGES += \
@@ -381,29 +389,35 @@ PRODUCT_PACKAGES += \
 #    android.hardware.thermal-service.qti
 
 # Thermal
-#PRODUCT_PACKAGES += \
-#    android.hardware.thermal@2.0-impl:64 \
-#    android.hardware.thermal@2.0-service
-
-#PRODUCT_PACKAGES += \
-#    android.hardware.thermal@1.0-service.mock
+PRODUCT_PACKAGES += \
+    android.hardware.thermal@1.0-impl:64 \
+    android.hardware.thermal@1.0-service
 
 # Weaver
 PRODUCT_PACKAGES += \
     android.hardware.weaver@1.0
 
-# WiFi
+# Wifi
 PRODUCT_PACKAGES += \
     android.hardware.wifi-service \
     hostapd \
+    libwifi-hal-qcom \
+    libwpa_client \
     wpa_supplicant \
     wpa_supplicant.conf
+#    TetheringConfigOverlay \
+#    WifiOverlay \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/wifi_concurrency_cfg.txt:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wifi_concurrency_cfg.txt \
     $(LOCAL_PATH)/wifi/p2p_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/p2p_supplicant_overlay.conf \
     $(LOCAL_PATH)/wifi/wpa_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant_overlay.conf \
     $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/firmware/wlan/qca_cld/WCNSS_qcom_cfg.ini
+
+# WiFi firmware symlinks
+#PRODUCT_PACKAGES += \
+#    firmware_wlan_mac.bin_symlink \
+#    firmware_WCNSS_qcom_cfg.ini_symlink
 
 # VNDK
 # KRAB - DELETE AFTER GOING TO PIE BLOBS

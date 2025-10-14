@@ -17,8 +17,8 @@ vendor/lib64/hw/com.qualcomm.qti.ant@1.0-impl.so
 # ADSP
 vendor/bin/adsprpcd
 vendor/lib/libadsp_default_listener.so
-vendor/lib/libadsp_hvx_callback_skel.so
-vendor/lib/libadsp_hvx_stub.so
+vendor/lib/libadsp_hvx_callback_skel.so;DISABLE_DEPS
+vendor/lib/libadsp_hvx_stub.so;DISABLE_DEPS
 vendor/lib/libadsprpc.so
 vendor/lib/libfastcrc.so
 vendor/lib/libfastcvadsp_stub.so
@@ -72,9 +72,20 @@ vendor/lib/libsurround_3mic_proc.so
 vendor/lib/libtinycompress_vendor.so
 vendor/lib/soundfx/libasphere.so
 vendor/lib/soundfx/libaudiopreprocessing.so
+vendor/lib/soundfx/libbundlewrapper.so
+vendor/lib/soundfx/libdownmix.so
+vendor/lib/soundfx/libdynproc.so
+vendor/lib/soundfx/libeffectproxy.so
+vendor/lib/soundfx/libldnhncr.so
 vendor/lib/soundfx/libqcbassboost.so
+vendor/lib/soundfx/libqcompostprocbundle.so
+vendor/lib/soundfx/libqcomvisualizer.so
+vendor/lib/soundfx/libqcomvoiceprocessing.so
 vendor/lib/soundfx/libqcreverb.so
 vendor/lib/soundfx/libqcvirt.so
+vendor/lib/soundfx/libreverbwrapper.so
+vendor/lib/soundfx/libvisualizer.so
+vendor/lib/soundfx/libvolumelistener.so
 vendor/lib/libwebrtc_audio_preprocessing.so
 vendor/lib64/libwebrtc_audio_preprocessing.so
 vendor/lib/libFlacSwDec.so
@@ -90,28 +101,40 @@ vendor/lib64/libqtigef.so
 vendor/lib64/libtinycompress_vendor.so
 vendor/lib64/soundfx/libasphere.so
 vendor/lib64/soundfx/libaudiopreprocessing.so
+vendor/lib64/soundfx/libbundlewrapper.so
+vendor/lib64/soundfx/libdownmix.so
+vendor/lib64/soundfx/libdynproc.so
+vendor/lib64/soundfx/libeffectproxy.so
+vendor/lib64/soundfx/libldnhncr.so
 vendor/lib64/soundfx/libqcbassboost.so
+vendor/lib64/soundfx/libqcompostprocbundle.so
+vendor/lib64/soundfx/libqcomvisualizer.so
+vendor/lib64/soundfx/libqcomvoiceprocessing.so
 vendor/lib64/soundfx/libqcreverb.so
 vendor/lib64/soundfx/libqcvirt.so
+vendor/lib64/soundfx/libreverbwrapper.so
+vendor/lib64/soundfx/libvisualizer.so
+vendor/lib64/soundfx/libvolumelistener.so
 
 # Audio (ACDB)
 vendor/etc/acdbdata/adsp_avs_config.acdb
 
 # Audio (Hardware)
+# KRAB: ALL MOVED TO AUDIO
 #vendor/lib/hw/audio.primary.default.so
 #vendor/lib/hw/audio.r_submix.default.so
 #vendor/lib/hw/audio.usb.default.so
-vendor/lib/soundfx/libqcompostprocbundle.so
-vendor/lib/soundfx/libqcomvisualizer.so
-vendor/lib/soundfx/libqcomvoiceprocessing.so
-vendor/lib/soundfx/libvolumelistener.so
+#vendor/lib/soundfx/libqcompostprocbundle.so
+#vendor/lib/soundfx/libqcomvisualizer.so
+#vendor/lib/soundfx/libqcomvoiceprocessing.so
+#vendor/lib/soundfx/libvolumelistener.so
 #vendor/lib64/hw/audio.primary.default.so
 #vendor/lib64/hw/audio.r_submix.default.so
 #vendor/lib64/hw/audio.usb.default.so
-vendor/lib64/soundfx/libqcompostprocbundle.so
-vendor/lib64/soundfx/libqcomvisualizer.so
-vendor/lib64/soundfx/libqcomvoiceprocessing.so
-vendor/lib64/soundfx/libvolumelistener.so
+#vendor/lib64/soundfx/libqcompostprocbundle.so
+#vendor/lib64/soundfx/libqcomvisualizer.so
+#vendor/lib64/soundfx/libqcomvoiceprocessing.so
+#vendor/lib64/soundfx/libvolumelistener.so
 
 # Bluetooth
 vendor/bin/hw/android.hardware.bluetooth@1.0-service-qti
@@ -124,7 +147,7 @@ vendor/lib64/libbt-hidlclient.so;DISABLE_DEPS
 vendor/lib64/libbtnv.so
 
 # Camera
-vendor/bin/mm-qcamera-app
+vendor/bin/mm-qcamera-app;DISABLE_DEPS
 vendor/lib/hw/camera.sdm660.so;DISABLE_DEPS
 vendor/lib/libdepthmapwrapper.so
 vendor/lib/libflash_pmic.so
@@ -132,26 +155,24 @@ vendor/lib/libhal_dbg.so
 vendor/lib/libjpegdhw.so
 vendor/lib/libjpegdmahw.so
 vendor/lib/libjpegehw.so
-vendor/lib/libmm-qcamera.so
-vendor/lib/libmmjpeg.so
-vendor/lib/libmmjpeg_interface.so;DISABLE_CHECKELF
-vendor/lib/libmmlib2d_interface.so
-vendor/lib/libmmqjpeg_codec.so
-vendor/lib/libmmqjpegdma.so
-vendor/lib/libmpbase.so
-vendor/lib/libqomx_core.so
-vendor/lib/libqomx_jpegdec.so
-vendor/lib/libqomx_jpegenc.so
-vendor/lib/libqomx_jpegenc_pipe.so
+#KRAB all libmm* in athena
+#vendor/lib/libmm-qcamera.so
+#vendor/lib/libmmjpeg.so
+#vendor/lib/libmmjpeg_interface.so;DISABLE_CHECKELF
+#vendor/lib/libmmlib2d_interface.so
+#vendor/lib/libmmqjpeg_codec.so
+#vendor/lib/libmmqjpegdma.so
+#vendor/lib/libmpbase.so
+vendor/lib/libqomx_core.so;DISABLE_DEPS
+vendor/lib/libqomx_jpegdec.so;DISABLE_DEPS
+vendor/lib/libqomx_jpegenc.so;DISABLE_DEPS
+vendor/lib/libqomx_jpegenc_pipe.so;DISABLE_DEPS
 vendor/lib/libremosaic_daemon.so
 vendor/lib/libvideoutils.so
 vendor/lib64/libvideoutils.so
 
 # Camera (Actuators)
 vendor/lib/libactuator_pseudo.so
-
-# Camera (Config)
-vendor/etc/camera/camera_config.xml
 
 # Camera (Firmware)
 vendor/firmware/cpp_firmware_v1_10_0.fw
@@ -184,98 +205,11 @@ vendor/lib/libseemore.so;DISABLE_DEPS
 vendor/lib/libmmcamera_ubifocus_lib.so;DISABLE_DEPS
 vendor/lib/libubifocus.so;DISABLE_DEPS
 #END
-vendor/lib/libmmcamera_hdr_gb_lib.so;DISABLE_CHECKELF;DISABLE_DEPS
-vendor/lib/libmmcamera2_c2d_module.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera2_cpp_module.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera2_frame_algorithm.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera2_iface_modules.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera2_imglib_modules.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera2_is.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera2_isp_modules.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera2_mct.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera2_mct_shimlayer.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera2_pp_buf_mgr.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera2_pproc_modules.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera2_tct_vis_module.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera2_q3a_core.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera2_sensor_modules.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera2_stats_algorithm.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera2_stats_lib.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera2_stats_modules.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera_csidtg.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera_dbg.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera_depth_map.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera_dummyalgo.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera_eebinparse.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera_eeprom_util.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera_eztune_module.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera_facedetection_lib.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera_faceproc.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera_faceproc2.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera_hvx_add_constant.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera_hvx_grid_sum.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera_imglib.so;DISABLE_CHECKELF;DISABLE_CHECKELF
-vendor/lib/libmmcamera_imglib_faceproc_adspstub.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera_interface.so;DISABLE_CHECKELF;DISABLE_CHECKELF
-vendor/lib/libmmcamera_isp_abf48.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera_isp_aec_bg_stats47.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera_isp_bf_stats47.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera_isp_bg_stats46.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera_isp_bhist_stats44.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera_isp_black_level48.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera_isp_bpc48.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera_isp_cac47.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera_isp_chroma_enhan40.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera_isp_chroma_suppress40.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera_isp_clamp_encoder40.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera_isp_clamp_video40.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera_isp_clamp_viewfinder40.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera_isp_color_correct46.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera_isp_color_xform_encoder46.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera_isp_color_xform_video46.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera_isp_color_xform_viewfinder46.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera_isp_cs_stats46.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera_isp_demosaic48.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera_isp_demux48.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera_isp_fovcrop_encoder46.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera_isp_fovcrop_video46.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera_isp_fovcrop_viewfinder46.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera_isp_gamma44.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera_isp_gic48.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera_isp_gtm46.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera_isp_hdr48.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera_isp_hdr_be_stats46.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera_isp_hdr_bhist_stats44.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera_isp_ihist_stats46.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera_isp_linearization40.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera_isp_ltm47.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera_isp_luma_adaptation40.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera_isp_mce40.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera_isp_mesh_rolloff44.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera_isp_pdaf48.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera_isp_pedestal_correct46.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera_isp_rs_stats46.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera_isp_scaler_encoder46.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera_isp_scaler_video46.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera_isp_scaler_viewfinder46.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera_isp_sce40.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera_isp_snr47.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera_isp_sub_module.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera_paaf_lib.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera_pdaf.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera_pdafcamif.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera_ppbase_module.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera_ppeiscore.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera_quadracfa.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera_sw2d_lib.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera_thread_services.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera_tintless_algo.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera_tintless_bg_pca_algo.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera_tuning.so;DISABLE_CHECKELF
-vendor/lib/libmmcamera_tuning_lookup.so;DISABLE_CHECKELF
-vendor/lib64/libmmcamera_dbg.so;DISABLE_CHECKELF
-vendor/lib64/libmmcamera_faceproc.so;DISABLE_CHECKELF
-vendor/lib64/libmmcamera_faceproc2.so;DISABLE_CHECKELF
+#KRAB all libmm* in athena
+#vendor/lib/libmmcamera_hdr_gb_lib.so;DISABLE_CHECKELF;DISABLE_DEPS
+#vendor/lib/libmmcamera2_c2d_module.so;DISABLE_CHECKELF
+# ...
+# vendor/lib64/libmmcamera_faceproc2.so;DISABLE_CHECKELF
 
 
 
@@ -453,10 +387,11 @@ vendor/lib64/libdataitems.so;DISABLE_DEPS
 vendor/lib64/libgdtap.so;DISABLE_DEPS
 vendor/lib64/liblbs_core.so;DISABLE_DEPS
 vendor/lib64/libloc_api_v02.so;DISABLE_DEPS
+#KRAB-taking from source
 #vendor/lib/libloc_pla.so;DISABLE_DEPS
-vendor/lib64/libloc_pla.so;DISABLE_DEPS
+#vendor/lib64/libloc_pla.so;DISABLE_DEPS
 #vendor/lib64/libloc_core.so;DISABLE_DEPS
-vendor/lib64/libloc_stub.so;DISABLE_DEPS
+#vendor/lib64/libloc_stub.so;DISABLE_DEPS
 vendor/lib64/libloc_socket.so;DISABLE_DEPS
 vendor/lib64/liblocationservice.so;DISABLE_DEPS
 vendor/lib64/liblocationservice_glue.so;DISABLE_DEPS
@@ -800,7 +735,8 @@ system_ext/lib64/lib-imsvtutils.so|dfc5cf0854fe38c191a53ec3bd2a322d05d85567
 system_ext/lib64/libimscamera_jni.so;SYMLINK=system_ext/priv-app/ims/lib/arm64/libimscamera_jni.so|114876ec8ba85965a69694a7edc0e555fe099061
 system_ext/lib64/libimsmedia_jni.so;SYMLINK=system_ext/priv-app/ims/lib/arm64/libimsmedia_jni.so|b90664b4ce069358f36801da5ceac10baf4ebcc6
 system_ext/lib64/vendor.qti.imsrtpservice@3.0.so
-system_ext/priv-app/ims/ims.apk|16b82e1e0113beb7fb3a62a9a5513b317675d96e
+#KRAB crashes server need permissions xml
+#system_ext/priv-app/ims/ims.apk|16b82e1e0113beb7fb3a62a9a5513b317675d96e
 vendor/bin/ims_rtp_daemon;DISABLE_DEPS|32a3ce381b0f85f53a2e9afd7215b3585afef0d6
 vendor/bin/imsdatadaemon;DISABLE_CHECKELF|3f044f84eb4049f1ce8a26af6a6026c1776d22dd
 vendor/lib/lib-rtpdaemoninterface.so;DISABLE_DEPS
@@ -935,7 +871,7 @@ vendor/lib/libfeedbackhandler.so
 vendor/lib64/libfeedbackhandler.so
 vendor/lib/com.quicinc.cne.server@2.0.so
 vendor/lib64/com.quicinc.cne.server@2.0.so
-vendor/lib/libmmcamera2_aec_module.so
+#vendor/lib/libmmcamera2_aec_module.so
 vendor/lib/vendor.qti.hardware.radio.uim_remote_server@1.0_vendor.so
 vendor/lib64/vendor.qti.hardware.radio.uim_remote_server@1.0_vendor.so
 vendor/lib/libbbry_vs.so
@@ -959,9 +895,9 @@ vendor/lib/libscveBlobDescriptor.so
 vendor/lib/libscveBlobDescriptor_stub.so
 vendor/lib/libscveCommon.so
 vendor/lib/libscveCommon_stub.so
-vendor/lib/libscveFaceLandmarks.so
+vendor/lib/libscveFaceLandmarks.so;DISABLE_DEPS
 vendor/lib/libscveFaceLandmarks_stub.so
-vendor/lib/libscveFaceRecognition.so
+vendor/lib/libscveFaceRecognition.so;DISABLE_DEPS
 vendor/lib/libscveImageCorrection.so
 vendor/lib/libscveObjectSegmentation.so
 vendor/lib/libscveObjectTracker_hal.so:vendor/lib/libscveObjectTracker.so
