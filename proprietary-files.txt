@@ -355,7 +355,6 @@ vendor/lib64/vendor.qti.hardware.fm@1.0_vendor.so
 
 # GPS - from FP3 - 6.A.031.2
 vendor/bin/loc_launcher
-#;DISABLE_DEPS
 vendor/bin/lowi-server;DISABLE_CHECKELF;DISABLE_DEPS
 vendor/bin/mlid;DISABLE_DEPS
 vendor/bin/xtra-daemon;DISABLE_DEPS
@@ -826,6 +825,9 @@ vendor/lib64/vendor.qti.hardware.tui_comm@1.0_vendor.so
 
 # WiFi
 vendor/bin/cnss-daemon
+vendor/bin/cnss_diag
+#KRAB in common.mk Soong does not give to copy file via mk, cause it is elf
+#vendor/lib/modules/qca_cld3/qca_cld3_wlan.ko
 
 # Widevine
 vendor/bin/hw/android.hardware.drm@1.0-service.widevine
