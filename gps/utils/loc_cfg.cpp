@@ -1151,3 +1151,48 @@ err:
 
     return ret;
 }
+
+
+/*===========================================================================
+FUNCTION loc_read_conf
+
+DESCRIPTION
+   Reads the specified configuration file and sets defined values based on
+   the passed in configuration table. This table maps strings to values to
+   set along with the type of each of these values.
+
+PARAMETERS:
+   conf_file_name: configuration file to read
+   config_table: table definition of strings to places to store information
+   table_length: length of the configuration table
+
+DEPENDENCIES
+   N/A
+
+RETURN VALUE
+   None
+
+SIDE EFFECTS
+   N/A
+===========================================================================*/
+void loc_read_conf(const char* conf_file_name, const loc_param_s_type* config_table,
+                   uint32_t table_length)
+{
+    FILE *conf_fp = NULL;
+    char *lasts;
+    loc_param_v_type config_value;
+    uint32_t i;
+
+    if((conf_fp = fopen(conf_file_name, "r")) != NULL)
+    {
+        LOC_LOGD("%s: using %s", __FUNCTION__, conf_file_name);
+        if(table_length && config_table) {
+            loc_read_conf_r(conf_fp, config_table, table_length);
+            rewind(conf_fp);
+        }
+        loc_read_conf_r(conf_fp, loc_param_table, loc_param_num);
+        fclose(conf_fp);
+    }
+    /* Initialize logging mechanism with parsed data */
+    loc_logger_init(DEBUG_LEVEL, TIMESTAMP);
+}

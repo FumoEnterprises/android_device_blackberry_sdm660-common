@@ -177,6 +177,7 @@ PRODUCT_PACKAGES += \
     android.hardware.gnss@2.1-service-qti \
     android.hardware.gnss@1.1.vendor \
     android.hardware.gnss@2.1.vendor \
+    libloc_core \
     libgnss \
     libgps.utils \
     liblocation_api \
@@ -413,12 +414,15 @@ PRODUCT_PACKAGES += \
     firmware_WCNSS_qcom_cfg.ini_symlink
 
 # VNDK
-# KRAB - DELETE AFTER GOING TO PIE BLOBS
+# KRAB - REVIEW AFTER GOING TO PIE BLOBS
 PRODUCT_PACKAGES += \
     libhidlbase-v32 \
     libhidlbase-v32.vendor \
     libutils-v33 \
-    libcutils-v29.vendor \
-    libloc_core
+    libcutils-v29.vendor
+
+
+
+
 
 
