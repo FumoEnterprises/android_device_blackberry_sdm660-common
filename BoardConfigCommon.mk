@@ -100,10 +100,11 @@ TARGET_KERNEL_SOURCE := kernel/blackberry/sdm660
 TARGET_KERNEL_CONFIG := athena-perf_defconfig
 TARGET_KERNEL_VERSION := 4.4
 TARGET_KERNEL_CLANG_COMPILE := true
-TARGET_KERNEL_CLANG_VERSION := r522817
-#TARGET_KERNEL_CLANG_COMPILE := false
-#TARGET_KERNEL_USE_CLANG := false
-#KERNEL_TOOLCHAIN := $(PWD)/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin
+TARGET_KERNEL_CLANG_VERSION := r416183b
+TARGET_KERNEL_CLANG_PATH := $(abspath .)/prebuilts/clang/kernel/$(HOST_PREBUILT_TAG)/clang-$(TARGET_KERNEL_CLANG_VERSION)
+TARGET_KERNEL_LLVM_BINUTILS := false
+TARGET_KERNEL_ADDITIONAL_FLAGS := \
+    HOSTCFLAGS="-fuse-ld=lld -Wno-unused-command-line-argument"
 
 # Properties
 TARGET_SYSTEM_PROP += $(COMMON_PATH)/system.prop
