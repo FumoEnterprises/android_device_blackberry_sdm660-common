@@ -157,6 +157,10 @@ PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint@2.1 \
     android.hardware.biometrics.fingerprint@2.1.vendor
 
+# Fingerprint NOKIA
+#PRODUCT_PACKAGES += \
+#    android.hardware.biometrics.fingerprint-service.lineage
+
 # FM
 PRODUCT_PACKAGES += \
     FM2 \
@@ -424,13 +428,20 @@ PRODUCT_PACKAGES += \
     firmware_WCNSS_qcom_cfg.ini_symlink \
     rfs_msm_mpss_fih_rfs_data_vendor_symlink
 
+# KRAB - GPS-FIX
+PRODUCT_PACKAGES += \
+    libloc_core
+
 # VNDK
-# KRAB - DELETE AFTER GOING TO PIE BLOBS
+# KRAB - REVIEW AFTER GOING TO PIE BLOBS
 PRODUCT_PACKAGES += \
     libhidlbase-v32 \
     libhidlbase-v32.vendor \
     libutils-v33 \
-    libcutils-v29.vendor \
-    libloc_core
+    libcutils-v29.vendor
+
+
+
+
 
 

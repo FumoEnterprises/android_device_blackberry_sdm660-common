@@ -34,11 +34,13 @@ service loggy /vendor/bin/loggy.sh
     class core
     user root
     oneshot
+    disabled
 
 service loggy2 /vendor/bin/loggy2.sh
     class core
     user root
     oneshot
+    disabled
 
 on early-init
     mount debugfs debugfs /sys/kernel/debug
@@ -76,7 +78,7 @@ on init
 on post-fs
     chmod 0755 /sys/kernel/debug/tracing
 #    start loggy
-    start loggy2
+#    start loggy2
 
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
@@ -574,10 +576,11 @@ on property:vold.decrypt=trigger_restart_framework
 on property:persist.env.fastdorm.enabled=true
     setprop persist.radio.data_no_toggle 1
 
-service vendor.cnd /system/vendor/bin/cnd
-    class main
-    user system
-    group system wifi inet radio wakelock net_admin
+#KRAB: SEPARATE-RC
+#service vendor.cnd /system/vendor/bin/cnd
+#    class main
+#    user system
+#    group system wifi inet radio wakelock net_admin
 
 service dpmQmiMgr /system/vendor/bin/dpmQmiMgr
     class main
