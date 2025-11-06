@@ -3,12 +3,12 @@
 
 
 # ANT+
--lib/libantradio.so:system/lib/libantradio.so
+#-lib/libantradio.so:system/lib/libantradio.so
 -lib64/libantradio.so:system/lib64/libantradio.so
-system/lib/com.qualcomm.qti.ant@1.0.so
+#system/lib/com.qualcomm.qti.ant@1.0.so
 system/lib64/com.qualcomm.qti.ant@1.0.so
-vendor/lib/com.qualcomm.qti.ant@1.0_vendor.so
-vendor/lib/hw/com.qualcomm.qti.ant@1.0-impl.so
+#vendor/lib/com.qualcomm.qti.ant@1.0_vendor.so
+#vendor/lib/hw/com.qualcomm.qti.ant@1.0-impl.so
 vendor/lib64/com.qualcomm.qti.ant@1.0_vendor.so
 vendor/lib64/hw/com.qualcomm.qti.ant@1.0-impl.so
 
@@ -139,12 +139,9 @@ vendor/etc/acdbdata/adsp_avs_config.acdb
 # Bluetooth
 vendor/bin/hw/android.hardware.bluetooth@1.0-service-qti
 vendor/etc/init/android.hardware.bluetooth@1.0-service-qti.rc
-vendor/lib/hw/android.hardware.bluetooth@1.0-impl-qti.so
-vendor/lib/libbt-hidlclient.so
-vendor/lib/libbtnv.so
 vendor/lib64/hw/android.hardware.bluetooth@1.0-impl-qti.so
-vendor/lib64/libbt-hidlclient.so
 vendor/lib64/libbtnv.so
+
 
 # Camera
 vendor/bin/mm-qcamera-app;DISABLE_DEPS
@@ -355,10 +352,10 @@ vendor/lib64/libQTEEConnector_vendor.so
 #vendor/lib64/vendor.qti.hardware.qteeconnector@1.0_vendor.so
 
 # FM
-system/lib/vendor.qti.hardware.fm@1.0.so
+#system/lib/vendor.qti.hardware.fm@1.0.so
 system/lib64/vendor.qti.hardware.fm@1.0.so
-vendor/lib/hw/vendor.qti.hardware.fm@1.0-impl.so
-vendor/lib/vendor.qti.hardware.fm@1.0_vendor.so
+#vendor/lib/hw/vendor.qti.hardware.fm@1.0-impl.so
+#vendor/lib/vendor.qti.hardware.fm@1.0_vendor.so
 vendor/lib64/hw/vendor.qti.hardware.fm@1.0-impl.so
 vendor/lib64/vendor.qti.hardware.fm@1.0_vendor.so
 

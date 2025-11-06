@@ -40,7 +40,6 @@ service loggy2 /vendor/bin/loggy2.sh
     class core
     user root
     oneshot
-    disabled
 
 on early-init
     mount debugfs debugfs /sys/kernel/debug
