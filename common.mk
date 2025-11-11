@@ -120,7 +120,6 @@ PRODUCT_COPY_FILES += \
     frameworks/av/services/audiopolicy/config/audio_policy_volumes.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio/audio_policy_volumes.xml \
     frameworks/av/services/audiopolicy/config/default_volume_tables.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio/default_volume_tables.xml \
 
-
 # Bluetooth
 #PRODUCT_PACKAGES += \
 #    android.hardware.bluetooth@1.0 \
@@ -162,6 +161,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-impl \
     android.hardware.drm@1.0-service
+
+# Fingerprint (STUB)
+PRODUCT_PACKAGES += \
+     android.hardware.biometrics.fingerprint-service.default
 
 # Fingerprint
 PRODUCT_PACKAGES += \
