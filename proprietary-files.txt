@@ -825,7 +825,8 @@ vendor/lib64/vendor.qti.hardware.tui_comm@1.0_vendor.so
 
 # WiFi
 vendor/bin/cnss-daemon
-vendor/bin/cnss_diag
+#KRAB:cnss_diag is crashing and not needed
+#vendor/bin/cnss_diag
 #KRAB in common.mk Soong does not give to copy file via mk, cause it is elf
 #vendor/lib/modules/qca_cld3/qca_cld3_wlan.ko
 
