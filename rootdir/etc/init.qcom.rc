@@ -40,6 +40,7 @@ service loggy2 /vendor/bin/loggy2.sh
     class core
     user root
     oneshot
+    disabled
 
 on early-init
     mount debugfs debugfs /sys/kernel/debug
@@ -76,7 +77,7 @@ on init
 
 on post-fs
     chmod 0755 /sys/kernel/debug/tracing
-#    start loggy
+    start loggy
 #    start loggy2
 
 on early-boot
