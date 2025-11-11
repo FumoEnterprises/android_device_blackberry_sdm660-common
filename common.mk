@@ -152,6 +152,10 @@ PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-impl \
     android.hardware.drm@1.0-service
 
+# Fingerprint (STUB)
+PRODUCT_PACKAGES += \
+     android.hardware.biometrics.fingerprint-service.default
+
 # Fingerprint
 PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint@2.1 \
