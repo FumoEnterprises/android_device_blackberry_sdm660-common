@@ -96,7 +96,6 @@ BOARD_KERNEL_TAGS_OFFSET := 0x00000100
 BOARD_RAMDISK_OFFSET     := 0x01000000
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
-TARGET_KERNEL_SOURCE := kernel/blackberry/sdm660
 TARGET_KERNEL_CONFIG := athena-perf_defconfig
 TARGET_KERNEL_VERSION := 4.4
 TARGET_KERNEL_CLANG_COMPILE := true
@@ -141,10 +140,7 @@ TARGET_USES_OLD_MNC_FORMAT := true
 
 # Root Directories
 BOARD_ROOT_EXTRA_SYMLINKS := \
-    /mnt/vendor/persist:/persist \
-    /vendor/bt_firmware:/bt_firmware \
-    /vendor/dsp:/dsp \
-    /vendor/firmware_mnt:/firmware
+    /mnt/vendor/persist:/persist
 
 # Telephony
 TARGET_PROVIDES_QTI_TELEPHONY_JAR := true
