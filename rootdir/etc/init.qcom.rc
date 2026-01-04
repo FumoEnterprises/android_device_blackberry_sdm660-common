@@ -77,8 +77,8 @@ on init
 
 on post-fs
     chmod 0755 /sys/kernel/debug/tracing
-    start loggy
-#    start loggy2
+    #start loggy
+    #start loggy2
 
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
@@ -252,6 +252,11 @@ on boot
 
     # Create hvdcp_opti directory
     mkdir /mnt/vendor/persist/hvdcp_opti 0770 root system
+
+    # Enable qcrild and data services on boot so process starts in main
+    enable vendor.qcrild
+    enable vendor.qcrild2
+    enable vendor.dataqti
 
 # msm specific files that need to be created on /data
 on post-fs-data

@@ -317,7 +317,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.radio@1.1.vendor \
     android.hardware.radio.config@1.0 \
+    android.hardware.radio.c_shim@1.0 \
     android.hardware.radio@1.4-service.legacy \
+    android.hardware.secure_element@1.0 \
     libxml2
 
 # Ramdisk
@@ -424,9 +426,10 @@ PRODUCT_PACKAGES += \
     hostapd \
     wpa_supplicant \
     wpa_cli \
-    wpa_supplicant.conf
+    wpa_supplicant.conf \
+    libwpa_client
 #    libwifi-hal-qcom \
-#    libwpa_client
+
 #    TetheringConfigOverlay \
 #    WifiOverlay \
 
@@ -452,7 +455,7 @@ PRODUCT_PACKAGES += \
     libhidlbase-v32 \
     libhidlbase-v32.vendor \
     libutils-v33 \
-    libcutils-v29.vendor
+    libcutils_shim
 
 
 
