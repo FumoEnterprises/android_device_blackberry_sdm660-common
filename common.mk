@@ -124,7 +124,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.bluetooth@1.0 \
     audio.bluetooth.default \
-    android.hardware.bluetooth.audio-impl \
+    android.hardware.bluetooth.audio@2.0-impl \
     vendor.qti.hardware.btconfigstore@1.0.vendor
 
 # Camera - Crashes on luna. TODO
@@ -153,7 +153,7 @@ PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-service
 
 # Fingerprint (STUB)
-PRODUCT_PACKAGES += \
+#PRODUCT_PACKAGES += \
      android.hardware.biometrics.fingerprint-service.default
 
 # Fingerprint
@@ -161,6 +161,13 @@ PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint@2.1 \
     android.hardware.biometrics.fingerprint@2.1.vendor
 
+<<<<<<< HEAD
+=======
+# Fingerprint
+#PRODUCT_PACKAGES += \
+    android.hardware.biometrics.fingerprint-service.lineage
+
+>>>>>>> 7949603 (radioconfig)
 # FM
 PRODUCT_PACKAGES += \
     FM2 \
@@ -306,6 +313,7 @@ PRODUCT_PACKAGES += \
     android.hardware.radio.config@1.0 \
     android.hardware.radio.c_shim@1.0 \
     android.hardware.radio@1.4-service.legacy \
+    android.hardware.radio.config@1.1-service.wrapper \
     android.hardware.secure_element@1.0 \
     libxml2
 

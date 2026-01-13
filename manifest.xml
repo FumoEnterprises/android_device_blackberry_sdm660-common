@@ -500,4 +500,14 @@
             <instance>default</instance>
         </interface>
     </hal>
+    <hal format="hidl">
+        <name>vendor.qti.imsrtpservice</name>
+        <transport>hwbinder</transport>
+        <fqname>@2.1::IRTPService/imsrtpservice</fqname>
+    </hal>
+    <hal format="hidl">
+        <name>lineage.hardware.radio.config</name>
+        <transport>hwbinder</transport>
+        <fqname>@1.0::IRadioConfig/default</fqname>
+    </hal>
 </manifest>
