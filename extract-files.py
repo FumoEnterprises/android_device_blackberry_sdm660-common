@@ -42,8 +42,13 @@ lib_fixups: lib_fixups_user_type = {
     ): lib_fixup_vendor_suffix,
 }
 
-
 blob_fixups: blob_fixups_user_type = {
+    ('vendor/lib64/vendor.qti.hardware.radio.qcrilhook@1.0.so',
+     'vendor/lib/vendor.qti.hardware.qteeconnector@1.0.so',
+     'vendor/lib64/vendor.qti.hardware.qteeconnector@1.0.so',
+     'vendor/lib64/vendor.qti.hardware.radio.lpa@1.0.so'
+     ): blob_fixup()
+        .replace_needed('libhidlbase.so', 'libhidlbase-v32.so'),
 }  # fmt: skip
 
 module = ExtractUtilsModule(
