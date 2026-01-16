@@ -170,12 +170,9 @@ PRODUCT_PACKAGES += \
 >>>>>>> 7949603 (radioconfig)
 # FM
 PRODUCT_PACKAGES += \
-    FM2 \
-    libqcomfm_jni \
-    qcom.fmradio
+    FM2
 
-PRODUCT_BOOT_JARS += \
-    qcom.fmradio
+$(call soong_config_set_bool,libfmjni,no_fm_firmware,true)
 
 # Framework Detect
 PRODUCT_PACKAGES += \
@@ -262,6 +259,11 @@ PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_telephony.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_video.xml
 
+PRODUCT_PACKAGES += \
+    libavservices_minijail \
+    libavservices_minijail.vendor \
+    libavservices_minijail_vendor
+
 # Net
 PRODUCT_PACKAGES += \
     android.system.net.netd@1.0 \
@@ -314,7 +316,8 @@ PRODUCT_PACKAGES += \
     android.hardware.radio.c_shim@1.0 \
     android.hardware.radio@1.4-service.legacy \
     android.hardware.radio.config@1.1-service.wrapper \
-    android.hardware.secure_element@1.0 \
+    android.hardware.secure_element@1.0.vendor \
+    android.hardware.radio.deprecated@1.0.vendor \
     libxml2
 
 # Ramdisk
