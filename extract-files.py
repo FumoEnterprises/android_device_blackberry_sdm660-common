@@ -46,9 +46,16 @@ blob_fixups: blob_fixups_user_type = {
     ('vendor/lib64/vendor.qti.hardware.radio.qcrilhook@1.0.so',
      'vendor/lib/vendor.qti.hardware.qteeconnector@1.0.so',
      'vendor/lib64/vendor.qti.hardware.qteeconnector@1.0.so',
-     'vendor/lib64/vendor.qti.hardware.radio.lpa@1.0.so'
+     'vendor/lib64/vendor.qti.hardware.radio.lpa@1.0.so',
+     'vendor/lib64/vendor.qti.hardware.tui_comm@1.0_vendor.so'
      ): blob_fixup()
         .replace_needed('libhidlbase.so', 'libhidlbase-v32.so'),
+    ('vendor/bin/hw/vendor.qti.hardware.tui_comm@1.0-service-qti',
+     'vendor/bin/hw/android.hardware.drm@1.0-service.widevine'
+     ): blob_fixup()
+        .add_needed('libbase_shim.so'),
+    'vendor/lib64/libril-qc-hal-qmi.so': blob_fixup()
+        .replace_needed('android.hardware.radio.config@1.0.so', 'android.hardware.radio.c_shim@1.0.so'),
 }  # fmt: skip
 
 module = ExtractUtilsModule(
