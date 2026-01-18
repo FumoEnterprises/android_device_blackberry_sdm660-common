@@ -37,9 +37,6 @@ TARGET_BOARD_PLATFORM := sdm660
 # A/B
 AB_OTA_UPDATER := false
 
-# ANT+
-BOARD_ANT_WIRELESS_DEVICE := "qualcomm-hidl"
-
 # APEX
 DEXPREOPT_GENERATE_APEX_IMAGE := true
 
@@ -97,7 +94,17 @@ DEVICE_MANIFEST_FILE := $(COMMON_PATH)/manifest.xml
 DEVICE_MATRIX_FILE := $(COMMON_PATH)/compatibility_matrix.xml
 
 # Kernel
-BOARD_KERNEL_CMDLINE := androidboot.selinux=permissive earlycon=msm_serial_dm,0xc170000 androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x37 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 sched_enable_hmp=1 sched_enable_power_aware=1 pathtrust=0 service_locator.enable=1 swiotlb=1 androidboot.configfs=true androidboot.usbcontroller=a800000.dwc3 build_number=ACT575 androidboot.build_number=ACT575 coherent_pool=1280K console=ttyMSM0
+BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
+BOARD_KERNEL_CMDLINE += user_debug=31 msm_rtb.filter=0x37
+BOARD_KERNEL_CMDLINE += ehci-hcd.park=3 lpm_levels.sleep_disabled=1
+BOARD_KERNEL_CMDLINE += sched_enable_hmp=1 sched_enable_power_aware=1
+BOARD_KERNEL_CMDLINE += service_locator.enable=1 swiotlb=1
+BOARD_KERNEL_CMDLINE += androidboot.configfs=true androidboot.usbcontroller=a800000.dwc3
+BOARD_KERNEL_CMDLINE += build_number=ACT575 androidboot.build_number=ACT575
+BOARD_KERNEL_CMDLINE += coherent_pool=1280K androidboot.nfc=nxp
+# uncomment for uart BOARD_KERNEL_CMDLINE += earlycon=msm_serial_dm,0xc170000 console=ttyMSM0
+BOARD_KERNEL_CMDLINE += console=null
 BOARD_KERNEL_BASE := 0x0
 BOARD_KERNEL_TAGS_OFFSET := 0x00000100
 BOARD_RAMDISK_OFFSET     := 0x01000000
@@ -118,15 +125,6 @@ TARGET_SYSTEM_PROP += $(COMMON_PATH)/system.prop
 TARGET_VENDOR_PROP += $(COMMON_PATH)/vendor.prop
 
 # Partitions
-BOARD_USES_SYSTEM_OTHER_ODEX := true
-
-TARGET_COPY_OUT_PRODUCT := system/product
-TARGET_COPY_OUT_VENDOR := vendor
-
-TARGET_USERIMAGES_USE_EXT4 := true
-TARGET_USES_MKE2FS := true
-
-# Partitions
 BOARD_BOOTIMAGE_PARTITION_SIZE := 67108864
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_CACHEIMAGE_PARTITION_SIZE := 1073741824
@@ -138,6 +136,10 @@ BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_FLASH_BLOCK_SIZE := 262144 # (BOARD_KERNEL_PAGESIZE * 64)
 TARGET_COPY_OUT_VENDOR := vendor
 TARGET_USES_MKE2FS := true
+BOARD_USES_SYSTEM_OTHER_ODEX := true
+TARGET_COPY_OUT_PRODUCT := system/product
+TARGET_COPY_OUT_VENDOR := vendor
+TARGET_USERIMAGES_USE_EXT4 := true
 
 # Power
 TARGET_USES_INTERACTION_BOOST := true
