@@ -270,6 +270,14 @@ vendor/lib64/vendor.qti.latency@2.0.so|82196d2863e012ad2b6e1b9af9d9ce7c611f64be
 vendor/lib64/vendor.qti.latency@2.1.so|d279c5e456bb3e546130df3cd6f398cea6b48eaf
 vendor/lib64/libqmi_cci.so|821c9ed22945e020e8f855267d53be5f2b619740
 
+# CNE - other
+vendor/lib/com.quicinc.cne.constants@1.0.so
+vendor/lib64/com.quicinc.cne.constants@1.0.so
+vendor/lib/com.quicinc.cne.server@2.0.so
+vendor/lib64/com.quicinc.cne.server@2.0.so
+vendor/lib/com.quicinc.cne.constants@2.0.so
+vendor/lib64/com.quicinc.cne.constants@2.0.so
+
 # DPM - from FP3 - 6.A.031.2
 system_ext/bin/dpmd|dc94ffe90c6658b0bc99c64f68517c4048d0321a
 system_ext/etc/dpm/dpm.conf|95e27da8c989e96c6faea6f0697bce11955b62a5
@@ -746,20 +754,12 @@ vendor/firmware/widevine.b06|01da4fc45d8ab68b7bb9dc414525ed08299550fd
 vendor/firmware/widevine.b07|25c61c2f6aad50f04e92466035038be629b49978
 vendor/firmware/widevine.mdt|1482bc8e6c63ff8fd510d595e847a556aabc2715
 
-# Misc blobs (to be sorted...)
+# Misc blobs (to be sorted...) (wfd dependencies, cam)
 vendor/lib/libwfdcommonutils_proprietary.so
 vendor/lib/libwfdmmservice.so
-vendor/lib/com.quicinc.cne.constants@1.0.so
-vendor/lib64/com.quicinc.cne.constants@1.0.so
 vendor/lib/libfeedbackhandler.so
 vendor/lib64/libfeedbackhandler.so
-vendor/lib/com.quicinc.cne.server@2.0.so
-vendor/lib64/com.quicinc.cne.server@2.0.so
-#vendor/lib/libmmcamera2_aec_module.so
-# vendor/lib/libbbry_vs.so - seems unneeded for us... maybe some diag shit.
-# vendor/lib64/libbbry_vs.so - ditto
-vendor/lib/com.quicinc.cne.constants@2.0.so
-vendor/lib64/com.quicinc.cne.constants@2.0.so
+
 vendor/lib/lib-dplmedia.so;DISABLE_DEPS
 vendor/lib64/vendor.qti.imsrtpservice@1.0.so
 vendor/lib/vendor.qti.imsrtpservice@1.0.so
@@ -777,3 +777,5 @@ vendor/lib64/libsdmutils.so
 vendor/lib64/vendor.qti.hardware.qteeconnector@1.0.so
 vendor/lib/vendor.qti.hardware.qteeconnector@1.0.so
 
+# Keyboard - from Athena - ACQ160
+system/app/BlackBerryKeyboard/BlackBerryKeyboard.apk|029b7df8df106d2aef6f7099052cc0882f76a1a4
