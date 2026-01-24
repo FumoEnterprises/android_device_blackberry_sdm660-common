@@ -24,28 +24,11 @@ vendor/lib64/libfastcvopt.so
 vendor/lib64/libmdsprpc.so
 vendor/lib64/libsdsprpc.so
 
-# ADSP (Modules) - from Luna - ACT575
-vendor/lib/rfsa/adsp/capi_v2_aptX_Classic.so|8305c614ebf13f84f15989631b8fdfdb9828d9be
-vendor/lib/rfsa/adsp/capi_v2_aptX_HD.so|eb0e912d25b06f977d5a89345c72d142b7ffb8ae
-vendor/lib/rfsa/adsp/libFastRPC_AUE_Forward_skel.so|f4d8675a46c5e52add8f8e90e35b29cd33ac582b
-vendor/lib/rfsa/adsp/libFastRPC_UTF_Forward_800h_skel.so|c240d45c3a5fc37b964c4adab06f4cb0bfda62f5
-vendor/lib/rfsa/adsp/libFastRPC_UTF_Forward_Qtc2_skel.so;DISABLE_CHECKELF|b9f68e320d24e9c51871a2056e1f47239bd1cb40
-vendor/lib/rfsa/adsp/libadsp_fd_skel.so|677d2932dac248049f031fc5893163e22b49439a
-vendor/lib/rfsa/adsp/libadsp_hvx_add_constant.so|26fb64a92d48e801a31a867976d325efa366a255
-vendor/lib/rfsa/adsp/libadsp_hvx_skel.so|05776246445316aea822eaa9cb6ae7a47b23c9aa
-vendor/lib/rfsa/adsp/libapps_mem_heap.so|fd362c6b0e30f62cc3fc4566855f46706d2c3c50
-vendor/lib/rfsa/adsp/libdspCV_skel.so|a788855fe98d5f6ea73d2693c983efb29165eae1
-vendor/lib/rfsa/adsp/libfastcvadsp.so|603711dc1af1f1952d8978a5b494b1541b24c54c
-vendor/lib/rfsa/adsp/libfastcvadsp_skel.so|a06a3f52e89d219d2da0c7205e714cd7429b267c
-vendor/lib/rfsa/adsp/libscveBlobDescriptor_skel.so|99752b14bc669589f598b2c555af96834147e41e
-vendor/lib/rfsa/adsp/libscveT2T_skel.so|487f830aca26c85ef79c8b599b2f03668ab732b5
-
 # CDSP
 vendor/lib/libcdsprpc.so
 vendor/lib/libfastrpc_utf_stub.so
 vendor/lib64/libcdsprpc.so
 vendor/lib64/libfastrpc_utf_stub.so
-
 
 # Audio
 vendor/bin/audioflacapp
@@ -118,84 +101,6 @@ vendor/lib64/libbt-hidlclient.so|ff301380cf3c0ff68d2b7fcda3ba428ebf0a859e
 vendor/lib64/libbtnv.so|0c74a43550b939b9496b03b3285fa950cf560c48
 vendor/lib64/vendor.qti.hardware.bluetooth_sar@1.0.so|23706dcfa35cc6f7dee934e13886c19a56a9aa12
 vendor/lib64/vendor.qti.hardware.bluetooth_sar@1.1.so|ece3dafc4447e8302109851c3a6b0d3978b3506d
-
-# Camera - from Luna - ACT575
-vendor/bin/mm-qcamera-app;DISABLE_DEPS|d32266c099e4cfc6da72e547f0a12a8b417d9367
-vendor/lib/hw/camera.sdm660.so;DISABLE_DEPS|817d6eff70c5e8b4120ad79e5b2a589d57cb1e40
-vendor/lib/libdepthmapwrapper.so|c0ecdc8095e6da360bbd0438061abaecd4341d7a
-vendor/lib/libflash_pmic.so|c64f0ba415f7f9bd6753f564c0b4654e682548d4
-vendor/lib/libhal_dbg.so|386f0492e050bf6a13c99be054b91cb43e3abcea
-vendor/lib/libjpegdhw.so|f625133f44bcf94ea8dcc3bd5086e5228a956180
-vendor/lib/libjpegdmahw.so|68751f56b52466164ef5258871c6876680b8e6cc
-vendor/lib/libjpegehw.so|4b9c8b604898e3b50d38aa58041bff20d23a2d77
-vendor/lib/libqomx_core.so;DISABLE_DEPS|1978a2daa44d13f00e57fc2975cb5daf20c9d3fc
-vendor/lib/libqomx_jpegdec.so;DISABLE_DEPS|0fc41b070f2a72826f9f8324f9c37eb2ed2b0f9d
-vendor/lib/libqomx_jpegenc.so;DISABLE_DEPS|aee60d28c79d6bb34a045bffb4fb0af0a89f928a
-vendor/lib/libqomx_jpegenc_pipe.so;DISABLE_DEPS|30fc161f8b402d934f9065bdef54e717c79dc0d2
-vendor/lib/libremosaic_daemon.so|250a9d7e961cd8683a342aa672041c6f0430f6a4
-vendor/lib/libvideoutils.so|545de2533df92b15caec71ed0fd697201565007f
-vendor/lib64/libvideoutils.so|cf175dbf9e650211f557f1365974ea0e8d8c59bb
-vendor/lib/libarcsoft_dualcam_refocus.so;DISABLE_DEPS|5a184c88e6bbbb9f1b4f7f5f8a402aa50926e6d2
-vendor/lib/libarcsoft_low_light_shot.so;DISABLE_DEPS|a48c38c05c3de803c07bd7540cb5078de7d748c5
-vendor/lib/libcamera_imgproc.so;DISABLE_DEPS|3ec9c96e79712304bc32acb1b4d3d4541fdd1f50
-vendor/lib/libopencv_java3.so;DISABLE_DEPS|c70903599866b302fbd593c9f8d679ff0bdc87c5
-vendor/lib/libVDSuperPhotoAPI.so;DISABLE_DEPS|a358ed9389af19ffbd21a8bbcaf26d129d4f9451
-vendor/lib/libscveBlobDescriptor.so|5b9f50324410bf4fa6a7f501af9f339a036968e5
-vendor/lib/libscveBlobDescriptor_stub.so|0136a384032061d74347d4fd02c148e36715222e
-vendor/lib/libscveCommon.so|3880146f78aeb8566d5bae318f87b8be39ae5f03
-vendor/lib/libscveCommon_stub.so|0d1d34c6d8cdd71f5ce21b91646a26aba61d39e8
-vendor/lib/libscveFaceLandmarks.so;DISABLE_DEPS|36fb4e1eba8e1b165ad210f0869e08db5dd35629
-vendor/lib/libscveFaceLandmarks_stub.so|a217bca0174b6bf8c5735af9364619b832fd7259
-vendor/lib/libscveFaceRecognition.so;DISABLE_DEPS|3474a3c1a6543b49f5cd899beee1ba423bad0830
-vendor/lib/libscveImageCorrection.so|5ba88d26a4561db304e9f2d59c0dfee9947d50b3
-vendor/lib/libscveObjectSegmentation.so|1b9f21f74871cc5a141446f25d66dc875d1c4683
-vendor/lib/libscveObjectTracker_hal.so:vendor/lib/libscveObjectTracker.so|cc502a2285bc06a4ad41c06ac2c4fc20771995ad
-vendor/lib/libscveObjectTracker_stub.so|aca49d6f354e8cc6ce130d36a9414eec04fe7d67
-vendor/lib/libscvePanorama.so|b6466d6f9231f9e2396233949a43e687f492e665
-vendor/lib/libscvePanorama_lite.so|8d873af0a63ca304863124d0bbfdb86d742d1b25
-vendor/lib64/libscveBlobDescriptor.so|b340f755ecb87c89437c6be429f4159823386517
-vendor/lib64/libscveBlobDescriptor_stub.so|1d3d3497bcd7b639c90ebef1d63f03e2485356c8
-vendor/lib64/libscveCommon.so|5ed16847e289a4e535aa215470fe27125ac16a68
-vendor/lib64/libscveCommon_stub.so|f9ddcd7190d0c46465a2bbeedd9c8a7c54f4fd0c
-vendor/lib64/libscveFaceLandmarks.so|09f2f42ce6f94f4cf4609101a1187300d5d819c7
-vendor/lib64/libscveFaceLandmarks_stub.so|e3b072f859635df312cc84f9c29d847e0ecbc231
-vendor/lib64/libscveFaceRecognition.so|45137fa71ebf3fec64b64491002da13e84efba45
-vendor/lib64/libscveImageCorrection.so|47121e93aa82370fe272fd917549b7925c288314
-vendor/lib64/libscveObjectSegmentation.so|fcc69e3153592cb810442ec42d739e83a87004d0
-vendor/lib64/libscveObjectTracker.so|795551d6beffd8057c3d68f141eabaabd53b5256
-vendor/lib64/libscveObjectTracker_stub.so|c2dee42ed074d599343d8efe3582b83b93b55ed2
-vendor/lib64/libscvePanorama.so|7681fd812ad9f62115789a806ae926db14961c6b
-vendor/lib64/libscvePanorama_lite.so|bfce65b0f201fb7757d4ef9616c8aefb7722adbd
-vendor/lib/libVDBeautyShotAPI.so;DISABLE_DEPS|ff152d6d2c2461a6e9ed72f4f152a77f5c2f65c8
-
-# Camera (Actuators) - from Luna - ACT575
-vendor/lib/libactuator_pseudo.so|38c78a9dd41abae82ae5d936f9d139f00c4bed37
-
-# Camera (Firmware) - from Luna - ACT575
-vendor/firmware/cpp_firmware_v1_10_0.fw|a3c0fc706eb3f23b99852fe8c52c26f63999f70c
-vendor/firmware/cpp_firmware_v1_12_0.fw|c7939d46f9875054c5b30c3280862e7d9df3dcf9
-vendor/firmware/cpp_firmware_v1_1_1.fw|04b8eb253d630eaeadab296e1607dc6a29d93d3c
-vendor/firmware/cpp_firmware_v1_1_6.fw|6b2c9fe0a43a9ce86a921e18faffe4d0a35746ee
-vendor/firmware/cpp_firmware_v1_2_0.fw|5ff0d66bcdbb29f4e924d011ae825583e48b3962
-vendor/firmware/cpp_firmware_v1_4_0.fw|11eba982212797920102912142940a9e08931c52
-vendor/firmware/cpp_firmware_v1_5_0.fw|ac19cd179b7b118bb3ea01a35fdfc78dc58164a1
-vendor/firmware/cpp_firmware_v1_5_1.fw|f3f622ab29a560b170d0f2c6ddec14b933f2d476
-vendor/firmware/cpp_firmware_v1_5_2.fw|58dd7f7c09dbb62bc6f334a8885064b292610675
-vendor/firmware/cpp_firmware_v1_6_0.fw|dcd3d1f904c7ee3d731f8f28b5f78f2503916ada
-vendor/firmware/cpp_firmware_v1_8_0.fw|26e2badbb4e3049243f0a176722f26879e7b87e8
-
-# Camera (Sensors) - from Luna - ACT575
-vendor/lib/libmmcamera_nighthawk.so;DISABLE_CHECKELF;DISABLE_DEPS|c5bc9e4d4239661ed461fe14b64a97d8cff78010
-vendor/lib/libmmcamera_edgesmooth_lib.so;DISABLE_CHECKELF;DISABLE_DEPS|e86a96178363b0303a46276bf2901d4727854749
-vendor/lib/libmmcamera_optizoom_lib.so;DISABLE_CHECKELF;DISABLE_DEPS|70579f4589ffc0eb509f09a881d49150bc9a22e0
-vendor/lib/liboptizoom.so;DISABLE_CHECKELF;DISABLE_DEPS|1e92993743636c045438f1f15c07c1e835d9ca46
-vendor/lib/libmmcamera_chromaflash_lib.so;DISABLE_CHECKELF;DISABLE_DEPS|2abba53540ab0e74af87b80a0c48886f232901c9
-vendor/lib/libchromaflash.so;DISABLE_CHECKELF;DISABLE_DEPS|cf85560822e04014b8950a1abae9c2843069101d
-vendor/lib/libmmcamera_llvd.so;DISABLE_CHECKELF;DISABLE_DEPS|efad09700addd2213fd474095750503af95b631c
-vendor/lib/libmmcamera_stillmore_lib.so;DISABLE_CHECKELF;DISABLE_DEPS|e5ca031764a647ef96aa5f47db0dceb1637d6980
-vendor/lib/libmmcamera_trueportrait_lib.so;DISABLE_CHECKELF;DISABLE_DEPS|fd851e78a94a112e765c69c9a9ac33e23aa08050
-vendor/lib/libseemore.so;DISABLE_DEPS|e5fa2e335cc8e1c9e173b2b9794f208143c2fe3b
-vendor/lib/libubifocus.so;DISABLE_DEPS|833a305c780b2e7e338323c5ba27cb042f5cc3ed
 
 # Charger
 vendor/bin/hvdcp_opti
@@ -504,20 +409,23 @@ vendor/lib/libvqzip.so
 -vendor/lib64/libgpustats.so
 vendor/lib64/libmmosal_proprietary.so
 
-# Perf
-vendor/bin/energy-awareness
-vendor/bin/hw/vendor.qti.hardware.perf@1.0-service
-vendor/bin/msm_irqbalance
-vendor/etc/init/vendor.qti.hardware.perf@1.0-service.rc
-vendor/etc/perf/perfboostsconfig.xml
-vendor/lib/libperfgluelayer.so
-vendor/lib/libqti-perfd-client.so
-vendor/lib/libqti-perfd.so
-vendor/lib/libqti-util.so
-vendor/lib64/libperfgluelayer.so
-vendor/lib64/libqti-perfd-client.so
-vendor/lib64/libqti-perfd.so
-vendor/lib64/libqti-util.so
+# Perf - from Athena - ACQ160
+vendor/bin/energy-awareness|aa4f0b10698f5caf8d29b919c599847185664d12
+vendor/bin/hw/vendor.qti.hardware.perf@1.0-service|1c07fb00273419384d582305a43b9b1a98717996
+vendor/bin/msm_irqbalance|1c0e43d00bc82a597974d13d5872fe033597ae93
+vendor/etc/init/vendor.qti.hardware.perf@1.0-service.rc|b50182aadab2e31409df61c523d0fb914a394e43
+vendor/etc/perf/perfboostsconfig.xml|eb29d8e107db8a2854d223a112da42f0df0b89a3
+vendor/lib/libperfgluelayer.so|9f510042baa4cc6e5af7fe303e5e7285a9154aa6
+vendor/lib/libqti-perfd-client.so|99a6d9adc185d901f16811ba117daa774867d2c2
+vendor/lib/libqti-perfd.so|6af6b22f57d899c196314e4ce44e10d2de43f13b
+vendor/lib/libqti-util.so|e963fb701305a314156662c779789d09275bb6ee
+vendor/lib/vendor.qti.hardware.perf@1.0_vendor.so|7f72f3ad02731f47c65d6c2cf8a28460a3c5262c
+vendor/lib64/libperfgluelayer.so|8a4a53efc0430a2f44a41b3849b356b027e7a40e
+vendor/lib64/libqti-perfd-client.so|77f550ce322cac8a2987c33d3bfb121db5722b90
+vendor/lib64/libqti-perfd.so|aa8d8ff8e69ff093b551540496ba5be75e793597
+vendor/lib64/libqti-util.so|a2534315aef6bb101d2d91423bddf386ed93b8f8
+vendor/lib64/vendor.qti.hardware.perf@1.0_vendor.so|a2aede620866d065279fd3f69dd460948c471b75
+
 
 # Peripheral manager - from sld_sprout RKQ1.210607.001-00WW_3_490
 vendor/bin/pm-proxy|42383b9163716d8e6d81f0516e9cf09f22ea8b06
@@ -654,7 +562,7 @@ vendor/lib64/vendor.qti.ims.rcsconfig@1.1.so|b2faf304adadcdd84b0dafeda6d4d568215
 
 # Radio (IMS)
 vendor/bin/ims_rtp_daemon
-vendor/bin/imsdatadaemon
+vendor/bin/imsdatadaemon;DISABLE_CHECKELF
 vendor/bin/imsqmidaemon
 vendor/bin/imsrcsd
 vendor/lib/lib-rtpdaemoninterface.so
@@ -732,7 +640,7 @@ vendor/lib64/vendor.qti.hardware.tui_comm@1.0.so|4ba792ee3234dca4cd7ebbd7b3f9003
 vendor/bin/cnss-daemon
 
 # Widevine - from Luna - ACT575
-vendor/bin/hw/android.hardware.drm@1.0-service.widevine|b749e4963b9a3f57866ce6d0870da6934d45b3eb|abfbab8b50110b294372a55ae88641f76c35debb
+vendor/bin/hw/android.hardware.drm@1.0-service.widevine;DISABLE_CHECKELF|b749e4963b9a3f57866ce6d0870da6934d45b3eb|abfbab8b50110b294372a55ae88641f76c35debb
 vendor/etc/init/android.hardware.drm@1.0-service.widevine.rc|51a3168a0dbc064d78ee11ca83614c0cd2e6daa5
 vendor/lib/hw/android.hardware.drm@1.0-impl.so|4290952e20163a11eb3008e1b90fc2b3cde8f0de
 vendor/lib/libwvhidl.so|becc8b13cbf5379f9339eeaf14c0af86b727afa4
@@ -753,7 +661,6 @@ vendor/lib/libwfdcommonutils_proprietary.so
 vendor/lib/libwfdmmservice.so
 vendor/lib/libfeedbackhandler.so
 vendor/lib64/libfeedbackhandler.so
-
 vendor/lib/lib-dplmedia.so;DISABLE_DEPS
 vendor/lib64/vendor.qti.imsrtpservice@1.0.so
 vendor/lib/vendor.qti.imsrtpservice@1.0.so
