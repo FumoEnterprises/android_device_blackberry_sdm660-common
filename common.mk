@@ -25,9 +25,9 @@ $(call inherit-product, vendor/blackberry/sdm660-common/sdm660-common-vendor.mk)
 # Add common definitions for Qualcomm
 $(call inherit-product, hardware/qcom-caf/common/common.mk)
 
-# Overlays - TODO
-#DEVICE_PACKAGE_OVERLAYS += \
-#    $(COMMON_PATH)/overlay
+# Overlays
+DEVICE_PACKAGE_OVERLAYS += \
+    $(COMMON_PATH)/overlay
 
 # Permissions
 PRODUCT_COPY_FILES += \
