@@ -81,7 +81,6 @@ PRODUCT_PACKAGES += \
 #    liba2dpoffload \
 
 PRODUCT_PACKAGES += \
-    audio.primary.sdm660 \
     audio.r_submix.default \
     audio.usb.default \
     libaudio-resampler \
@@ -100,11 +99,12 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.bluetooth@1.0 \
     audio.bluetooth.default \
+    android.hardware.bluetooth.audio-impl \
     android.hardware.bluetooth.audio@2.0-impl \
     vendor.qti.hardware.btconfigstore@1.0.vendor
 
-# Camera - Crashes on luna. TODO
-# PRODUCT_PACKAGES += \
+# Camera
+#PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-impl \
     android.hardware.camera.provider@2.4-service
 
@@ -203,9 +203,7 @@ PRODUCT_COPY_FILES += \
 
 # Lights
 PRODUCT_PACKAGES += \
-    android.hardware.light-service.lineage
-
-# TODO - LiveDisplay
+    android.hardware.lights-service.blackberry
 
 # loggy
 PRODUCT_PACKAGES += \
@@ -227,6 +225,20 @@ PRODUCT_PACKAGES += \
     libavservices_minijail \
     libavservices_minijail.vendor \
     libavservices_minijail_vendor
+
+# Overlays
+PRODUCT_ENFORCE_RRO_TARGETS += *
+
+PRODUCT_PACKAGES += \
+    Sdm660CarrierConfigOverlay \
+    Sdm660DialerOverlay \
+    Sdm660FrameworksOverlay \
+    Sdm660LineageSDKOverlay \
+    Sdm660SystemUIOverlay \
+    Sdm660SettingsOverlay \
+    Sdm660TelephonyOverlay \
+    Sdm660WifiOverlayOverlay
+
 
 # Net
 PRODUCT_PACKAGES += \
