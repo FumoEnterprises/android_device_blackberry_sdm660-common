@@ -56,6 +56,11 @@ blob_fixups: blob_fixups_user_type = {
         .add_needed('libbase_shim.so'),
     'vendor/lib64/libril-qc-hal-qmi.so': blob_fixup()
         .replace_needed('android.hardware.radio.config@1.0.so', 'android.hardware.radio.c_shim@1.0.so'),
+    'system_ext/lib64/lib-imscamera.so': blob_fixup()
+        .add_needed('libgui_shim.so'),
+    'system_ext/lib64/lib-imsvideocodec.so': blob_fixup()
+        .add_needed('libgui_shim.so')
+        .replace_needed('libqdMetaData.so', 'libqdMetaData.system.so'),
 }  # fmt: skip
 
 module = ExtractUtilsModule(
