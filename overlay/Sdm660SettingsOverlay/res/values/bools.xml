@@ -19,4 +19,6 @@
     <bool name="config_show_mobile_plan">false</bool>
     <!-- Whether to show a preference item for regulatory information in About phone -->
     <bool name="config_show_regulatory_info">true</bool>
+    <!-- Indicates whether device has a front facing fingerprint sensor (not udfps). -->
+    <bool name="config_is_front_facing_fps" translatable="false">true</bool>
 </resources>
