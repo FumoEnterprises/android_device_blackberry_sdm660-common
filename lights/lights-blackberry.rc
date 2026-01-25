@@ -1,0 +1,22 @@
+on early-boot
+    chown system system /sys/class/leds/red/blink
+    chown system system /sys/class/leds/red/brightness
+
+    chown system system /sys/class/leds/green/blink
+    chown system system /sys/class/leds/green/brightness
+
+    chown system system /sys/class/leds/blue/blink
+    chown system system /sys/class/leds/blue/brightness
+
+    chown system system /sys/class/leds/white/blink
+    chown system system /sys/class/leds/white/brightness
+
+    chown system system /sys/class/leds/lcd-backlight/brightness
+    chown system system /sys/class/leds/button-backlight/brightness
+    chown system system /sys/class/leds/keyboard-backlight/brightness
+
+service vendor.light-blackberry /vendor/bin/hw/android.hardware.lights-service.blackberry
+    class hal
+    user system
+    group system
+    shutdown critical

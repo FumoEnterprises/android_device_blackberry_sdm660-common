@@ -1,0 +1,16 @@
+cc_binary {
+    name: "android.hardware.lights-service.blackberry",
+    relative_install_path: "hw",
+    init_rc: ["lights-blackberry.rc"],
+    vintf_fragments: ["lights-blackberry.xml"],
+    vendor: true,
+    shared_libs: [
+        "libbase",
+        "libbinder_ndk",
+        "android.hardware.light-V1-ndk",
+    ],
+    srcs: [
+        "Lights.cpp",
+        "main.cpp",
+    ],
+}
