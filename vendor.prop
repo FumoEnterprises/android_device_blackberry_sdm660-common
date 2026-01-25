@@ -8,7 +8,7 @@ audio.sys.offload.pstimeout.secs=3
 persist.bluetooth.a2dp_offload.cap=sbc-aac-aptx-aptxhd-ldac
 persist.bluetooth.a2dp_offload.disabled=true
 persist.vendor.audio.fluence.speaker=true
-persist.vendor.audio.fluence.voicecall=true
+persist.vendor.audio.fluence.voicecall=false
 persist.vendor.audio.fluence.voicerec=false
 persist.vendor.audio.hifi.int_codec=true
 persist.vendor.audio.hw.binder.size_kbyte=1024
@@ -17,7 +17,6 @@ persist.vendor.bt.a2dp_offload_cap=sbc-aptx-aptxhd-aac
 persist.vendor.bt.aac_frm_ctl.enabled=true
 ro.af.client_heap_size_kbyte=7168
 ro.bluetooth.a2dp_offload.supported=false
-ro.vendor.audio.sdk.fluencetype=fluence
 ro.vendor.audio.sdk.ssr=false
 tunnel.audiovideo.decode=false
 tunnel.decode=false
@@ -207,11 +206,6 @@ vendor.video.disable.ubwc=1
 # Wi-Fi
 ro.boot.wificountrycode=US
 
-
-
-# KRAB
-# ADDITIONAL VENDOR BUILD PROPERTIES
-#
 qemu.hw.mainkeys=0
 vendor.video.disable.ubwc=1
 dalvik.vm.heapgrowthlimit=256m
@@ -244,8 +238,8 @@ ro.opengles.version=196610
 vendor.qcom.bluetooth.soc=cherokee
 af.fast_track_multiplier=1
 vendor.audio_hal.period_size=192
-ro.vendor.audio.sdk.fluencetype=fluence
-persist.vendor.audio.fluence.voicecall=true
+ro.vendor.audio.sdk.fluencetype=none
+persist.vendor.audio.fluence.voicecall=false
 persist.vendor.audio.fluence.voicerec=false
 persist.vendor.audio.fluence.speaker=true
 vendor.audio.tunnel.encode=false
