@@ -1,0 +1,13 @@
+//
+// SPDX-FileCopyrightText: 2022-2025 The LineageOS Project
+// SPDX-License-Identifier: Apache-2.0
+//
+
+// Fingerprint
+cc_library_shared {
+    name: "libfakelogprint",
+    srcs: ["libfakelogprint.cpp"],
+    shared_libs: ["liblog"],
+    compile_multilib: "64",
+    vendor: true
+}
