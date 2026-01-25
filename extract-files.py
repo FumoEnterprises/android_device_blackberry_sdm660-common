@@ -30,8 +30,6 @@ namespace_imports = [
     'vendor/qcom/opensource/data-ipa-cfg-mgr-legacy-um',
 ]
 
-# TODO: Add fixups after pie blob switch
-
 def lib_fixup_vendor_suffix(lib: str, partition: str, *args, **kwargs):
     return f'{lib}_{partition}' if partition == 'vendor' else None
 
