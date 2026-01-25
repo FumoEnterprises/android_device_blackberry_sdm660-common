@@ -96,6 +96,14 @@ PRODUCT_PACKAGES += \
     libssrec \
     libvolumelistener
 
+# Common Audio configs
+PRODUCT_COPY_FILES += \
+    frameworks/av/services/audiopolicy/config/a2dp_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/a2dp_audio_policy_configuration.xml \
+    frameworks/av/services/audiopolicy/config/a2dp_in_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/a2dp_in_audio_policy_configuration.xml \
+    frameworks/av/services/audiopolicy/config/bluetooth_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_audio_policy_configuration.xml \
+    frameworks/av/services/audiopolicy/config/default_volume_tables.xml:$(TARGET_COPY_OUT_VENDOR)/etc/default_volume_tables.xml \
+    frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/r_submix_audio_policy_configuration.xml
+
 # Bluetooth
 PRODUCT_PACKAGES += \
     android.hardware.bluetooth@1.0 \
@@ -166,6 +174,9 @@ PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/gps/gps.conf:$(TARGET_COPY_OUT_VENDOR)/etc/gps.conf \
     $(COMMON_PATH)/configs/gps/izat.conf:$(TARGET_COPY_OUT_VENDOR)/etc/izat.conf \
     $(COMMON_PATH)/configs/gps/sap.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sap.conf
+
+# Init
+$(call soong_config_set,libinit,vendor_init_lib,//$(LOCAL_PATH):init_blackberry_sdm660)
 
 # Lineage Health
 PRODUCT_PACKAGES += \
@@ -240,6 +251,9 @@ PRODUCT_PACKAGES += \
     Sdm660TelephonyOverlay \
     Sdm660WifiOverlayOverlay
 
+# MAC loader
+PRODUCT_PACKAGES += \
+    vendor.blackberry.macloader
 
 # Net
 PRODUCT_PACKAGES += \
@@ -300,6 +314,7 @@ PRODUCT_PACKAGES += \
 # Ramdisk
 PRODUCT_PACKAGES += \
     fstab.qcom \
+    init.blackberry.rc \
     init.qcom.rc \
     init.qcom.usb.rc \
     init.target.rc \
@@ -403,17 +418,12 @@ PRODUCT_PACKAGES += \
     wpa_cli \
     wpa_supplicant.conf \
     libwpa_client
-#    libwifi-hal-qcom \
-
-#    TetheringConfigOverlay \
-#    WifiOverlay \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/wifi_concurrency_cfg.txt:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wifi_concurrency_cfg.txt \
     $(LOCAL_PATH)/wifi/p2p_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/p2p_supplicant_overlay.conf \
     $(LOCAL_PATH)/wifi/wpa_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant_overlay.conf \
-    $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/firmware/wlan/qca_cld/WCNSS_qcom_cfg.ini \
-    $(LOCAL_PATH)/wifi/wlan_mac.bin:$(TARGET_COPY_OUT_VENDOR)/firmware/wlan/qca_cld/wlan_mac.bin
+    $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/firmware/wlan/qca_cld/WCNSS_qcom_cfg.ini # ???
 
 # WiFi firmware symlinks
 PRODUCT_PACKAGES += \
@@ -425,7 +435,6 @@ PRODUCT_PACKAGES += \
     libloc_core
 
 # VNDK
-# KRAB - REVIEW AFTER GOING TO PIE BLOBS
 PRODUCT_PACKAGES += \
     libhidlbase-v32 \
     libhidlbase-v32.vendor \
