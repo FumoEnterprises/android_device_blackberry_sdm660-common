@@ -1,6 +1,6 @@
 service vendor.blackberry.macloader /vendor/bin/vendor.blackberry.macloader
     class late_start
-    user wifi
+    user root
     group wifi bluetooth
     disabled
     oneshot

@@ -16,10 +16,20 @@
 #include <chrono>
 
 #include <android-base/logging.h>
+#include <android-base/properties.h>
+using android::base::SetProperty;
 
 #define MAC_SOURCE       "/proc/device-tree/board_mac_addr/macaddresswlan"
 #define MAC_TARGET_WLAN  "/data/misc/wifi/wlan_mac.bin"
 #define MAC_TARGET_BT    "/data/misc/bluetooth/bt_mac.bin"
+
+void property_override(const std::string& prop,
+                       const std::string& value,
+                       bool /* add */) {
+    if (!android::base::SetProperty(prop, value)) {
+        LOG(ERROR) << "Failed to set property " << prop;
+    }
+}
 
 static bool file_exists(const char* path) {
     return access(path, F_OK) == 0;
@@ -107,7 +117,9 @@ int main() {
     if (!reboot)
         return 0;
 
-    std::this_thread::sleep_for(std::chrono::milliseconds(5000));
+    std::this_thread::sleep_for(std::chrono::milliseconds(20000));
+
+    property_override("sys.powerctl", "reboot", true);
 
     return -1; // goodbye...
 }
