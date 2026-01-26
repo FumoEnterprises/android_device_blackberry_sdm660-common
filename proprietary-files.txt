@@ -18,6 +18,7 @@ vendor/lib64/vendor.qti.hardware.bluetooth_sar@1.1.so|ece3dafc4447e8302109851c3a
 # Charger
 vendor/bin/hvdcp_opti
 
+
 # CNE - from FP3 - 6.A.031.2
 vendor/app/CneApp/CneApp.apk|551d0e3251eeda3af8dfa8bb55cd83b858365db8
 vendor/app/IWlanService/IWlanService.apk|a8bdac9638bc711e23269d2eead3f46a7b3b6a25
@@ -76,7 +77,7 @@ vendor/lib64/vendor.qti.hardware.data.iwlan@1.0.so|463659c4b5050c1af1d100c83914f
 vendor/lib64/vendor.qti.hardware.data.latency@1.0.so|72345083feb96e9ecd86d49725d4815b075c9646
 vendor/lib64/vendor.qti.hardware.data.lce@1.0.so|5932523774458c69122d797ed017a1651b40c7a6
 vendor/lib64/vendor.qti.hardware.data.qmi@1.0.so|851db5940d5e9e4330e16221be114aef14f52325
-vendor/lib64/vendor.qti.hardware.mwqemadapter@1.0.so|c041dbfc99643e791e52c4e7f3a87050a8cd6c93
+vendor/lib64/vendor.qti.hardware.mwqemadapter@1.0.so;MODULE_SUFFIX=_vendor|c041dbfc99643e791e52c4e7f3a87050a8cd6c93
 vendor/lib64/vendor.qti.hardware.slmadapter@1.0.so|000e0d2ac4450c0ad8baca06985bc9065e119f1e
 vendor/lib64/vendor.qti.latency@2.0.so|82196d2863e012ad2b6e1b9af9d9ce7c611f64be
 vendor/lib64/vendor.qti.latency@2.1.so|d279c5e456bb3e546130df3cd6f398cea6b48eaf
@@ -90,22 +91,24 @@ vendor/lib64/com.quicinc.cne.server@2.0.so
 vendor/lib/com.quicinc.cne.constants@2.0.so
 vendor/lib64/com.quicinc.cne.constants@2.0.so
 
-# DPM - from FP3 - 6.A.031.2
-system_ext/bin/dpmd|dc94ffe90c6658b0bc99c64f68517c4048d0321a
-system_ext/etc/dpm/dpm.conf|95e27da8c989e96c6faea6f0697bce11955b62a5
+# DPM - from Cat S62Pro sdm660_64-user 11 RKQ1.210406.002 1.015.00
+system/framework/tcmclient.jar|cdd1ea7143a5a7acc3909b5cfa706650179647c7
+system_ext/bin/dpmd|4662a11c5331919cc08d541a298444ffce18cc1b
 system_ext/etc/init/dpmd.rc|738b638ff04cda368e22c03e16baf90ba157a6fc
+system_ext/etc/dpm/dpm.conf|0db01f277d3ba779abb2170aa798852f018ecd5a
 system_ext/etc/permissions/com.qti.dpmframework.xml|c4b7ad0879d00c1eba4f3fe3a88ddb8aa153629a
 system_ext/etc/permissions/dpmapi.xml|9158c9789cc7135a685b3fb27f8cc27108b51fef
 system_ext/framework/com.qti.dpmframework.jar|96a29e28b3abffb9223daadd67459e3f5a3271df
 system_ext/framework/dpmapi.jar|2e2fbe2257a697b96a644c774136da0554430d3f
 system_ext/lib64/com.qualcomm.qti.dpm.api@1.0.so|b992e1f565f7b8b814eac0c88517543e6d0de603
+system_ext/lib64/libdiag_system.so|17ac8fa06b11bb993517d58b0d95d30dd8ab93b3
 system_ext/lib64/libdpmctmgr.so|8a687fce30df9483a96065e6cc4154f03562dfa9
 system_ext/lib64/libdpmfdmgr.so|bf3666db17e77da3a303c10579baec0bd018089f
-system_ext/lib64/libdpmframework.so|235fbb48b47baebd48dbe56f72c77d97ca12c07c
+system_ext/lib64/libdpmframework.so|d228de78824f42232b447207751b672effa7fa8f
 system_ext/lib64/libdpmtcm.so|dff3d3dbacd18ed55b5758a174f5016ef9e7a896
-system_ext/lib64/libmwqemiptablemgr.so|9431a5b3224c9de09fb839f3be8d5d1cade1c93d
-system_ext/priv-app/dpmserviceapp/dpmserviceapp.apk|10828ba0d987fa884ad0b4a87a46bf9f505535ea
-vendor/bin/dpmQmiMgr|61a421804559b0e461439c19088acc01b871982a
+system_ext/lib64/vendor.qti.diaghal@1.0.so|abe51fdbdcbf3449012395cf0ade8aa8d267dbe6
+system_ext/priv-app/dpmserviceapp/dpmserviceapp.apk|901da1e070e54e5757874473022df0161ac4818b
+vendor/bin/dpmQmiMgr|b1b5f8a54bc99a2e1cf4b36ba40e58bdf0580178
 vendor/etc/init/dpmQmiMgr.rc|1538743661a5c48c15cd105beaad20f72953885a
 vendor/lib64/com.qualcomm.qti.dpm.api@1.0.so;MODULE_SUFFIX=_vendor|d9f1aa7f93b928f42499d613d20ccbc60f279097
 vendor/lib64/libdpmqmihal.so|41eb89e66ba065c43a5eb79cd3c72cef0ee167aa
@@ -255,8 +258,8 @@ vendor/lib64/libsdmextension.so
 vendor/lib64/libtinyxml2_1.so
 
 # Graphics (Vulkan)
-vendor/lib/hw/vulkan.sdm660.so;DISABLE_CHECKELF
-vendor/lib64/hw/vulkan.sdm660.so;DISABLE_CHECKELF
+vendor/lib/hw/vulkan.sdm660.so;SYMLINK=vendor/lib/hw/vulkan.adreno.so;DISABLE_CHECKELF
+vendor/lib64/hw/vulkan.sdm660.so;SYMLINK=vendor/lib64/hw/vulkan.adreno.so;DISABLE_CHECKELF
 
 # Graphics (Firmware - Adreno)
 vendor/firmware/a225_pfp.fw
@@ -322,6 +325,9 @@ vendor/lib/libvqzip.so
 -vendor/lib64/libgpustats.so
 vendor/lib64/libmmosal_proprietary.so
 
+# NFC
+vendor/lib/libpn553_fw.so:vendor/lib64/libpn553_fw.so
+
 # Perf - from Athena - ACQ160
 vendor/bin/energy-awareness|aa4f0b10698f5caf8d29b919c599847185664d12
 vendor/bin/hw/vendor.qti.hardware.perf@1.0-service|1c07fb00273419384d582305a43b9b1a98717996
@@ -386,7 +392,6 @@ vendor/lib/libqmiservices.so
 vendor/lib/libqsocket.so
 vendor/lib/libqrtr.so
 vendor/lib64/libdiag.so
-vendor/lib64/libdsi_netctrl.so
 vendor/lib64/libdsutils.so
 vendor/lib64/libidl.so
 vendor/lib64/libmdmdetect.so
@@ -406,6 +411,7 @@ vendor/lib64/libqrtr.so
 vendor/bin/hw/qcrild
 vendor/bin/ATFWD-daemon
 vendor/bin/netmgrd
+vendor/bin/imsdatadaemon;DISABLE_CHECKELF
 vendor/bin/rmt_storage
 vendor/bin/tftp_server
 vendor/etc/data/dsi_config.xml;FIX_XML
@@ -447,6 +453,7 @@ vendor/lib64/vendor.qti.hardware.radio.uim@1.0.so
 vendor/lib64/vendor.qti.hardware.radio.uim@1.1.so
 vendor/lib64/vendor.qti.hardware.radio.uim_remote_client@1.0.so
 vendor/lib64/vendor.qti.hardware.radio.uim_remote_server@1.0.so
+vendor/lib64/libdsi_netctrl.so
 
 # Radio (IMS related) - from FP3 - 6.A.031.2
 system_ext/app/QtiTelephonyService/QtiTelephonyService.apk|11657ff5c62ab943f38ba64fe50478c22c5cb5ef
@@ -457,8 +464,6 @@ system_ext/framework/qcrilhook.jar|782bbe7c3199aee88f8745e083b339fa84c3c5d5
 system_ext/framework/qti-telephony-common.jar|08aa14ba807bd9ba2587a762c41ad01c9c07d142
 system_ext/priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk|b6ec8438ddeb763e8be96e775672fb1b2b772b4b
 system_ext/lib/libdiag_system.so|b46c6f0afefeb720fb0ba65add939f4961de6ddf
-system_ext/lib64/libdiag_system.so|ead4f1d1065abca6ef47b522c1934eb7623c1813
-system_ext/lib64/vendor.qti.diaghal@1.0.so|dcc31fc969e846ea58ec91a37c1f1e77b49e731e
 system_ext/lib/vendor.qti.diaghal@1.0.so|b1b53587b482eabcf0ccaaab83e5ec747d8c124d
 system_ext/lib64/lib-imscamera.so|8170256dbf9120ff05f193ba937c718d9c580881|e01f1c91745d9550d181e5b4c6954ca31c749b4c
 system_ext/lib64/lib-imsvideocodec.so|3e364441c9dce63d74fbc78c4781a84080513d8a|729ac5da27f4fed4e155c35621fcc644fccb094d
@@ -475,7 +480,6 @@ vendor/lib64/vendor.qti.ims.rcsconfig@1.1.so|b2faf304adadcdd84b0dafeda6d4d568215
 
 # Radio (IMS)
 vendor/bin/ims_rtp_daemon
-vendor/bin/imsdatadaemon;DISABLE_CHECKELF
 vendor/bin/imsqmidaemon
 vendor/bin/imsrcsd
 vendor/lib/lib-rtpdaemoninterface.so

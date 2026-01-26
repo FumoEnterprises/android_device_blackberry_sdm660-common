@@ -37,6 +37,8 @@ lib_fixups: lib_fixups_user_type = {
     **lib_fixups,
     (
         'libtrueportrait',
+        'vendor.qti.hardware.fm@1.0',
+        'vendor.qti.hardware.mwqemadapter@1.0',
     ): lib_fixup_vendor_suffix,
 }
 

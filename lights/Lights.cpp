@@ -48,8 +48,9 @@ static const std::string kButtonsFile = "/sys/class/leds/button-backlight/bright
 // List of supported lights
 const static std::vector<HwLight> kAvailableLights = {
     AutoHwLight(LightType::BACKLIGHT),
-    AutoHwLight(LightType::KEYBOARD),
-    AutoHwLight(LightType::BUTTONS),
+    // Lineage does not advertise these to the user so lock them at backlight
+    //AutoHwLight(LightType::KEYBOARD),
+    //AutoHwLight(LightType::BUTTONS),
     AutoHwLight(LightType::NOTIFICATIONS)
 };
 
@@ -61,17 +62,20 @@ Lights::Lights() {
 
 // AIDL methods
 ndk::ScopedAStatus Lights::setLightState(int id, const HwLightState& state) {
-    LOG(ERROR) << "LIGHTS-BBRY" << "Setlightstate called id: " << id;
     switch (id) {
         case (int)LightType::BACKLIGHT:
             WriteToFile(kLCDFile, RgbaToBrightness(state.color) * BRIGHTNESS_MAX / 0xFF);
+            WriteToFile(kKeyboardFile, RgbaToBrightness(state.color) * BRIGHTNESS_MAX / 0xFF);
+            WriteToFile(kButtonsFile, RgbaToBrightness(state.color) * BRIGHTNESS_MAX / 0xFF);
             break;
+        /* See above
         case (int)LightType::KEYBOARD:
             WriteToFile(kKeyboardFile, RgbaToBrightness(state.color) * BRIGHTNESS_MAX / 0xFF);
             break;
         case (int)LightType::BUTTONS:
             WriteToFile(kButtonsFile, RgbaToBrightness(state.color) * BRIGHTNESS_MAX / 0xFF);
             break;
+        */
         case (int)LightType::NOTIFICATIONS:
             mNotification = state;
             setLightLocked(mNotification);
@@ -96,8 +100,6 @@ void Lights::setLightLocked(const HwLightState& state) {
     uint32_t alpha, red, green, blue;
     uint32_t blink;
     bool rc = true;
-
-    LOG(ERROR) << "LIGHTS-BBRY" << "YO PUSH UR NOTIFS";
 
     // Extract brightness from AARRGGBB
     alpha = (state.color >> 24) & 0xFF;
