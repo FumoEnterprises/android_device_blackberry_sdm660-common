@@ -327,6 +327,7 @@ vendor/lib64/libmmosal_proprietary.so
 
 # NFC
 vendor/lib/libpn553_fw.so:vendor/lib64/libpn553_fw.so
+vendor/libnfc-nxp_RF.conf
 
 # Perf - from Athena - ACQ160
 vendor/bin/energy-awareness|aa4f0b10698f5caf8d29b919c599847185664d12
