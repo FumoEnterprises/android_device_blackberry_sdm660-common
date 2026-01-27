@@ -325,9 +325,11 @@ vendor/lib/libvqzip.so
 -vendor/lib64/libgpustats.so
 vendor/lib64/libmmosal_proprietary.so
 
+# NFC FW - from Athena - ACQ160
+vendor/libnfc-nxp_RF.conf|f0ac1b9c0862789b84b01ac51be7b03374b222f2
+
 # NFC
 vendor/lib/libpn553_fw.so:vendor/lib64/libpn553_fw.so
-vendor/libnfc-nxp_RF.conf
 
 # Perf - from Athena - ACQ160
 vendor/bin/energy-awareness|aa4f0b10698f5caf8d29b919c599847185664d12
