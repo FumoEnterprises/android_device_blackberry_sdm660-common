@@ -90,7 +90,7 @@ vendor/lib64/soundfx/libvisualizer.so
 vendor/lib64/soundfx/libvolumelistener.so
 
 # Audio (ACDB) - from Luna - ACT575
-vendor/etc/acdbdata/adsp_avs_config.acdb|d9841ebc5ad7fe40630148d4994ed3d119830e6d
+vendor/etc/acdbdata/adsp_avs_config.acdb|df26d45014538751c377f35728a6d3f284130996
 
 # Bluetooth - from DDV_sprout - 00WW_3_690_SP07
 vendor/bin/hw/android.hardware.bluetooth@1.0-service-qti|07d96d0d3c4a500b14ea3c97e02b9eb5ee2bbc4d
@@ -181,7 +181,7 @@ vendor/lib64/com.quicinc.cne.constants@2.0.so
 system_ext/bin/dpmd|dc94ffe90c6658b0bc99c64f68517c4048d0321a
 system_ext/etc/dpm/dpm.conf|95e27da8c989e96c6faea6f0697bce11955b62a5
 system_ext/etc/init/dpmd.rc|738b638ff04cda368e22c03e16baf90ba157a6fc
-system_ext/etc/permissions/com.qti.dpmframework.xml|d8da0a079559f450e2be6f74a6c6f9fd8dbd2166
+system_ext/etc/permissions/com.qti.dpmframework.xml|c4b7ad0879d00c1eba4f3fe3a88ddb8aa153629a
 system_ext/etc/permissions/dpmapi.xml|9158c9789cc7135a685b3fb27f8cc27108b51fef
 system_ext/framework/com.qti.dpmframework.jar|96a29e28b3abffb9223daadd67459e3f5a3271df
 system_ext/framework/dpmapi.jar|2e2fbe2257a697b96a644c774136da0554430d3f
@@ -547,8 +547,8 @@ system_ext/lib/libdiag_system.so|b46c6f0afefeb720fb0ba65add939f4961de6ddf
 system_ext/lib64/libdiag_system.so|ead4f1d1065abca6ef47b522c1934eb7623c1813
 system_ext/lib64/vendor.qti.diaghal@1.0.so|dcc31fc969e846ea58ec91a37c1f1e77b49e731e
 system_ext/lib/vendor.qti.diaghal@1.0.so|b1b53587b482eabcf0ccaaab83e5ec747d8c124d
-system_ext/lib64/lib-imscamera.so|8170256dbf9120ff05f193ba937c718d9c580881
-system_ext/lib64/lib-imsvideocodec.so|3e364441c9dce63d74fbc78c4781a84080513d8a
+system_ext/lib64/lib-imscamera.so|8170256dbf9120ff05f193ba937c718d9c580881|e01f1c91745d9550d181e5b4c6954ca31c749b4c
+system_ext/lib64/lib-imsvideocodec.so|3e364441c9dce63d74fbc78c4781a84080513d8a|729ac5da27f4fed4e155c35621fcc644fccb094d
 system_ext/lib64/lib-imsvt.so;DISABLE_DEPS|4f96cc5f27551d0b6cb11ad6447d9ce8829dde47
 system_ext/lib64/lib-imsvtextutils.so|1acf1de305e455a3a924483e5652b37133d10fd1
 system_ext/lib64/lib-imsvtutils.so|dfc5cf0854fe38c191a53ec3bd2a322d05d85567
