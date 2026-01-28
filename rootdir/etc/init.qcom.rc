@@ -29,6 +29,7 @@ import /vendor/etc/init/hw/init.qcom.usb.rc
 import /vendor/etc/init/hw/init.target.rc
 import /vendor/etc/init/hw/init.qcom.factory.rc
 import /vendor/etc/init/hw/init.qcom.test.rc
+import /vendor/etc/init/hw/init.blackberry.rc
 
 service loggy /vendor/bin/loggy.sh
     class core
@@ -250,11 +251,6 @@ on boot
 
     # Create hvdcp_opti directory
     mkdir /mnt/vendor/persist/hvdcp_opti 0770 root system
-
-    # Enable qcrild and data services on boot so process starts in main
-    enable vendor.qcrild
-    enable vendor.qcrild2
-    enable vendor.dataqti
 
 # msm specific files that need to be created on /data
 on post-fs-data
