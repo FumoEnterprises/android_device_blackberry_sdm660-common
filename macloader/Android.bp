@@ -1,0 +1,16 @@
+cc_binary {
+    name: "vendor.blackberry.macloader",
+    srcs: [
+        "macloader.cpp",
+    ],
+    shared_libs: [
+        "libbase",
+    ],
+    cflags: [
+        "-Wall",
+        "-Werror",
+    ],
+
+    vendor: true,
+    init_rc: ["vendor.blackberry.macloader.rc"],
+}
