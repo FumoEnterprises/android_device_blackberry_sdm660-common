@@ -441,6 +441,9 @@ on post-fs-data
     #Create dir for TUI
     mkdir /data/vendor/tui 0600 system drmrpc
 
+    mkdir /data/vendor/nfc 0770 nfc nfc
+    mkdir /data/vendor/nfc/param 0770 nfc nfc
+
     #Start move time data to /data/vendor once post-fs-data done
     start vendor.move_time_data
 
