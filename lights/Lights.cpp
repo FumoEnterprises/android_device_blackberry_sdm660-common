@@ -62,13 +62,25 @@ Lights::Lights() {
 
 // AIDL methods
 ndk::ScopedAStatus Lights::setLightState(int id, const HwLightState& state) {
+    uint32_t brightness;
+    uint32_t keyboardbrightness = 0;
+
     switch (id) {
         case (int)LightType::BACKLIGHT:
-            WriteToFile(kLCDFile, RgbaToBrightness(state.color) * BRIGHTNESS_MAX / 0xFF);
-            WriteToFile(kKeyboardFile, RgbaToBrightness(state.color) * BRIGHTNESS_MAX / 0xFF);
-            WriteToFile(kButtonsFile, RgbaToBrightness(state.color) * BRIGHTNESS_MAX / 0xFF);
+            brightness = RgbaToBrightness(state.color);
+
+            WriteToFile(kLCDFile, brightness * BRIGHTNESS_MAX / 0xFF);
+
+            // keyboard brightness is WAY dimmer compared to lcd and buttons
+            // why? because yes :)
+            if (brightness > 0) {
+                keyboardbrightness = std::min(255u, 40u + brightness * 2);
+            }
+            WriteToFile(kKeyboardFile, keyboardbrightness);
+
+            WriteToFile(kButtonsFile, brightness * BRIGHTNESS_MAX / 0xFF);
             break;
-        /* See above
+        /* See above comment in kAvailableLights
         case (int)LightType::KEYBOARD:
             WriteToFile(kKeyboardFile, RgbaToBrightness(state.color) * BRIGHTNESS_MAX / 0xFF);
             break;
