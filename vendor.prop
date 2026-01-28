@@ -136,7 +136,7 @@ dalvik.vm.heapstartsize=8m
 dalvik.vm.heaptargetutilization=0.75
 
 # Display
-qemu.hw.mainkeys=0
+qemu.hw.mainkeys=1
 
 # DRM
 drm.service.enabled=true
