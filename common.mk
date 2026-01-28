@@ -81,6 +81,7 @@ PRODUCT_PACKAGES += \
 #    liba2dpoffload \
 
 PRODUCT_PACKAGES += \
+    audio.primary.sdm660 \
     audio.r_submix.default \
     audio.usb.default \
     libaudio-resampler \
