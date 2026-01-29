@@ -81,26 +81,26 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.audio@6.0-impl \
     android.hardware.audio.effect@6.0-impl \
-    android.hardware.audio.service \
-    android.hardware.soundtrigger@2.0-impl
-#    audio.bluetooth.default \
-#    liba2dpoffload \
+    android.hardware.audio.service
 
 PRODUCT_PACKAGES += \
+    audio.bluetooth.default \
     audio.primary.sdm660 \
     audio.r_submix.default \
     audio.usb.default \
+    liba2dpoffload \
     libaudio-resampler \
-    libdynproc \
-    libhdmiedid \
-    libhfp \
+    libaudioroute \
     libqcompostprocbundle \
     libqcomvisualizer \
     libqcomvoiceprocessing \
-    libsndmonitor \
-    libspkrprot \
-    libssrec \
     libvolumelistener
+
+PRODUCT_PACKAGES += \
+    libhdmiedid \
+    libhfp \
+    libsndmonitor \
+    libspkrprot
 
 # Common Audio configs
 PRODUCT_COPY_FILES += \
