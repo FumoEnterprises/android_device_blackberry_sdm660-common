@@ -212,7 +212,6 @@ ro.boot.wificountrycode=US
 # KRAB
 # ADDITIONAL VENDOR BUILD PROPERTIES
 #
-qemu.hw.mainkeys=0
 vendor.video.disable.ubwc=1
 dalvik.vm.heapgrowthlimit=256m
 dalvik.vm.heapstartsize=8m
