@@ -4,6 +4,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+#include <sys/stat.h>
 #include <sys/sysinfo.h>
 #include <unistd.h>
 
@@ -19,7 +20,8 @@
 #include <android-base/properties.h>
 using android::base::SetProperty;
 
-#define MAC_SOURCE       "/proc/device-tree/board_mac_addr/macaddresswlan"
+#define MAC_SOURCE_WLAN  "/proc/device-tree/board_mac_addr/macaddresswlan"
+#define MAC_SOURCE_BT    "/dev/block/by-name/boardid"
 #define MAC_TARGET_WLAN  "/data/misc/wifi/wlan_mac.bin"
 #define MAC_TARGET_BT    "/data/misc/bluetooth/bt_mac.bin"
 
@@ -31,8 +33,9 @@ void property_override(const std::string& prop,
     }
 }
 
-static bool file_exists(const char* path) {
-    return access(path, F_OK) == 0;
+static bool file_nonempty(const char* path) {
+    struct stat st;
+    return stat(path, &st) == 0 && st.st_size > 0;
 }
 
 static std::string mac_to_string(const std::vector<unsigned char>& mac) {
@@ -62,12 +65,48 @@ static void increment_mac(std::vector<unsigned char>& mac) {
     }
 }
 
+int read_bt_mac(const char* path, std::vector<unsigned char>& mac_bt) {
+    const char magic[] = "macaddressbt";
+    constexpr size_t magic_len = sizeof(magic) - 1;
+
+    std::ifstream in_bt(path, std::ios::binary);
+    if (!in_bt) {
+        LOG(ERROR) << "Failed to open WLAN MAC source";
+        return -1;
+    }
+
+    std::vector<char> window(magic_len);
+    size_t pos = 0;
+
+    if (!in_bt.read(window.data(), magic_len))
+        return -1;
+
+    while (true) {
+        if (std::memcmp(window.data(), magic, magic_len) == 0) {
+            mac_bt.resize(6);
+            if (!in_bt.read(reinterpret_cast<char*>(mac_bt.data()), 6))
+                return -1;
+            return 0;
+        }
+
+        char next;
+        if (!in_bt.get(next))
+            break;
+
+        std::memmove(window.data(), window.data() + 1, magic_len - 1);
+        window[magic_len - 1] = next;
+    }
+
+    LOG(ERROR) << "BT MAC not found";
+    return -1;
+}
+
 int main() {
     bool skip_wlan = false;
     bool reboot = false;
 
-    bool wlan_exists = file_exists(MAC_TARGET_WLAN);
-    bool bt_exists   = file_exists(MAC_TARGET_BT);
+    bool wlan_exists = file_nonempty(MAC_TARGET_WLAN);
+    bool bt_exists   = file_nonempty(MAC_TARGET_BT);
 
     if (wlan_exists && bt_exists) {
         LOG(INFO) << "MACs already written. Skipping.";
@@ -77,9 +116,9 @@ int main() {
     skip_wlan = wlan_exists;
     reboot = !bt_exists;
 
-    std::ifstream in(MAC_SOURCE, std::ios::binary);
+    std::ifstream in(MAC_SOURCE_WLAN, std::ios::binary);
     if (!in) {
-        LOG(ERROR) << "Failed to open MAC source";
+        LOG(ERROR) << "Failed to open WLAN MAC source";
         return -1;
     }
 
@@ -111,8 +150,10 @@ int main() {
         return -1;
     }
 
-    increment_mac(mac);
-    out_bt << mac_to_bt_string(mac) << "\n";
+    std::vector<unsigned char> mac_bt;
+    if (read_bt_mac(MAC_SOURCE_BT, mac_bt) == 0) {
+        out_bt << mac_to_bt_string(mac_bt) << "\n";
+    }
 
     if (!reboot)
         return 0;
