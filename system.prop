@@ -152,6 +152,7 @@ rild.libpath=/system/vendor/lib64/libril-qc-qmi-1.so
 #ro.telephony.default_network=22,22
 ro.vendor.use_data_netmgrd=true
 telephony.lteOnCdmaDevice=1
+vendor.service.qti.ims.enabled=1
 
 # Sensors
 ro.qti.sensors.dev_ori=false
