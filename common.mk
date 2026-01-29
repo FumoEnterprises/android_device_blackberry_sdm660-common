@@ -102,6 +102,10 @@ PRODUCT_PACKAGES += \
     libssrec \
     libvolumelistener
 
+# Apps - PhysKeyboard support (Pastiera)
+PRODUCT_PACKAGES += \
+    Pastiera
+
 # Common Audio configs
 PRODUCT_COPY_FILES += \
     frameworks/av/services/audiopolicy/config/a2dp_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/a2dp_audio_policy_configuration.xml \
