@@ -598,5 +598,3 @@ vendor/lib64/libsdmutils.so
 vendor/lib64/vendor.qti.hardware.qteeconnector@1.0.so
 vendor/lib/vendor.qti.hardware.qteeconnector@1.0.so
 
-# Keyboard - from Athena - ACQ160
-system/app/BlackBerryKeyboard/BlackBerryKeyboard.apk|029b7df8df106d2aef6f7099052cc0882f76a1a4
