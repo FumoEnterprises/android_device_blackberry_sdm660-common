@@ -459,7 +459,7 @@ vendor/lib64/vendor.qti.hardware.radio.uim_remote_server@1.0.so
 vendor/lib64/libdsi_netctrl.so
 
 # Radio (IMS) - from FP3 - 6.A.031.2
-system_ext/etc/permissions/telephony_system-ext_privapp-permissions-qti.xml
+system_ext/etc/permissions/telephony_system-ext_privapp-permissions-qti.xml|4f0056403f56928b8c75a617ba582f17061f89ae
 system_ext/lib64/lib-imscamera.so|4679d1f490ce23993c51f00fccae8bbf3725c84d|4679d1f490ce23993c51f00fccae8bbf3725c84d
 system_ext/lib64/lib-imsvideocodec.so|42a2b40865e96de9593d6f3265aade2b40ce8d28|42a2b40865e96de9593d6f3265aade2b40ce8d28
 system_ext/lib64/lib-imsvt.so|4f96cc5f27551d0b6cb11ad6447d9ce8829dde47
@@ -589,6 +589,3 @@ vendor/lib64/libsdmutils.so
 #vendor/lib64/vendor.qti.imsrtpservice@1.0.so;DISABLE_DEPS
 vendor/lib64/vendor.qti.hardware.qteeconnector@1.0.so
 vendor/lib/vendor.qti.hardware.qteeconnector@1.0.so
-
-# Keyboard - from Athena - ACQ160
-system/app/BlackBerryKeyboard/BlackBerryKeyboard.apk|029b7df8df106d2aef6f7099052cc0882f76a1a4
