@@ -23,7 +23,6 @@ extract_utils.tools.DEFAULT_PATCHELF_VERSION = '0_9'
 
 namespace_imports = [
     'device/blackberry/sdm660-common',
-    'vendor/blackberry/luna', # TODO - FIX THIS PROPERLY
     'hardware/qcom-caf/msm8998',
     'hardware/qcom-caf/wlan',
     'vendor/qcom/opensource/dataservices',
