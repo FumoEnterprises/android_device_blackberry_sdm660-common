@@ -119,9 +119,6 @@ extern "C" {
  *============================================================================*/
 bool isVendorEnhanced();
 void setVendorEnhanced(bool vendorEnhanced);
-void loc_read_conf(const char* conf_file_name,
-                   const loc_param_s_type* config_table,
-                   uint32_t table_length);
 void loc_read_conf_long(const char* conf_file_name,
                         const loc_param_s_type* config_table,
                         uint32_t table_length, uint16_t string_len);
@@ -131,12 +128,11 @@ int loc_update_conf_long(const char* conf_data, int32_t length,
                          const loc_param_s_type* config_table, uint32_t table_length,
                          uint16_t string_len);
 
-/*
 inline void loc_read_conf(const char* conf_file_name,
                           const loc_param_s_type* config_table, uint32_t table_length) {
     loc_read_conf_long(conf_file_name, config_table, table_length, LOC_MAX_PARAM_STRING);
 }
-*/
+
 inline int loc_read_conf_r(FILE *conf_fp, const loc_param_s_type* config_table,
                     uint32_t table_length) {
     return (loc_read_conf_r_long(conf_fp, config_table, table_length, LOC_MAX_PARAM_STRING));

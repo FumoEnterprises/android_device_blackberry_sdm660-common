@@ -1,11 +1,11 @@
-# configure.ac -- Autoconf script for gps gps-utils
+# configure.ac -- Autoconf script for gps location-utils
 #
 # Process this file with autoconf to produce a configure script
 
 # Requires autoconf tool later than 2.61
 AC_PREREQ(2.61)
-# Initialize the gps gps-utils package version 1.0.0
-AC_INIT([gps-utils],1.0.0)
+# Initialize the loc_socket package version 1.0.0
+AC_INIT([loc-socket],1.0.0)
 # Does not strictly follow GNU Coding standards
 AM_INIT_AUTOMAKE([foreign subdir-objects])
 # Disables auto rebuilding of configure, Makefile.ins
@@ -28,6 +28,33 @@ AC_PROG_LN_S
 AC_PROG_MAKE_SET
 PKG_PROG_PKG_CONFIG
 
+# Checks for libraries.
+PKG_CHECK_MODULES([GPSUTILS], [gps-utils])
+AC_SUBST([GPSUTILS_CFLAGS])
+AC_SUBST([GPSUTILS_LIBS])
+
+AC_ARG_WITH([external_ap],
+    AC_HELP_STRING([--with-external_ap=@<:@dir@:>@],
+        [Using External Application Processor]),
+    [],
+    with_external_ap=no)
+
+if test "x$with_external_ap" != "xno"; then
+    CPPFLAGS="${CPPFLAGS} -DFEATURE_EXTERNAL_AP"
+fi
+
+AM_CONDITIONAL(USE_EXTERNAL_AP, test "x${with_external_ap}" = "xyes")
+
+AC_ARG_WITH([qsocket],
+       AC_HELP_STRING([--with-qsocket], [kernel supports qsocket]))
+
+AM_CONDITIONAL(USE_QSOCKET, test "x${with_qsocket}" = "xyes")
+AM_COND_IF(USE_QSOCKET, [
+    PKG_CHECK_MODULES([QMIFW], [qmi-framework])
+    AC_SUBST([QMIFW_CFLAGS])
+    AC_SUBST([QMIFW_LIBS])
+])
+
 AC_ARG_WITH([external_ap],
     AC_HELP_STRING([--with-external_ap=@<:@dir@:>@],
         [Using External Application Processor]),
@@ -42,28 +69,6 @@ else
     AC_SUBST([CUTILS_CFLAGS])
     AC_SUBST([CUTILS_LIBS])
 fi
-
-AC_ARG_WITH([core_includes],
-      AC_HELP_STRING([--with-core-includes=@<:@dir@:>@],
-         [Specify the location of the core headers]),
-      [core_incdir=$withval],
-      with_core_includes=no)
-
-if test "x$with_core_includes" != "xno"; then
-   CPPFLAGS="${CPPFLAGS} -I${core_incdir}"
-fi
-
-AC_ARG_WITH([locpla_includes],
-      AC_HELP_STRING([--with-locpla-includes=@<:@dir@:>@],
-         [specify the path to locpla-includes in loc-pla_git.bb]),
-      [locpla_incdir=$withval],
-      with_locpla_includes=no)
-
-if test "x$with_locpla_includes" != "xno"; then
-   AC_SUBST(LOCPLA_CFLAGS, "-I${locpla_incdir}")
-fi
-
-AC_SUBST([CPPFLAGS])
 
 AC_ARG_WITH([glib],
       AC_HELP_STRING([--with-glib],
@@ -86,7 +91,7 @@ AM_CONDITIONAL(USE_GLIB, test "x${with_glib}" = "xyes")
 
 AC_CONFIG_FILES([ \
         Makefile \
-        gps-utils.pc
+        loc-socket.pc
         ])
 
 AC_OUTPUT

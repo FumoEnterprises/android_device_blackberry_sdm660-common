@@ -170,20 +170,25 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.gnss@2.1-impl-qti \
     android.hardware.gnss@2.1-service-qti \
-    android.hardware.gnss@1.1.vendor \
-    android.hardware.gnss@2.1.vendor \
+    gnss@2.0-base.policy \
+    gnss@2.0-xtra-daemon.policy \
+    gnss@2.0-xtwifi-client.policy \
+    gnss@2.0-xtwifi-inet-agent.policy \
+    libbatching \
+    libgeofencing \
     libgnss \
-    libgps.utils \
-    liblocation_api \
-    libsensorndkbridge \
-    libwifi-hal-ctrl
+    libgnsspps \
+    libsynergy_loc_api
 
-PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/configs/gps/apdr.conf:$(TARGET_COPY_OUT_VENDOR)/etc/apdr.conf \
-    $(COMMON_PATH)/configs/gps/flp.conf:$(TARGET_COPY_OUT_VENDOR)/etc/flp.conf \
-    $(COMMON_PATH)/configs/gps/gps.conf:$(TARGET_COPY_OUT_VENDOR)/etc/gps.conf \
-    $(COMMON_PATH)/configs/gps/izat.conf:$(TARGET_COPY_OUT_VENDOR)/etc/izat.conf \
-    $(COMMON_PATH)/configs/gps/sap.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sap.conf
+PRODUCT_PACKAGES += \
+    apdr.conf \
+    gps.conf \
+    gnss_antenna_info.conf \
+    flp.conf \
+    izat.conf \
+    lowi.conf \
+    sap.conf \
+    xtwifi.conf
 
 # Init
 $(call soong_config_set,libinit,vendor_init_lib,//$(LOCAL_PATH):init_blackberry_sdm660)
@@ -192,7 +197,6 @@ $(call soong_config_set,libinit,vendor_init_lib,//$(LOCAL_PATH):init_blackberry_
 PRODUCT_PACKAGES += \
     android.hardware.health@2.1.vendor \
     android.hardware.health-service.qti
-#    vendor.lineage.health-service.default
 
 $(call soong_config_set,lineage_health,charging_control_charging_path,/sys/class/power_supply/battery/charging_enabled)
 
@@ -318,12 +322,6 @@ PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/privapp-permissions-qti.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-qti.xml \
     $(COMMON_PATH)/configs/qti_whitelist.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/qti_whitelist.xml \
 
-# RCS - not supported by modem and causes log spam. TODO
-#PRODUCT_PACKAGES += \
-#    com.android.ims.rcsmanager \
-#    PresencePolling \
-#    RcsService
-
 # RIL
 PRODUCT_PACKAGES += \
     android.hardware.radio@1.1.vendor \
@@ -369,7 +367,6 @@ PRODUCT_PACKAGES += \
     android.hardware.sensors@1.0-service \
     android.frameworks.sensorservice@1.0 \
     android.frameworks.sensorservice@1.0.vendor
-#     android.hardware.sensors@1.0-service-qti
 
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/sensors/sensor_def_qcomdev.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/sensor_def_qcomdev.conf \
@@ -407,8 +404,6 @@ PRODUCT_PACKAGES_DEBUG += \
 # USB
 PRODUCT_PACKAGES += \
     android.hardware.usb@1.3-service.dual_role_usb
-#    android.hardware.usb@1.0-service
-
 
 # Vibrator
 PRODUCT_PACKAGES += \
@@ -420,12 +415,6 @@ PRODUCT_PACKAGES += \
 # libstdc++: camera.sdm660
 PRODUCT_PACKAGES += \
     libstdc++_vendor
-#    libgui_vendor \
-#    vndk_package
-
-# Thermal
-#PRODUCT_PACKAGES += \
-#    android.hardware.thermal-service.qti
 
 # Thermal
 PRODUCT_PACKAGES += \
@@ -455,10 +444,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     firmware_wlan_mac.bin_symlink \
     firmware_WCNSS_qcom_cfg.ini_symlink
-
-# KRAB - GPS-FIX
-PRODUCT_PACKAGES += \
-    libloc_core
 
 # VNDK
 PRODUCT_PACKAGES += \
