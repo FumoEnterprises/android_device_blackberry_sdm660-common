@@ -142,6 +142,10 @@ PRODUCT_PACKAGES += \
     hwcomposer.qcom \
     vendor.qti.hardware.memtrack-service
 
+# Doze mode
+PRODUCT_PACKAGES += \
+    Doze
+
 # DRM
 PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-impl \
