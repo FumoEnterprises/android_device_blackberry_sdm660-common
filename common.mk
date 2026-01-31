@@ -108,6 +108,9 @@ PRODUCT_PACKAGES += \
 
 # Common Audio configs
 PRODUCT_COPY_FILES += \
+    $(call find-copy-subdir-files,*,$(COMMON_PATH)/configs/audio/,$(TARGET_COPY_OUT_VENDOR)/etc)
+
+PRODUCT_COPY_FILES += \
     frameworks/av/services/audiopolicy/config/a2dp_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/a2dp_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/a2dp_in_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/a2dp_in_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/bluetooth_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_audio_policy_configuration.xml \
@@ -158,6 +161,12 @@ PRODUCT_PACKAGES += \
 # Gatekeeper
 PRODUCT_PACKAGES += \
     android.hardware.gatekeeper@1.0.vendor
+
+# Keyboard
+PRODUCT_COPY_FILES += \
+    $(call find-copy-subdir-files,*,$(COMMON_PATH)/configs/keylayout/keychars,$(TARGET_COPY_OUT_VENDOR)/usr/keychars/) \
+    $(call find-copy-subdir-files,*,$(COMMON_PATH)/configs/keylayout/keylayout/,$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/) \
+    $(call find-copy-subdir-files,*,$(COMMON_PATH)/configs/keylayout/idc,$(TARGET_COPY_OUT_VENDOR)/usr/idc/)
 
 # FM
 PRODUCT_PACKAGES += \

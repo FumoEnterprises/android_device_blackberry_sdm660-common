@@ -1,0 +1,247 @@
+# Copyright (C) 2015 BlackBerry Limited
+
+# Blackberry Physical Keyboard
+
+type ALPHA
+
+### ROW 1
+
+key Q {
+    label:                              'Q'
+    base:                               'q'
+    shift, capslock:                    'Q'
+    alt, lalt:                          '#'
+    sym:                                '~'
+}
+
+key W {
+    label:                              'W'
+    base:                               'w'
+    shift, capslock:                    'W'
+    alt, lalt:                          '1'
+    sym:                                '`'
+}
+
+key E {
+    label:                              'E'
+    base:                               'e'
+    shift, capslock:                    'E'
+    alt, lalt:                          '2'
+    sym:                                '{'
+}
+
+key R {
+    label:                              'R'
+    base:                               'r'
+    shift, capslock:                    'R'
+    alt, lalt:                          '3'
+    sym:                                '}'
+}
+
+key T {
+    label:                              'T'
+    base:                               't'
+    shift, capslock:                    'T'
+    alt, lalt:                          '('
+    sym:                                '['
+}
+
+key Y {
+    label:                              'Y'
+    base:                               'y'
+    shift, capslock:                    'Y'
+    alt, lalt:                          ')'
+    sym:                                ']'
+}
+
+key U {
+    label:                              'U'
+    base:                               'u'
+    shift, capslock:                    'U'
+    alt, lalt:                          '_'
+    sym:                                '<'
+}
+
+key I {
+    label:                              'I'
+    base:                               'i'
+    shift, capslock:                    'I'
+    alt, lalt:                          '-'
+    sym:                                '>'
+}
+
+key O {
+    label:                              'O'
+    base:                               'o'
+    shift, capslock:                    'O'
+    alt, lalt:                          '+'
+    sym:                                '^'
+}
+
+key P {
+    label:                              'P'
+    base:                               'p'
+    shift, capslock:                    'P'
+    alt, lalt:                          '@'
+    sym:                                '%'
+}
+
+### ROW 2
+
+key A {
+    label:                              'A'
+    base:                               'a'
+    shift, capslock:                    'A'
+    alt, lalt:                          '*'
+    sym:                                '='
+}
+
+key S {
+    label:                              'S'
+    base:                               's'
+    shift, capslock:                    'S'
+    alt, lalt:                          '4'
+    sym:                                '\u00F7'
+}
+
+key D {
+    label:                              'D'
+    base:                               'd'
+    shift, capslock:                    'D'
+    alt, lalt:                          '5'
+    sym:                                '\u00B1'
+}
+
+key F {
+    label:                              'F'
+    base:                               'f'
+    shift, capslock:                    'F'
+    alt, lalt:                          '6'
+    sym:                                '\u2022'
+}
+
+key G {
+    label:                              'G'
+    base:                               'g'
+    shift, capslock:                    'G'
+    alt, lalt:                          '/'
+    sym:                                '\\'
+}
+
+key H {
+    label:                              'H'
+    base:                               'h'
+    shift, capslock:                    'H'
+    alt, lalt:                          ':'
+    sym:                                '|'
+}
+
+key J {
+    label:                              'J'
+    base:                               'j'
+    shift, capslock:                    'J'
+    alt, lalt:                          ';'
+    sym:                                '&'
+}
+
+key K {
+    label:                              'K'
+    base:                               'k'
+    shift, capslock:                    'K'
+    alt, lalt:                          '\''
+    sym:                                '\u201C'
+}
+
+key L {
+    label:                              'L'
+    base:                               'l'
+    shift, capslock:                    'L'
+    alt, lalt:                          '\"'
+    sym:                                '\u201D'
+}
+
+### ROW 3
+
+key Z {
+    label:                              'Z'
+    base:                               'z'
+    shift, capslock:                    'Z'
+    alt, lalt:                          '7'
+    sym:                                '\u00A5'
+}
+
+key X {
+    label:                              'X'
+    base:                               'x'
+    shift, capslock:                    'X'
+    alt, lalt:                          '8'
+    sym:                                '\u20AC'
+}
+
+key C {
+    label:                              'C'
+    base:                               'c'
+    shift, capslock:                    'C'
+    alt, lalt:                          '9'
+    sym:                                '\u00A3'
+}
+
+key V {
+    label:                              'V'
+    base:                               'v'
+    shift, capslock:                    'V'
+    alt, lalt:                          '?'
+    sym:                                '\u00BF'
+}
+
+key B {
+    label:                              'B'
+    base:                               'b'
+    shift, capslock:                    'B'
+    alt, lalt:                          '!'
+    sym:                                '\u00A1'
+}
+
+key N {
+    label:                              'N'
+    base:                               'n'
+    shift, capslock:                    'N'
+    alt, lalt:                          ','
+    sym:                                '\u00AB'
+}
+
+key M {
+    label:                              'M'
+    base:                               'm'
+    shift, capslock:                    'M'
+    alt, lalt:                          '.'
+    sym:                                '\u00BB'
+}
+
+key 4 {
+    label:                              '$'
+    base, capslock:                     '$'
+    shift:                              '\u20AC' # Euro
+    alt, lalt:                          '$'
+    sym:                                '$'
+    lalt+lshift:                        '\uE141' # Special character means this is speaker key
+}
+
+### ROW 4
+
+key 0 {
+    label:                              '0'
+    base:                               '0'
+    shift, capslock:                    '0'
+    alt, lalt:                          '0'
+}
+
+key SPACE {
+    label:                              ' '
+    base, shift, capslock, alt, lalt:   ' '
+}
+
+key ENTER {
+    label:                              '\n'
+    base:                               '\n'
+}
