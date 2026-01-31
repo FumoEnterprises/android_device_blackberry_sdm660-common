@@ -2,6 +2,7 @@ typeattribute hal_fingerprint_default data_between_core_and_vendor_violators;
 
 allow hal_fingerprint_default property_socket:sock_file write;
 allow hal_fingerprint_default init:unix_stream_socket connectto;
+allow hal_fingerprint_default init:binder { call transfer };
 
 allow hal_fingerprint_default tee_device:chr_file rw_file_perms;
 allow hal_fingerprint_default sysfs_fingerprint:chr_file rw_file_perms;
@@ -24,6 +25,7 @@ vndbinder_use(hal_fingerprint_default)
 binder_call(hal_fingerprint_default, hal_perf_default)
 binder_call(hal_fingerprint_default, goodix_fingerprint_vndservice)
 
+allow hal_fingerprint_default default_prop:file { getattr open read };
 allow hal_fingerprint_default hal_perf_hwservice:hwservice_manager find;
 allow hal_fingerprint_default goodix_fingerprint_vndservice:service_manager { add find };
 
@@ -33,6 +35,7 @@ allow hal_fingerprint_default persist_drm_file:dir rw_dir_perms;
 
 allow hal_fingerprint_default self:netlink_kobject_uevent_socket { read create setopt bind };
 allow hal_fingerprint_default self:netlink_socket create_socket_perms_no_ioctl;
+allow hal_fingerprint_default system_prop:property_service set;
 
 r_dir_file(hal_fingerprint_default, firmware_file)
 r_dir_file(hal_fingerprint_default, sysfs_usb_supply)
