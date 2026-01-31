@@ -1,5 +1,11 @@
+# Alarm-boot
+vendor_public_prop(vendor_alarm_prop);
+
 # Camera
 vendor_public_prop(vendor_camera_prop);
+
+# DPM
+vendor_internal_prop(vendor_dpm_prop)
 
 # Fingerprint
 vendor_internal_prop(vendor_fingerprint_prop);

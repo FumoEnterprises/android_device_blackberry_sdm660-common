@@ -1,0 +1,1 @@
+allow vendor_msm_irqbalanced default_prop:file { getattr open read };

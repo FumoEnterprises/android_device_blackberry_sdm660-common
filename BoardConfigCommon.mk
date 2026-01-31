@@ -88,16 +88,16 @@ DEVICE_MATRIX_FILE := $(COMMON_PATH)/compatibility_matrix.xml
 
 # Kernel
 BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom
-BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
+
 BOARD_KERNEL_CMDLINE += user_debug=31 msm_rtb.filter=0x37
 BOARD_KERNEL_CMDLINE += ehci-hcd.park=3 lpm_levels.sleep_disabled=1
 BOARD_KERNEL_CMDLINE += sched_enable_hmp=1 sched_enable_power_aware=1
 BOARD_KERNEL_CMDLINE += service_locator.enable=1 swiotlb=1
 BOARD_KERNEL_CMDLINE += androidboot.configfs=true androidboot.usbcontroller=a800000.dwc3
-BOARD_KERNEL_CMDLINE += build_number=ACT575 androidboot.build_number=ACT575
 BOARD_KERNEL_CMDLINE += coherent_pool=1280K
-# uncomment for uart BOARD_KERNEL_CMDLINE += earlycon=msm_serial_dm,0xc170000 console=ttyMSM0
 BOARD_KERNEL_CMDLINE += console=null
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
+# uncomment for uart BOARD_KERNEL_CMDLINE += earlycon=msm_serial_dm,0xc170000 console=ttyMSM0
 BOARD_KERNEL_BASE := 0x0
 BOARD_KERNEL_TAGS_OFFSET := 0x00000100
 BOARD_RAMDISK_OFFSET     := 0x01000000
@@ -163,6 +163,9 @@ BOARD_USES_QC_TIME_SERVICES := true
 include device/qcom/sepolicy-legacy-um/SEPolicy.mk
 include device/lineage/sepolicy/libperfmgr/sepolicy.mk
 BOARD_VENDOR_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/vendor
+
+# Temporary until we transition to 4.19.
+SELINUX_IGNORE_NEVERALLOWS := true
 
 # Vendor Security Patch Level
 VENDOR_SECURITY_PATCH := 2020-05-01
