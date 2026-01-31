@@ -297,6 +297,7 @@ firmware_directories /vendor/firmware_mnt/image/
 
 # Fingerprint device
 /dev/qbt1000              0660   system     system
+/dev/goodix_fp            0660   system     system
 
 #ImproveTouch device
 /dev/hbtp_input           0660   system     system
