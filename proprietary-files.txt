@@ -24,7 +24,6 @@ vendor/lib64/vendor.qti.hardware.bluetooth_sar@1.1.so|ece3dafc4447e8302109851c3a
 # Charger
 vendor/bin/hvdcp_opti
 
-
 # CNE - from FP3 - 6.A.031.2
 vendor/app/CneApp/CneApp.apk|551d0e3251eeda3af8dfa8bb55cd83b858365db8
 vendor/app/IWlanService/IWlanService.apk|a8bdac9638bc711e23269d2eead3f46a7b3b6a25
@@ -391,7 +390,9 @@ system_ext/lib64/vendor.qti.hardware.qccsyshal@1.0.so|10076c4ace37de1a7d91ed5c8d
 system_ext/lib64/vendor.qti.hardware.qccvndhal@1.0.so|e42562ad6ad8655f1aaa836210fe29f6223c05a8
 vendor/lib64/hw/vendor.qti.hardware.qccvndhal@1.0-impl.so|0b1e323871e2828b9e8970e42635e3f7999a17e4
 vendor/lib64/libqcc_file_agent.so|cd70ce305d5036a027060aa989b0dcbcfab8edb6
+vendor/lib64/vendor.qti.hardware.qccsyshal@1.0.so;MODULE_SUFFIX=_vendor|3ff445db2dd2db1a1068fe70a54a6c04fbdd3123
 vendor/lib64/vendor.qti.hardware.qccvndhal@1.0-halimpl.so|58dd8c5877ba3a274f43f63e6f033213dd84e1c4
+vendor/lib64/vendor.qti.hardware.qccvndhal@1.0.so;MODULE_SUFFIX=_vendor|01b1d11316f5dcd8c1012a55ff01399081c79940
 
 # QMI
 vendor/bin/irsc_util
