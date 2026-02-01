@@ -105,10 +105,6 @@ public final class Utils {
         return isGestureEnabled(context, WAKE_ON_GESTURE_KEY);
     }
 
-    protected static boolean isPickUpEnabled(Context context) {
-        return isGestureEnabled(context, GESTURE_PICK_UP_KEY);
-    }
-
     protected static boolean isHandwaveGestureEnabled(Context context) {
         return isGestureEnabled(context, GESTURE_HAND_WAVE_KEY);
     }
@@ -118,7 +114,6 @@ public final class Utils {
     }
 
     protected static boolean sensorsEnabled(Context context) {
-        return isPickUpEnabled(context) || isHandwaveGestureEnabled(context)
-                || isPocketGestureEnabled(context);
+        return isHandwaveGestureEnabled(context) || isPocketGestureEnabled(context);
     }
 }
