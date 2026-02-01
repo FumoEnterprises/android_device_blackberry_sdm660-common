@@ -20,10 +20,9 @@
 #include <android-base/properties.h>
 using android::base::SetProperty;
 
-#define MAC_SOURCE_WLAN  "/proc/device-tree/board_mac_addr/macaddresswlan"
-#define MAC_SOURCE_BT    "/dev/block/by-name/boardid"
-#define MAC_TARGET_WLAN  "/data/misc/wifi/wlan_mac.bin"
-#define MAC_TARGET_BT    "/data/misc/bluetooth/bt_mac.bin"
+#define MAC_SOURCE          "/dev/block/by-name/boardid"
+#define MAC_TARGET_WLAN     "/data/misc/wifi/wlan_mac.bin"
+#define MAC_TARGET_BT       "/data/misc/bluetooth/bt_mac.bin"
 
 void property_override(const std::string& prop,
                        const std::string& value,
@@ -65,13 +64,12 @@ static void increment_mac(std::vector<unsigned char>& mac) {
     }
 }
 
-int read_bt_mac(const char* path, std::vector<unsigned char>& mac_bt) {
-    const char magic[] = "macaddressbt";
-    constexpr size_t magic_len = sizeof(magic) - 1;
-
+int read_mac(const char* path, const char magic[],
+             const size_t magic_len, std::vector<unsigned char>& mac,
+             const uint8_t padding) {
     std::ifstream in_bt(path, std::ios::binary);
     if (!in_bt) {
-        LOG(ERROR) << "Failed to open WLAN MAC source";
+        LOG(ERROR) << "Failed to open MAC source";
         return -1;
     }
 
@@ -83,8 +81,9 @@ int read_bt_mac(const char* path, std::vector<unsigned char>& mac_bt) {
 
     while (true) {
         if (std::memcmp(window.data(), magic, magic_len) == 0) {
-            mac_bt.resize(6);
-            if (!in_bt.read(reinterpret_cast<char*>(mac_bt.data()), 6))
+            mac.resize(6);
+            in_bt.ignore(padding);
+            if (!in_bt.read(reinterpret_cast<char*>(mac.data()), 6))
                 return -1;
             return 0;
         }
@@ -97,7 +96,7 @@ int read_bt_mac(const char* path, std::vector<unsigned char>& mac_bt) {
         window[magic_len - 1] = next;
     }
 
-    LOG(ERROR) << "BT MAC not found";
+    LOG(ERROR) << magic << " MAC not found";
     return -1;
 }
 
@@ -108,6 +107,7 @@ int main() {
     bool wlan_exists = file_nonempty(MAC_TARGET_WLAN);
     bool bt_exists   = file_nonempty(MAC_TARGET_BT);
 
+#ifndef MACLOADER_DEBUG
     if (wlan_exists && bt_exists) {
         LOG(INFO) << "MACs already written. Skipping.";
         return 0;
@@ -115,19 +115,10 @@ int main() {
 
     skip_wlan = wlan_exists;
     reboot = !bt_exists;
-
-    std::ifstream in(MAC_SOURCE_WLAN, std::ios::binary);
-    if (!in) {
-        LOG(ERROR) << "Failed to open WLAN MAC source";
-        return -1;
-    }
-
-    std::vector<unsigned char> mac(6);
-    in.read(reinterpret_cast<char*>(mac.data()), mac.size());
-    if (in.gcount() != static_cast<std::streamsize>(mac.size())) {
-        LOG(ERROR) << "Failed to read MAC address";
-        return -1;
-    }
+#else
+    skip_wlan = false;
+    reboot = false;
+#endif
 
     if (!skip_wlan) {
         std::ofstream out(MAC_TARGET_WLAN);
@@ -136,12 +127,18 @@ int main() {
             return -1;
         }
 
-        for (int i = 0; i < 3; ++i) {
-            out << "Intf" << i
-            << "MacAddress=" << mac_to_string(mac) << "\n";
-            increment_mac(mac);
+        std::vector<unsigned char> mac_wlan;
+        if (read_mac(MAC_SOURCE, "macaddresswlan", 14, mac_wlan, 2) == 0) {
+            for (int i = 0; i < 3; ++i) {
+                out << "Intf" << i
+                << "MacAddress=" << mac_to_string(mac_wlan) << "\n";
+                increment_mac(mac_wlan);
+            }
+            out << "END\n";
+#ifdef MACLOADER_DEBUG
+            LOG(ERROR) << "Read WLAN MAC: " << mac_to_bt_string(mac_wlan);
+#endif
         }
-        out << "END\n";
     }
 
     std::ofstream out_bt(MAC_TARGET_BT);
@@ -151,9 +148,13 @@ int main() {
     }
 
     std::vector<unsigned char> mac_bt;
-    if (read_bt_mac(MAC_SOURCE_BT, mac_bt) == 0) {
+    if (read_mac(MAC_SOURCE, "macaddressbt", 12, mac_bt, 0) == 0) {
         out_bt << mac_to_bt_string(mac_bt) << "\n";
     }
+
+#ifdef MACLOADER_DEBUG
+    LOG(ERROR) << "Read BT MAC: " << mac_to_bt_string(mac_bt);
+#endif
 
     if (!reboot)
         return 0;
