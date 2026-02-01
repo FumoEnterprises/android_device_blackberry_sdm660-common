@@ -238,11 +238,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.lights-service.blackberry
 
-# loggy
-PRODUCT_PACKAGES += \
-    loggy.sh \
-    loggy2.sh
-
 # Media
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/media/media_profiles_V1_0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_V1_0.xml \
@@ -328,15 +323,12 @@ PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/privapp-permissions-qti.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-qti.xml \
     $(COMMON_PATH)/configs/qti_whitelist.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/qti_whitelist.xml \
 
-<<<<<<< HEAD
 # RCS
 PRODUCT_PACKAGES += \
     com.android.ims.rcsmanager \
     PresencePolling \
     RcsService
 
-=======
->>>>>>> f8f3427 (sdm660-common: Bump {gps, location} to LA.UM.10.6.2.r1-02500-89xx.0)
 # RIL
 PRODUCT_PACKAGES += \
     android.hardware.radio@1.1.vendor \
@@ -429,12 +421,6 @@ PRODUCT_PACKAGES += \
 # VNDK
 # Update this list with what each blob is actually for
 # libstdc++: camera.sdm660
-<<<<<<< HEAD
-#PRODUCT_PACKAGES += \
-#    libstdc++.vendor \
-#    libgui_vendor \
-#    vndk_package
-=======
 PRODUCT_PACKAGES += \
     libstdc++_vendor
 
@@ -442,7 +428,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.thermal@1.0-impl:64 \
     android.hardware.thermal@1.0-service
->>>>>>> f8f3427 (sdm660-common: Bump {gps, location} to LA.UM.10.6.2.r1-02500-89xx.0)
 
 # Weaver
 PRODUCT_PACKAGES += \
