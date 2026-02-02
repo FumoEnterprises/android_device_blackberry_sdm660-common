@@ -145,8 +145,9 @@ PRODUCT_PACKAGES += \
     hwcomposer.qcom \
     vendor.qti.hardware.memtrack-service
 
-# Doze mode
+# Device customizations
 PRODUCT_PACKAGES += \
+    BlackBerryParts \
     Doze
 
 # DRM
