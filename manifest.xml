@@ -26,7 +26,6 @@
             <instance>default</instance>
         </interface>
     </hal>
-    <!-- STUB - luna camera hal crashes
     <hal format="hidl">
         <name>android.hardware.camera.provider</name>
         <transport>hwbinder</transport>
@@ -36,7 +35,6 @@
             <instance>legacy/0</instance>
         </interface>
     </hal>
-    -->
     <hal format="hidl">
         <name>android.hardware.drm</name>
         <transport>hwbinder</transport>
