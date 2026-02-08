@@ -103,7 +103,7 @@ PRODUCT_PACKAGES += \
     libspkrprot
 
 # Apps - PhysKeyboard support (Pastiera)
-PRODUCT_PACKAGES += \
+# PRODUCT_PACKAGES += \
     Pastiera
 
 # Common Audio configs
@@ -246,8 +246,6 @@ PRODUCT_PACKAGES += \
 # LiveDisplay
 PRODUCT_PACKAGES += \
     vendor.lineage.livedisplay-service.sdm
-
-$(call soong_config_set,livedisplay_sdm,enable_dm,false)
 
 # loggy
 PRODUCT_PACKAGES += \
@@ -425,8 +423,7 @@ PRODUCT_PACKAGES += \
 
 # Vibrator
 PRODUCT_PACKAGES += \
-    android.hardware.vibrator@1.0-impl \
-    android.hardware.vibrator@1.0-service
+    vendor.qti.hardware.vibrator.service
 
 # VNDK
 # Update this list with what each blob is actually for
