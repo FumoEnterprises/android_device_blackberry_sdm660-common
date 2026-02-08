@@ -23,10 +23,11 @@ extract_utils.tools.DEFAULT_PATCHELF_VERSION = '0_9'
 
 namespace_imports = [
     'device/blackberry/sdm660-common',
-    'hardware/qcom-caf/msm8998',
+    'hardware/qcom-caf/sdm660',
     'hardware/qcom-caf/wlan',
+    'vendor/qcom/opensource/commonsys/display',
     'vendor/qcom/opensource/dataservices',
-    'vendor/qcom/opensource/data-ipa-cfg-mgr-legacy-um',
+    'vendor/qcom/opensource/display',
 ]
 
 def lib_fixup_vendor_suffix(lib: str, partition: str, *args, **kwargs):
@@ -43,8 +44,6 @@ lib_fixups: lib_fixups_user_type = {
 
 blob_fixups: blob_fixups_user_type = {
     ('vendor/lib64/vendor.qti.hardware.radio.qcrilhook@1.0.so',
-     'vendor/lib/vendor.qti.hardware.qteeconnector@1.0.so',
-     'vendor/lib64/vendor.qti.hardware.qteeconnector@1.0.so',
      'vendor/lib64/vendor.qti.hardware.radio.lpa@1.0.so',
      'vendor/lib64/vendor.qti.hardware.tui_comm@1.0_vendor.so'
      ): blob_fixup()
