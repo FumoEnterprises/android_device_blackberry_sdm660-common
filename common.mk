@@ -244,7 +244,7 @@ PRODUCT_PACKAGES += \
     android.hardware.lights-service.blackberry
 
 # LiveDisplay
-PRODUCT_PACKAGES += \
+#PRODUCT_PACKAGES += \
     vendor.lineage.livedisplay-service.sdm
 
 # loggy
@@ -394,6 +394,9 @@ PRODUCT_SOONG_NAMESPACES += \
     hardware/google/interfaces \
     hardware/google/pixel \
     hardware/lineage/interfaces/power-libperfmgr
+
+# Storage
+$(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 
 # Telephony-ext
 PRODUCT_PACKAGES += \
