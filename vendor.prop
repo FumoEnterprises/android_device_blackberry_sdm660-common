@@ -281,19 +281,15 @@ sys.autosuspend.timeout=500000
 vendor.usb.controller=a800000.dwc3
 vendor.usb.device=a800000.ssusb
 
+# SurfaceFlinger 
+ro.surface_flinger.supports_background_blur=1
+ro.sf.blurs_are_expensive=1
 
 # Enable ADB
-#persist.sys.usb.config=adb
 persist.service.adb.enable=1
 persist.sys.usb.state=adb
-
-# Default USB configuration (when connected to a PC)
 persist.sys.usb.config=mtp,adb
 persist.sys.usb.default.config=mtp,adb
-
-# For devices that use init.usb.rc handling
 ro.adb.secure=0
 persist.service.adb.root=1
-
-# Optional – to prevent USB from resetting the ADB interface
 sys.usb.configfs=1
