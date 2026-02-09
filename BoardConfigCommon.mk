@@ -109,6 +109,7 @@ BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := default
 
 # Properties
 TARGET_SYSTEM_PROP += $(COMMON_PATH)/system.prop
+TARGET_PRODUCT_PROP += $(COMMON_PATH)/product.prop
 TARGET_VENDOR_PROP += $(COMMON_PATH)/vendor.prop
 
 # Partitions
