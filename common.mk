@@ -240,8 +240,8 @@ PRODUCT_PACKAGES += \
     android.hardware.lights-service.blackberry
 
 # LiveDisplay
-PRODUCT_PACKAGES += \
-    vendor.lineage.livedisplay-service.sdm
+#PRODUCT_PACKAGES += \
+#    vendor.lineage.livedisplay-service.sdm
 
 $(call soong_config_set,livedisplay_sdm,enable_dm,false)
 

@@ -117,14 +117,14 @@ vendor.qcom.bluetooth.soc=cherokee
 ro.zygote.disable_gl_preload=1
 
 # Camera
-camera.aux.packagelist=net.sourceforge.opencamera,org.codeaurora.snapcam,com.fihtdc.fqc
+camera.aux.packagelist=net.sourceforge.opencamera,org.codeaurora.snapcam,com.fihtdc.fqc,org.lineageos.aperture
 camera.disable_zsl_mode=0
 camera.panorama.quality=middle
 persist.vendor.camera.fdvideo=1
 persist.vendor.camera.ven_hdr=0
 ro.camera.record.anim.delay=200
 ro.camera.switch.anim.delay=300
-vendor.camera.aux.packagelist=org.codeaurora.snapcam,com.blackberry.camera,com.blackberry.camera.debug,com.android.mmi
+vendor.camera.aux.packagelist=org.codeaurora.snapcam,org.lineageos.aperture,net.sourceforge.opencamera
 vendor.camera.c2d.rotation=1
 
 # Dalvik
