@@ -9,5 +9,21 @@ cc_library_shared {
     srcs: ["libfakelogprint.cpp"],
     shared_libs: ["liblog"],
     compile_multilib: "64",
-    vendor: true
+    vendor: true,
+}
+
+// Camera - Skia stub for OREO camera HAL watermark drawing
+cc_library_shared {
+    name: "libskia_shim",
+    srcs: ["libskia_shim.cpp"],
+    compile_multilib: "32",
+    vendor: true,
+}
+
+// Camera - jnigraphics stub for OREO vendor libs (not in vendor namespace)
+cc_library_shared {
+    name: "libjnigraphics_shim",
+    srcs: ["libjnigraphics_shim.cpp"],
+    compile_multilib: "32",
+    vendor: true,
 }
