@@ -88,7 +88,6 @@ DEVICE_MATRIX_FILE := $(COMMON_PATH)/compatibility_matrix.xml
 
 # Kernel
 BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom
-
 BOARD_KERNEL_CMDLINE += user_debug=31 msm_rtb.filter=0x37
 BOARD_KERNEL_CMDLINE += ehci-hcd.park=3 lpm_levels.sleep_disabled=1
 BOARD_KERNEL_CMDLINE += sched_enable_hmp=1 sched_enable_power_aware=1
@@ -97,12 +96,20 @@ BOARD_KERNEL_CMDLINE += androidboot.configfs=true androidboot.usbcontroller=a800
 BOARD_KERNEL_CMDLINE += coherent_pool=1280K
 BOARD_KERNEL_CMDLINE += console=null
 BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
-# uncomment for uart BOARD_KERNEL_CMDLINE += earlycon=msm_serial_dm,0xc170000 console=ttyMSM0
+
 BOARD_KERNEL_BASE := 0x0
 BOARD_KERNEL_TAGS_OFFSET := 0x00000100
 BOARD_RAMDISK_OFFSET     := 0x01000000
+BOARD_SECOND_OFFSET	:= 0x00f00000
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
+
+# BlackBerry bootloader specific stuff
+BOARD_MKBOOTIMG_ARGS := --binfo $(COMMON_PATH)/configs/boot/binfo.img
+BOARD_RECOVERY_MKBOOTIMG_ARGS := $(BOARD_MKBOOTIMG_ARGS) --recovery
+BOARD_CUSTOM_MKBOOTIMG := $(COMMON_PATH)/configs/boot/mkbootimg.py
+BOARD_KERNEL_CMDLINE += androidboot.build_number=ACQ160 androidboot.imagetype=mfi build_number=ACQ160
+
 TARGET_KERNEL_VERSION := 4.4
 TARGET_KERNEL_CLANG_COMPILE := true
 TARGET_KERNEL_SOURCE := kernel/blackberry/sdm660
