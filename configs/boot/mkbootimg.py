@@ -58,7 +58,7 @@ def write_header(args):
         args.base + args.kernel_offset,                 # physical load addr
         filesize(args.ramdisk),                         # size in bytes
         final_ramdisk_offset,                           # physical load addr
-        filesize(args.ramdisk),                          # size in bytes
+        9031657,                                     # size in bytes
         final_second_offset,                            # physical load addr
         args.base + args.tags_offset,                   # physical addr for kernel tags
         args.pagesize,                                  # flash page size we assume
@@ -83,7 +83,7 @@ def write_header(args):
     args.output.seek(-12, 1)
     args.output.write(b"VENDOR!?")
     args.output.write(pack('I', filesize(args.binfo)))
-        
+
     return img_id
 
 class ValidateStrLenAction(Action):
