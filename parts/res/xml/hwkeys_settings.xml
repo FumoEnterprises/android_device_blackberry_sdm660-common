@@ -24,10 +24,4 @@
         android:title="@string/hw_nav_key_pref_title"
         android:summary="@string/hw_nav_key_pref_summary" />
 
-    <ListPreference
-        android:key="ime_touch_whitelist_pref"
-        android:defaultValue="0,0,0,0,0,0,0"
-        android:title="Set compatible touch keyboard apps"
-        android:summary="The keyboard touchpad will be kept enabled when the selected keyboard apps are open." />
-
 </PreferenceScreen>
