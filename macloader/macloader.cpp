@@ -15,12 +15,57 @@
 #include <vector>
 #include <thread>
 #include <chrono>
+#include <unordered_set>
 
 #include <android-base/logging.h>
+#include <android-base/properties.h>
 
 #define MAC_SOURCE          "/dev/block/by-name/boardid"
 #define MAC_TARGET_WLAN     "/data/misc/wifi/wlan_mac.bin"
 #define MAC_TARGET_BT       "/data/misc/bluetooth/bt_mac.bin"
+
+#define TAB_PATH           "/dev/block/by-name/traceability"
+
+using android::base::SetProperty;
+
+static const std::unordered_set<int> singlesim_prds = {
+    63824001,
+    63824009,
+    63824013,
+    63824015,
+    63824017,
+    63824021,
+    63824031,
+    63824035,
+    63824036,
+    63824039,
+    63824041,
+    63824042,
+    63824043,
+    63824045,
+    63824046,
+    63824050,
+    63824501,
+    63824509,
+    63824513,
+    63824515,
+    63824521,
+    63824535,
+    63824539,
+    63824541,
+    63824542,
+    63824545,
+    63824547,
+    63825001,
+    63825002,
+    63825003,
+    63825004,
+    63825005,
+    63825006,
+    63825007,
+    63825014,
+    63825015
+};
 
 void property_override(const std::string& prop,
                        const std::string& value,
@@ -98,9 +143,57 @@ int read_mac(const char* path, const char magic[],
     return -1;
 }
 
+static bool set_dualsim(const char* path) {
+    std::ifstream in(path, std::ios::binary);
+    if (!in) {
+        LOG(ERROR) << "Failed to open partition";
+        return false;
+    }
+
+    std::string data((std::istreambuf_iterator<char>(in)),
+                     std::istreambuf_iterator<char>());
+
+    const std::string key = "PRD-";
+    size_t pos = data.rfind(key);
+    if (pos == std::string::npos) {
+        LOG(ERROR) << "PRD start not present";
+        return false;
+    }
+
+    pos += key.size();
+
+    size_t end = pos;
+    while (end < data.size() && data[end] != '\0')
+        ++end;
+
+    std::string variant = data.substr(pos, end - pos);
+
+    LOG(INFO) << "Detected variant: " << variant;
+
+    // remove '-', convert to int, and match from an array of dual sim or single sim prds
+    variant.erase(std::remove(variant.begin(), variant.end(), '-'), variant.end());
+
+    int prd = std::stoi(variant);
+    bool dualsim = !(singlesim_prds.count(prd) > 0);
+
+    if (dualsim) {
+        property_override("persist.radio.multisim.config", "dsds", true);
+        LOG(INFO) << "Dual SIM variant detected";
+        return true;
+    }
+
+    LOG(INFO) << "Single SIM variant detected";
+
+    return false;
+}
+
 int main() {
     bool skip_wlan = false;
     bool reboot = false;
+
+    // Even if the MACs exist, we still check if the device is dsds/single sim
+    if (!set_dualsim(TAB_PATH))
+        property_override("persist.radio.multisim.config", "none", true);
 
     bool wlan_exists = file_nonempty(MAC_TARGET_WLAN);
     bool bt_exists   = file_nonempty(MAC_TARGET_BT);

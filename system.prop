@@ -80,39 +80,9 @@ ro.nfc.port=I2C
 persist.env.fastdorm.enabled=true
 
 # RIL
-DEVICE_PROVISIONED=1
-net.tethering.noprovisioning=true
-persist.data.df.dev_name=rmnet_usb0
-persist.data.tcp_rst_drop=true
-persist.radio.VT_CAM_INTERFACE=2
-persist.radio.VT_HYBRID_ENABLE=1
-persist.radio.adb_log_on=3
-persist.radio.apm_sim_not_pwdn=1
-persist.radio.flexmap_type=nw_mode
-persist.radio.oem_socket=true
-persist.radio.qcom_ext_enable=true
-persist.rild.nitz_long_ons_0=
-persist.rild.nitz_long_ons_1=
-persist.rild.nitz_long_ons_2=
-persist.rild.nitz_long_ons_3=
-persist.rild.nitz_plmn=
-persist.rild.nitz_short_ons_0=
-persist.rild.nitz_short_ons_1=
-persist.rild.nitz_short_ons_2=
-persist.rild.nitz_short_ons_3=
-persist.sys.MNC=UNKNOW
-persist.vendor.data.mode=concurrent
-persist.vendor.radio.atfwd.start=true
-persist.vendor.radio.cs_srv_type=1
-persist.vendor.radio.custom_ecc=1
-persist.vendor.radio.lte_vrte_ltd=1
-persist.vendor.radio.oem_socket=true
-persist.vendor.radio.report_codec=1
 ril.subscription.types=NV,RUIM
-rild.libpath=/system/vendor/lib64/libril-qc-qmi-1.so
-#KRAB
-#ro.telephony.default_network=22,22
-ro.vendor.use_data_netmgrd=true
+ro.telephony.call_ring.multiple=false
+ro.telephony.default_network=22,20
 telephony.lteOnCdmaDevice=1
 vendor.service.qti.ims.enabled=1
 
@@ -336,5 +306,9 @@ vendor.bluetooth.soc=cherokee
 
 # Property for backup NTP Server
 persist.backup.ntpServer="0.pool.ntp.org"
+
 # enable IZat OptInApp overlay
 persist.vendor.overlay.izat.optin=rro
+
+# Updater URL
+lineage.updater.uri=https://fumo.enterprises/ota/api/v1/{device}/{type}/noincr
