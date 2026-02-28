@@ -105,10 +105,10 @@ BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 
 # BlackBerry bootloader specific stuff
-BOARD_MKBOOTIMG_ARGS := --binfo $(COMMON_PATH)/configs/boot/binfo.img
-BOARD_RECOVERY_MKBOOTIMG_ARGS := $(BOARD_MKBOOTIMG_ARGS) --recovery
-BOARD_CUSTOM_MKBOOTIMG := $(COMMON_PATH)/configs/boot/mkbootimg.py
-BOARD_KERNEL_CMDLINE += androidboot.build_number=ACQ160 androidboot.imagetype=mfi build_number=ACQ160
+#BOARD_MKBOOTIMG_ARGS := --binfo $(COMMON_PATH)/configs/boot/binfo.img
+#BOARD_RECOVERY_MKBOOTIMG_ARGS := $(BOARD_MKBOOTIMG_ARGS) --recovery
+#BOARD_CUSTOM_MKBOOTIMG := $(COMMON_PATH)/configs/boot/mkbootimg.py
+#BOARD_KERNEL_CMDLINE += androidboot.build_number=ACQ160 androidboot.imagetype=mfi build_number=ACQ160
 
 TARGET_KERNEL_VERSION := 4.4
 TARGET_KERNEL_CLANG_COMPILE := true
