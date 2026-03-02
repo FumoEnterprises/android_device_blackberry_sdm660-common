@@ -18,10 +18,12 @@
 
 #include <android-base/file.h>
 #include <android-base/logging.h>
+#include <android-base/properties.h>
 #include <fcntl.h>
 
 using ::android::base::ReadFileToString;
 using ::android::base::WriteStringToFile;
+using ::android::base::GetBoolProperty;
 
 namespace aidl {
 namespace android {
@@ -78,7 +80,11 @@ ndk::ScopedAStatus Lights::setLightState(int id, const HwLightState& state) {
             }
             WriteToFile(kKeyboardFile, keyboardbrightness);
 
-            WriteToFile(kButtonsFile, brightness * BRIGHTNESS_MAX / 0xFF);
+            // Only enable button LEDs if hw keys are enabled
+            if (GetBoolProperty("persist.sys.hwkeys", false))
+                WriteToFile(kButtonsFile, brightness * BRIGHTNESS_MAX / 0xFF);
+            else
+                WriteToFile(kButtonsFile, 0);
             break;
         /* See above comment in kAvailableLights
         case (int)LightType::KEYBOARD:
