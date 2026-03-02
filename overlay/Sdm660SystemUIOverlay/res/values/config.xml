@@ -40,6 +40,6 @@
 
     <!-- The default tiles to display in QuickSettings -->
     <string name="quick_settings_tiles_default" translatable="false">
-        wifi,cell,bt,dnd,flashlight,rotation,battery,airplane,night,nfc,location
+        wifi,cell,bt,touchkeypad,dnd,flashlight,rotation,battery,airplane,night,nfc,location
     </string>
 </resources>
