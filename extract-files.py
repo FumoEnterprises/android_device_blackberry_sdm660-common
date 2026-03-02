@@ -45,7 +45,10 @@ lib_fixups: lib_fixups_user_type = {
 blob_fixups: blob_fixups_user_type = {
     ('vendor/lib/vendor.qti.hardware.qteeconnector@1.0.so',
      'vendor/lib64/vendor.qti.hardware.qteeconnector@1.0.so',
-     'vendor/lib64/vendor.qti.hardware.tui_comm@1.0_vendor.so'
+     'vendor/lib64/vendor.qti.hardware.tui_comm@1.0_vendor.so',
+     'system/lib64/com.qualcomm.qti.ant@1.0.so',
+     'vendor/lib64/com.quicinc.cne.server@2.0.so',
+     'vendor/lib/com.quicinc.cne.server@2.0.so'
      ): blob_fixup()
         .replace_needed('libhidlbase.so', 'libhidlbase-v32.so'),
     ('vendor/bin/hw/vendor.qti.hardware.tui_comm@1.0-service-qti',
