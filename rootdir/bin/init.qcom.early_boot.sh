@@ -458,7 +458,7 @@ fi
 
 # == HW navigation keys property
 # If navkeys == 0 we are gesture-only, disable hw nav keys (qemu.hw.mainkeys = 1),
-#                                                           (disable 0dbutton in sysfs)
+#                                                          (disable 0dbutton in sysfs)
 # If navkeys == 1 but navkeys_both is set, enable both (qemu.hw.mainkeys = 0)
 # If navkeys == 1 we are physical-only (qemu.hw.mainkeys = 1)
 
@@ -474,7 +474,7 @@ if [ "$navkeys" = "1" ]; then
         echo 1 > /sys/devices/soc/c178000.i2c/i2c-4/4-0070/input/input3/0dbutton
         setprop qemu.hw.mainkeys 0
     else
-        echo 0 > /sys/devices/soc/c178000.i2c/i2c-4/4-0070/input/input3/0dbutton
+        echo 1 > /sys/devices/soc/c178000.i2c/i2c-4/4-0070/input/input3/0dbutton
         setprop qemu.hw.mainkeys 1
     fi
 elif [ "$navkeys" = "0" ]; then
