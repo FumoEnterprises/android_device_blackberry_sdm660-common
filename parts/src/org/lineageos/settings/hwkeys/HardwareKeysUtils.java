@@ -52,4 +52,14 @@ public final class HardwareKeysUtils {
             e.printStackTrace();
         }
     }
+
+    protected void setBothEnabled(boolean enabled) {
+        try {
+            Class<?> sp = Class.forName("android.os.SystemProperties");
+            Method set = sp.getMethod("set", String.class, String.class);
+            set.invoke(null, "persist.sys.hwkeys.both", enabled ? "1" : "0");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

@@ -20,4 +20,6 @@
     <string name="hwkeys_summary">Tweak behaviour of hardware keys</string>
     <string name="hw_nav_key_pref_title">Use hardware navigation keys</string>
     <string name="hw_nav_key_pref_summary">If this is set, gestures are disabled in favour of hardware 3-button touch navigation keys. Requires a reboot.</string>
+    <string name="hw_nav_key_both_pref_title">Use both gestures and hardware navigation keys</string>
+    <string name="hw_nav_key_both_pref_summary">If this is set, both gestures and hardware nav keys are enabled. Requires a reboot.</string>
 </resources>

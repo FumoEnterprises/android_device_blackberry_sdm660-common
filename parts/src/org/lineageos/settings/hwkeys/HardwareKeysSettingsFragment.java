@@ -34,8 +34,10 @@ public class HardwareKeysSettingsFragment extends PreferenceFragment implements
         Preference.OnPreferenceChangeListener, OnCheckedChangeListener {
 
     private static final String PREF_HWNAV = "hw_nav_key_pref";
+    private static final String PREF_HWNAV_BOTH = "hw_nav_key_both_pref";
 
     private SwitchPreference mHwNavType;
+    private SwitchPreference mHwNavBothType;
 
     private HardwareKeysUtils mHardwareKeysUtils;
     private Handler mHandler = new Handler();
@@ -48,6 +50,8 @@ public class HardwareKeysSettingsFragment extends PreferenceFragment implements
 
         mHwNavType = (SwitchPreference) findPreference(PREF_HWNAV);
         mHwNavType.setOnPreferenceChangeListener(this);
+        mHwNavBothType = (SwitchPreference) findPreference(PREF_HWNAV_BOTH);
+        mHwNavBothType.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -55,6 +59,9 @@ public class HardwareKeysSettingsFragment extends PreferenceFragment implements
         switch (preference.getKey()) {
             case PREF_HWNAV:
                 mHardwareKeysUtils.setHwKeysEnabled((Boolean) newValue);
+                return true;
+            case PREF_HWNAV_BOTH:
+                mHardwareKeysUtils.setBothEnabled((Boolean) newValue);
                 return true;
             default:
                 return false;
