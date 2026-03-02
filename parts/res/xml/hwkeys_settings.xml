@@ -24,4 +24,11 @@
         android:title="@string/hw_nav_key_pref_title"
         android:summary="@string/hw_nav_key_pref_summary" />
 
+    <SwitchPreference
+        android:key="hw_nav_key_both_pref"
+        android:defaultValue="false"
+        android:dependency="hw_nav_key_pref"
+        android:title="@string/hw_nav_key_both_pref_title"
+        android:summary="@string/hw_nav_key_both_pref_summary" />
+
 </PreferenceScreen>
