@@ -2,9 +2,6 @@
 ## are from athena (PQ1A.190105.004).
 
 # ANT+
--lib/libantradio.so:system/lib/libantradio.so
--lib64/libantradio.so:system/lib64/libantradio.so
-system/lib/com.qualcomm.qti.ant@1.0.so
 system/lib64/com.qualcomm.qti.ant@1.0.so
 vendor/lib/com.qualcomm.qti.ant@1.0_vendor.so
 vendor/lib/hw/com.qualcomm.qti.ant@1.0-impl.so
@@ -620,10 +617,6 @@ vendor/lib/libwfdmmservice.so
 vendor/lib/libfeedbackhandler.so
 vendor/lib64/libfeedbackhandler.so
 vendor/lib/lib-dplmedia.so;DISABLE_DEPS
-vendor/lib64/vendor.qti.imsrtpservice@1.0.so
-vendor/lib/vendor.qti.imsrtpservice@1.0.so
-vendor/lib64/vendor.qti.imsrtpservice@1.0-service-Impl.so
-vendor/lib/vendor.qti.imsrtpservice@1.0-service-Impl.so
 vendor/lib64/lib-dplmedia.so;DISABLE_DEPS
 vendor/lib/libevent_observer.so
 vendor/lib64/libevent_observer.so
@@ -631,8 +624,6 @@ vendor/lib/libsdmutils.so
 vendor/lib64/libsdmutils.so
 
 #->_vendor
-#vendor/lib64/vendor.qti.hardware.tui_comm@1.0.so;DISABLE_DEPS
-#vendor/lib64/vendor.qti.imsrtpservice@1.0.so;DISABLE_DEPS
 vendor/lib64/vendor.qti.hardware.qteeconnector@1.0.so
 vendor/lib/vendor.qti.hardware.qteeconnector@1.0.so
 
