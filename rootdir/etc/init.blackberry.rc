@@ -62,7 +62,3 @@ on property:vendor.subsys_state_notifier.modem.state=ONLINE
 
 on property:init.svc.vendor.qcrild=stopped
     stop vendor.radio-config-1-1-wrapper
-
-# Time
-on property:sys.boot_completed=1
-    restart time_daemon
