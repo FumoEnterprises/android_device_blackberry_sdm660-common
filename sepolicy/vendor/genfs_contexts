@@ -1,23 +1,9 @@
-# Sensors
-genfscon proc /devmodel		u:object_r:proc_fih:s0
-genfscon proc /dt_info		u:object_r:proc_fih:s0
-genfscon proc /sensordata/SSC	u:object_r:proc_fih:s0
-
-# /proc/bandinfo - Radio
-genfscon proc /bandinfo            u:object_r:proc_bandinfo:s0
-
-# /proc/AllHWLis/* - Gestures
-genfscon proc /AllHWList/tp_double_tap   u:object_r:proc_fih:s0
-
-# /proc/hwmodel - Model
-genfscon proc /hwmodel            u:object_r:proc_fih:s0
-
-# /proc/baseband - Baseband
-genfscon proc /baseband            u:object_r:proc_fih:s0
-
-# /proc/bt_mac - MAC addr
-genfscon proc /bt_mac            u:object_r:proc_fih:s0
-
 # Extcon
 genfscon sysfs /devices/soc/800f000.qcom,spmi/spmi-0/spmi0-00/800f000.qcom,spmi:qcom,pm660@0:qcom,qpnp-smb2/extcon	u:object_r:sysfs_extcon:s0
 genfscon sysfs /devices/soc/800f000.qcom,spmi/spmi-0/spmi0-00/800f000.qcom,spmi:qcom,pm660@0:qcom,usb-pdphy@1700/extcon u:object_r:sysfs_extcon:s0
+
+# DT2W
+genfscon sysfs /sys/devices/soc/c178000.i2c/i2c-4/4-0070/input/input3/wake_gesture                u:object_r:sysfs_touch_wake_gesture:s0
+
+# GloveMode
+genfscon sysfs /sys/devices/soc/c178000.i2c/i2c-4/4-0070/input/input3/glove_mode                 u:object_r:sysfs_touch_glove_mode:s0

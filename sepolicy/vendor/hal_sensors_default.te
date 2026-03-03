@@ -1,0 +1,2 @@
+# Allow sensors to read files in /persist
+r_dir_file(hal_sensors_default, persist_file)

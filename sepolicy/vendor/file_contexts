@@ -8,29 +8,25 @@
 /persist(/.*)?           u:object_r:mnt_vendor_file:s0
 
 # Fingerprint
-/dev/elan_fp                               u:object_r:sysfs_fingerprint:s0
-/dev/goodix_fp				   u:object_r:sysfs_fingerprint:s0
-/data/system/fingerprint(/.*)?		   u:object_r:fingerprintd_data_file:s0
+/dev/goodix_fp                                                u:object_r:gx_fpd_device:s0
+/data/system/fingerprint(/.*)?                                u:object_r:gx_fpd_data_file:s0
+/(vendor|system/vendor)/bin/gx_fpd                            u:object_r:gx_fpd_exec:s0
 
-# Modem configs
-/data/vendor/fih_atl(/.*)?              u:object_r:rfs_shared_hlos_file:s0
-/data/vendor/fih_mcfg(/.*)?             u:object_r:rfs_shared_hlos_file:s0
+# Lights service
+/(vendor|system/vendor)/bin/hw/android.hardware.lights-service.blackberry                   u:object_r:hal_light_default_exec:s0
 
-# NFC
-/dev/sec-nfc              u:object_r:sec_device:s0
-/(vendor|system/vendor)/bin/hw/android\.hardware\.nfc@1\.2-service\.samsung       u:object_r:hal_nfc_default_exec:s0
+# LEDs
+/sys/class/leds/led:rgb_blue/brightness            u:object_r:sysfs_leds:s0
+/sys/class/leds/led:rgb_green/brightness           u:object_r:sysfs_leds:s0
+/sys/class/leds/led:rgb_red/brightness             u:object_r:sysfs_leds:s0
+/sys/class/leds/lcd-backlight/brightness           u:object_r:sysfs_leds:s0
+/sys/class/leds/keyboard-backlight/brightness      u:object_r:sysfs_leds:s0
+/sys/class/leds/button-backlight/brightness        u:object_r:sysfs_leds:s0
 
-# Partitions (A/B)
-/dev/block/platform/soc/c0c4000\.sdhci/by-name/cda_[ab]                        u:object_r:custom_ab_block_device:s0
-/dev/block/platform/soc/c0c4000\.sdhci/by-name/hidden_[ab]                     u:object_r:custom_ab_block_device:s0
-/dev/block/platform/soc/c0c4000\.sdhci/by-name/nvdef_[ab]                      u:object_r:custom_ab_block_device:s0
-/dev/block/platform/soc/c0c4000\.sdhci/by-name/splash_[ab]                     u:object_r:custom_ab_block_device:s0
-/dev/block/platform/soc/c0c4000\.sdhci/by-name/systeminfo_[ab]                 u:object_r:custom_ab_block_device:s0
+# Touch (GloveMode) service
+/(vendor|system/vendor)/bin/hw/vendor.lineage.touch@1.0-service.blackberry      u:object_r:hal_lineage_touch_default_exec:s0
 
 # Partitions (Non-A/B)
-/dev/block/platform/soc/c0c4000\.sdhci/by-name/box                             u:object_r:fih_partition:s0
-/dev/block/platform/soc/c0c4000\.sdhci/by-name/deviceinfo                      u:object_r:fih_partition:s0
-/dev/block/platform/soc/c0c4000\.sdhci/by-name/securefs                        u:object_r:fih_partition:s0
 /dev/block/platform/soc/c0c4000\.sdhci/by-name/storesec                        u:object_r:boot_block_device:s0
 
 # tombstones
