@@ -465,19 +465,26 @@ fi
 navkeys=`getprop persist.sys.hwkeys`
 navkeys_both=`getprop persist.sys.hwkeys.both`
 
+# Determine which sysfs path to use based on touchscreen controller
+if [ -f /sys/devices/soc/c178000.i2c/i2c-4/4-0070/input/input3/0dbutton ]; then
+    button_path="/sys/devices/soc/c178000.i2c/i2c-4/4-0070/input/input3/0dbutton"
+elif [ -f /sys/devices/soc/c178000.i2c/i2c-4/4-0038/fts_buttons_enabled ]; then
+    button_path="/sys/devices/soc/c178000.i2c/i2c-4/4-0038/fts_buttons_enabled"
+fi
+
 # Reset props if they're empty
 if [ "$navkeys" = "" ]; then setprop persist.sys.hwkeys 1; fi
 if [ "$navkeys_both" = "" ]; then setprop persist.sys.hwkeys.both 0; fi
 
 if [ "$navkeys" = "1" ]; then
     if [ "$navkeys_both" = "1" ]; then
-        echo 1 > /sys/devices/soc/c178000.i2c/i2c-4/4-0070/input/input3/0dbutton
+        echo 1 > $button_path
         setprop qemu.hw.mainkeys 0
     else
-        echo 1 > /sys/devices/soc/c178000.i2c/i2c-4/4-0070/input/input3/0dbutton
+        echo 1 > $button_path
         setprop qemu.hw.mainkeys 1
     fi
 elif [ "$navkeys" = "0" ]; then
-    echo 0 > /sys/devices/soc/c178000.i2c/i2c-4/4-0070/input/input3/0dbutton
+    echo 0 > $button_path
     setprop qemu.hw.mainkeys 0
 fi
