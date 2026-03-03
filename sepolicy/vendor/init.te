@@ -19,7 +19,6 @@ allow init hidl_base_hwservice:hwservice_manager add;
 allow init hwservicemanager:binder { call transfer };
 allow init ion_device:chr_file { ioctl open read };
 allow init sysfs:file { open setattr write };
-allow init sysfs_fingerprint:chr_file { ioctl open read write };
 allow init sysfs_graphics:file { open write };
 allow init tee_device:chr_file { ioctl open read write };
 allow init vendor_file:file { execute execute_no_trans };

@@ -1,18 +1,3 @@
-# FIH Partitions
-type fih_partition, dev_type;
-
-# /dev/elanfp
-type sysfs_fingerprint, sysfs_type, fs_type;
-
-# Samsung NFC
-type sec_device, dev_type;
-
-# /proc/devmodel
-type proc_fih, fs_type, proc_type;
-
-# /proc/bandinfo
-type proc_bandinfo, proc_type, fs_type;
-
 # rtc
 type sysfs_msm_subsys, sysfs_type, fs_type;
 
@@ -21,5 +6,12 @@ type cutback_data_file, file_type, data_file_type;
 type cutback_socket, file_type;
 type audio_cutback_data_file, file_type, data_file_type;
 
-#rfs files
+# rfs files
 type rfs_tombstone_data_file, data_file_type, file_type;
+
+# Fingerprint
+type gx_fpd_data_file, file_type, data_file_type;
+
+# Touch
+type sysfs_touch_glove_mode, sysfs_type, fs_type;
+type sysfs_touch_wake_gesture, sysfs_type, fs_type;

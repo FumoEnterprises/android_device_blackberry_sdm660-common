@@ -111,8 +111,6 @@ on boot
     setprop vendor.usb.controller ${sys.usb.controller}
 
     # OTG
-    chown system system /sys/class/power_supply/battery/device/fih_otg_fun
-    chmod 0664 /sys/class/power_supply/battery/device/fih_otg_fun
     chown system system /sys/class/power_supply/battery/device/otg_status
     chmod 0664 /sys/class/power_supply/battery/device/otg_status
 
