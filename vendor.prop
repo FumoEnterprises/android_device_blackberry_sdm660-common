@@ -117,7 +117,7 @@ vendor.qcom.bluetooth.soc=cherokee
 ro.zygote.disable_gl_preload=1
 
 # Camera
-camera.aux.packagelist=net.sourceforge.opencamera,org.codeaurora.snapcam,com.fihtdc.fqc,org.lineageos.aperture
+camera.aux.packagelist=net.sourceforge.opencamera,org.codeaurora.snapcam,org.lineageos.aperture
 camera.disable_zsl_mode=0
 camera.panorama.quality=middle
 persist.vendor.camera.fdvideo=1
