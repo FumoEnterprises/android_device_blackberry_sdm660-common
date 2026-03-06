@@ -12,6 +12,14 @@ cc_library_shared {
     vendor: true,
 }
 
+// Fingerprint hwbinder registration
+cc_library_shared {
+    name: "libhidl_shim_full",
+    vendor: true,
+    srcs: ["libhidl_shim_full.cpp"],
+    shared_libs: ["libhidlbase", "libbase"],
+}
+
 // Camera - Skia stub for OREO camera HAL watermark drawing
 cc_library_shared {
     name: "libskia_shim",
