@@ -20,10 +20,12 @@
 #include <android-base/logging.h>
 #include <android-base/properties.h>
 
+// For MACs
 #define MAC_SOURCE          "/dev/block/by-name/boardid"
 #define MAC_TARGET_WLAN     "/data/misc/wifi/wlan_mac.bin"
 #define MAC_TARGET_BT       "/data/misc/bluetooth/bt_mac.bin"
 
+// For DS
 #define TAB_PATH           "/dev/block/by-name/traceability"
 
 using android::base::SetProperty;
@@ -189,7 +191,6 @@ static bool set_dualsim(const char* path) {
 
 int main() {
     bool skip_wlan = false;
-    bool reboot = false;
 
     // Even if the MACs exist, we still check if the device is dsds/single sim
     if (!set_dualsim(TAB_PATH))
@@ -198,18 +199,10 @@ int main() {
     bool wlan_exists = file_nonempty(MAC_TARGET_WLAN);
     bool bt_exists   = file_nonempty(MAC_TARGET_BT);
 
-#ifndef MACLOADER_DEBUG
     if (wlan_exists && bt_exists) {
         LOG(INFO) << "MACs already written. Skipping.";
         return 0;
     }
-
-    skip_wlan = wlan_exists;
-    reboot = !bt_exists;
-#else
-    skip_wlan = false;
-    reboot = false;
-#endif
 
     if (!skip_wlan) {
         std::ofstream out(MAC_TARGET_WLAN);
@@ -232,10 +225,17 @@ int main() {
         }
     }
 
-    std::ofstream out_bt(MAC_TARGET_BT);
-    if (!out_bt) {
-        LOG(ERROR) << "Failed to open BT MAC output";
-        return -1;
+    mode_t orig_mask = umask(017);
+    FILE* f_bt = fopen(MAC_TARGET_BT, "w");
+    umask(orig_mask);
+    if (f_bt) {
+        std::vector<unsigned char> mac_bt;
+        if (read_mac(MAC_SOURCE, "macaddressbt", 12, mac_bt, 0) == 0) {
+            fprintf(f_bt, "%s\n", mac_to_bt_string(mac_bt).c_str());
+        }
+        fclose(f_bt);
+    } else {
+        LOG(ERROR) << "Failed to open BT MAC output: " << strerror(errno);
     }
 
     std::vector<unsigned char> mac_bt;
