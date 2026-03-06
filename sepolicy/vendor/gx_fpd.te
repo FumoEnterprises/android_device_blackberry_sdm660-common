@@ -38,6 +38,14 @@ r_dir_file(gx_fpd, firmware_file)
 
 # Allow read to system props
 set_prop(gx_fpd, vendor_fingerprint_prop)
+set_prop(gx_fpd, hwservicemanager_prop)
 
 # Ignore all logging requests
 dontaudit gx_fpd storage_file:dir search;
+
+# Ignore it trying to read a lot of props
+dontaudit gx_fpd default_prop:file r_file_perms;
+dontaudit gx_fpd default_prop:property_service set;
+
+# ... and for whatever reason trying to call random stuff
+dontaudit gx_fpd hwservicemanager:binder call;

@@ -26,5 +26,10 @@ allow hal_fingerprint_default storage_file:dir search;
 allow hal_fingerprint_default storage_file:lnk_file read;
 allow hal_fingerprint_default mnt_user_file:dir search;
 allow hal_fingerprint_default mnt_user_file:lnk_file read;
+allow hal_fingerprint_default vndservicemanager:binder call;
 allow hal_fingerprint_default sdcardfs:dir search;
 allow hal_fingerprint_default sdcardfs:file getattr;
+
+# Ignore it trying to read a lot of props
+dontaudit hal_fingerprint_default default_prop:file r_file_perms;
+dontaudit hal_fingerprint_default default_prop:property_service set;
