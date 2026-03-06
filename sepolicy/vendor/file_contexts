@@ -12,6 +12,9 @@
 /data/system/fingerprint(/.*)?                                u:object_r:gx_fpd_data_file:s0
 /(vendor|system/vendor)/bin/gx_fpd                            u:object_r:gx_fpd_exec:s0
 
+# NFC
+/(vendor|system/vendor)/bin/hw/android.hardware.nfc-service.nxp         u:object_r:hal_nfc_default_exec:s0
+
 # Lights service
 /(vendor|system/vendor)/bin/hw/android.hardware.lights-service.blackberry                   u:object_r:hal_light_default_exec:s0
 
