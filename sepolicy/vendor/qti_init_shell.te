@@ -16,3 +16,7 @@ allow qti_init_shell sysfs:file setattr;
 allow qti_init_shell persist_file:dir search;
 allow qti_init_shell self:capability dac_read_search;
 allow qti_init_shell vendor_alarm_prop:property_service set;
+
+# bochenekk stuff - hwkeys
+allow qti_init_shell vendor_hwkey_prop:file r_file_perms;
+allow qti_init_shell vendor_hwkey_prop:property_service set;
