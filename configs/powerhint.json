@@ -156,7 +156,7 @@
     },
     {
       "Name": "DoubleTapToWakeEnable",
-      "Path": "/sys/devices/soc/c178000.i2c/i2c-4/4-0070/input/input3/wake_gesture",
+      "Path": "/sys/class/tp_device/tp_gesture/gesture_enable",
       "Values": [
           "0",
           "1"
