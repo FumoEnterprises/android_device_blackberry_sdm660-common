@@ -477,5 +477,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libhidlbase-v32 \
     libhidlbase-v32.vendor \
+    libhidl_shim_full \
     libutils-v33 \
     libcutils_shim
