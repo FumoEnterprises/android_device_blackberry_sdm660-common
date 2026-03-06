@@ -1,7 +1,6 @@
-allow nfc hal_nxpnfc_hwservice:hwservice_manager find;
-allow nfc nfc_vendor_data_file:dir rw_dir_perms;
+# Allow nfc to create, read and write in nfc_vendor_data_file
+allow nfc nfc_vendor_data_file:dir create_dir_perms;
+allow nfc nfc_vendor_data_file:file create_file_perms;
 
-allow nfc nfc_vendor_data_file:dir { rw_dir_perms };
-allow nfc nfc_vendor_data_file:file { create_file_perms };
-
-binder_call(nfc, gpuservice)
+# Allow nfc access to hwservicemanager
+allow hal_nfc_default default_android_service:service_manager { add find };
