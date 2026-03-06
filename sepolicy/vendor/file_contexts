@@ -12,19 +12,14 @@
 /data/system/fingerprint(/.*)?                                u:object_r:gx_fpd_data_file:s0
 /(vendor|system/vendor)/bin/gx_fpd                            u:object_r:gx_fpd_exec:s0
 
+# MAC Loader
+/(vendor|system/vendor)/bin/vendor.blackberry.macloader         u:object_r:macloader_exec:s0
+
 # NFC
 /(vendor|system/vendor)/bin/hw/android.hardware.nfc-service.nxp         u:object_r:hal_nfc_default_exec:s0
 
 # Lights service
 /(vendor|system/vendor)/bin/hw/android.hardware.lights-service.blackberry                   u:object_r:hal_light_default_exec:s0
-
-# LEDs
-/sys/class/leds/led:rgb_blue/brightness            u:object_r:sysfs_leds:s0
-/sys/class/leds/led:rgb_green/brightness           u:object_r:sysfs_leds:s0
-/sys/class/leds/led:rgb_red/brightness             u:object_r:sysfs_leds:s0
-/sys/class/leds/lcd-backlight/brightness           u:object_r:sysfs_leds:s0
-/sys/class/leds/keyboard-backlight/brightness      u:object_r:sysfs_leds:s0
-/sys/class/leds/button-backlight/brightness        u:object_r:sysfs_leds:s0
 
 # Touch (GloveMode) service
 /(vendor|system/vendor)/bin/hw/vendor.lineage.touch@1.0-service.blackberry      u:object_r:hal_lineage_touch_default_exec:s0

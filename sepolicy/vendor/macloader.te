@@ -1,0 +1,12 @@
+type macloader, domain;
+type macloader_exec, exec_type, vendor_file_type, file_type;
+
+init_daemon_domain(macloader)
+
+# Allow macloader to read, write and create files in vendor_bt_data_file
+allow macloader vendor_bt_data_file:dir rw_dir_perms;
+allow macloader vendor_bt_data_file:file create_file_perms;
+
+# Allow macloader to read, write and create files in wifi_vendor_data_file
+allow macloader wifi_vendor_data_file:dir rw_dir_perms;
+allow macloader wifi_vendor_data_file:file create_file_perms;
