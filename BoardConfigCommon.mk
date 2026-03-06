@@ -87,7 +87,7 @@ DEVICE_MANIFEST_FILE := $(COMMON_PATH)/manifest.xml
 DEVICE_MATRIX_FILE := $(COMMON_PATH)/compatibility_matrix.xml
 
 # Kernel
-BOARD_KERNEL_CMDLINE := console=null androidboot.hardware=qcom
+BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom
 BOARD_KERNEL_CMDLINE += user_debug=31 msm_rtb.filter=0x37
 BOARD_KERNEL_CMDLINE += ehci-hcd.park=3 lpm_levels.sleep_disabled=1
 BOARD_KERNEL_CMDLINE += sched_enable_hmp=1 sched_enable_power_aware=1
