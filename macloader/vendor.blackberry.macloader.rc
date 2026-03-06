@@ -1,9 +1,6 @@
 service vendor.blackberry.macloader /vendor/bin/vendor.blackberry.macloader
     class late_start
-    user wifi
-    group wifi bluetooth
-    disabled
+    user system
+    group system bluetooth wifi
+    capabilities NET_ADMIN NET_RAW
     oneshot
-
-on post-fs-data
-    start vendor.blackberry.macloader
