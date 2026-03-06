@@ -360,6 +360,7 @@ PRODUCT_PACKAGES += \
     init.blackberry.rc \
     init.qcom.rc \
     init.qcom.usb.rc \
+    init.qcom.recovery.rc \
     init.target.rc \
     ueventd.qcom.rc
 
@@ -370,7 +371,6 @@ PRODUCT_PACKAGES += \
     init.qcom.sensors.sh \
     init.qcom.sh \
     init.qcom.usb.sh \
-    init.qti.qseecomd.sh
 
 # RenderScript
 PRODUCT_PACKAGES += \
@@ -399,7 +399,8 @@ PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH) \
     hardware/google/interfaces \
     hardware/google/pixel \
-    hardware/lineage/interfaces/power-libperfmgr
+    hardware/lineage/interfaces/power-libperfmgr \
+    vendor/qcom/opensource/usb/etc
 
 # Storage
 $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
