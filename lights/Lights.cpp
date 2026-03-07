@@ -50,9 +50,8 @@ static const std::string kButtonsFile = "/sys/class/leds/button-backlight/bright
 // List of supported lights
 const static std::vector<HwLight> kAvailableLights = {
     AutoHwLight(LightType::BACKLIGHT),
-    // Lineage does not advertise these to the user so lock them at backlight
-    //AutoHwLight(LightType::KEYBOARD),
-    //AutoHwLight(LightType::BUTTONS),
+    AutoHwLight(LightType::KEYBOARD),
+    AutoHwLight(LightType::BUTTONS),
     AutoHwLight(LightType::NOTIFICATIONS)
 };
 
@@ -72,28 +71,18 @@ ndk::ScopedAStatus Lights::setLightState(int id, const HwLightState& state) {
             brightness = RgbaToBrightness(state.color);
 
             WriteToFile(kLCDFile, brightness * BRIGHTNESS_MAX / 0xFF);
-
-            // keyboard brightness is WAY dimmer compared to lcd and buttons
-            // why? because yes :)
-            if (brightness > 0) {
-                keyboardbrightness = std::min(255u, 40u + brightness * 2);
-            }
-            WriteToFile(kKeyboardFile, keyboardbrightness);
-
             // Only enable button LEDs if hw keys are enabled
             if (GetBoolProperty("persist.sys.hwkeys", false))
                 WriteToFile(kButtonsFile, brightness * BRIGHTNESS_MAX / 0xFF);
             else
                 WriteToFile(kButtonsFile, 0);
             break;
-        /* See above comment in kAvailableLights
         case (int)LightType::KEYBOARD:
             WriteToFile(kKeyboardFile, RgbaToBrightness(state.color) * BRIGHTNESS_MAX / 0xFF);
             break;
         case (int)LightType::BUTTONS:
             WriteToFile(kButtonsFile, RgbaToBrightness(state.color) * BRIGHTNESS_MAX / 0xFF);
             break;
-        */
         case (int)LightType::NOTIFICATIONS:
             mNotification = state;
             setLightLocked(mNotification);
