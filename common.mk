@@ -102,10 +102,6 @@ PRODUCT_PACKAGES += \
     libsndmonitor \
     libspkrprot
 
-# Apps - PhysKeyboard support (Pastiera)
-PRODUCT_PACKAGES += \
-    Pastiera
-
 # Common Audio configs
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,$(COMMON_PATH)/configs/audio/,$(TARGET_COPY_OUT_VENDOR)/etc)
