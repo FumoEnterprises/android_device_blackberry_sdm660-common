@@ -1,13 +1,32 @@
-# Copyright (c) 2015 by BlackBerry Limited. All Rights Reserved.
-# BlackBerry Limited does not grant any rights,
-# including the accompanying associated documentation,
-# (the Software) for any purpose whatsoever, including without limitation
-# any rights to copy, use or distribute the Software. Your rights to use the
-# Software shall be only as set forth in any separate license between you and
-# BlackBerry Limited.
+# Copyright (C) 2015 The Android Open Source Project
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 
+#
+# BlackBerry Key2 input device configuration file for the built-in keyboard
+#
+
+# The keyboard is internal because it is part of the device.
 device.internal = 1
 
+# The keyboard is the default built-in keyboard so it should be assigned
+# an id of 0.
 keyboard.builtIn = 1
-keyboard.layout = stmpe_azerty
+
+# The keyboard is always used in landscape orientation, so don't rotate
+# the arrow keys to compensate for orientation changes
+keyboard.orientationAware = 0
+
+# Our custom key character map
 keyboard.characterMap = stmpe
+keyboard.layout = stmpe
