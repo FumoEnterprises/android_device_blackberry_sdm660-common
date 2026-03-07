@@ -24,6 +24,9 @@
 # Touch (GloveMode) service
 /(vendor|system/vendor)/bin/hw/vendor.lineage.touch@1.0-service.blackberry      u:object_r:hal_lineage_touch_default_exec:s0
 
+# TouchKeypad service
+/(vendor|system/vendor)/bin/hw/vendor.blackberry.touchkeypad-service            u:object_r:hal_touchkeypad_exec:s0
+
 # Partitions (Non-A/B)
 /dev/block/platform/soc/c0c4000\.sdhci/by-name/storesec                        u:object_r:boot_block_device:s0
 
