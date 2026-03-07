@@ -1,0 +1,12 @@
+type hal_touchkeypad, domain;
+type hal_touchkeypad_exec, exec_type, vendor_file_type, file_type;
+
+init_daemon_domain(hal_touchkeypad)
+hal_server_domain(hal_touchkeypad, hal_lineage_touch)
+
+allow hal_touchkeypad sysfs_touch_keypad:file rw_file_perms;
+allow hal_touchkeypad sysfs_touch_keypad:dir r_dir_perms;
+allow hal_touchkeypad sysfs_touch_keypad:lnk_file read;
+allow hal_touchkeypad touchkeypad_service:service_manager { add find };
+binder_use(hal_touchkeypad)
+binder_call(platform_app, hal_touchkeypad)
