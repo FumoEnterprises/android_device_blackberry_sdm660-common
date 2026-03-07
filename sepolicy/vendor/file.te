@@ -15,3 +15,6 @@ type gx_fpd_data_file, file_type, data_file_type;
 # Touch
 type sysfs_touch_glove_mode, sysfs_type, fs_type;
 type sysfs_touch_wake_gesture, sysfs_type, fs_type;
+
+# Touch keypad
+type sysfs_touch_keypad, sysfs_type, fs_type;

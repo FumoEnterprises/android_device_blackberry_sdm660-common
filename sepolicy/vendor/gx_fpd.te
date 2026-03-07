@@ -42,6 +42,7 @@ set_prop(gx_fpd, hwservicemanager_prop)
 
 # Ignore all logging requests
 dontaudit gx_fpd storage_file:dir search;
+allow gx_fpd mnt_user_file:dir search;
 
 # Ignore it trying to read a lot of props
 dontaudit gx_fpd default_prop:file r_file_perms;
