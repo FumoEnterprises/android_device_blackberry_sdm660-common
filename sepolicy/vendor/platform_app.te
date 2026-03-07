@@ -1,2 +1,4 @@
 allow platform_app sysfs_kgsl:dir search;
-allow platform_app touchkeypad_service:service_manager find;
+
+# touchkeypad stuffs
+allow platform_app default_android_service:service_manager find;

@@ -1,0 +1,2 @@
+r_dir_file(hal_bluetooth_qti, bluetooth_data_file)
+r_dir_file(hal_bluetooth_qti, persist_file)
