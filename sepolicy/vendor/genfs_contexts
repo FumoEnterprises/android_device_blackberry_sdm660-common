@@ -9,3 +9,6 @@ genfscon sysfs /devices/virtual/tp_device/tp_glove/glove_enable                 
 # LEDs
 genfscon sysfs /devices/soc/c176000.i2c/i2c-2/2-0064/leds/keyboard-backlight/brightness     u:object_r:sysfs_leds:s0
 genfscon sysfs /devices/soc/c175000.i2c/i2c-1/1-0030/leds/button-backlight/brightness        u:object_r:sysfs_leds:s0
+
+# Touch keypad
+genfscon sysfs /devices/soc/c175000.i2c/i2c-1/1-0020/input/input1 u:object_r:sysfs_touch_keypad:s0
