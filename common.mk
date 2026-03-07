@@ -272,6 +272,7 @@ PRODUCT_PACKAGES += \
     Sdm660SystemUIOverlay \
     Sdm660SettingsOverlay \
     Sdm660TelephonyOverlay \
+    Sdm660TetheringOverlay \
     Sdm660WifiOverlayOverlay
 
 # MAC loader
