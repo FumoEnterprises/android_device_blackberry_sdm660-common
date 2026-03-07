@@ -10,3 +10,13 @@ allow macloader vendor_bt_data_file:file create_file_perms;
 # Allow macloader to read, write and create files in wifi_vendor_data_file
 allow macloader wifi_vendor_data_file:dir rw_dir_perms;
 allow macloader wifi_vendor_data_file:file create_file_perms;
+allow macloader block_device:dir search;
+allow macloader wifi_data_file:dir rw_dir_perms;
+allow macloader wifi_data_file:file create_file_perms;
+allow macloader bluetooth_data_file:dir rw_dir_perms;
+allow macloader bluetooth_data_file:file create_file_perms;
+allow macloader block_device:blk_file { getattr open read };
+allow macloader block_device:lnk_file read;
+allow macloader sysfs:file read;
+unix_socket_connect(macloader, property, init)
+set_prop(macloader, radio_control_prop)
