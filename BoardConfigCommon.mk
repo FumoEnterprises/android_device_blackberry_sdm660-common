@@ -152,6 +152,8 @@ BOARD_USES_QC_TIME_SERVICES := true
 # SELinux
 include device/qcom/sepolicy-legacy-um/SEPolicy.mk
 include device/lineage/sepolicy/libperfmgr/sepolicy.mk
+SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/system
+SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/system
 BOARD_VENDOR_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/vendor
 
 # Temporary until we transition to 4.19.
