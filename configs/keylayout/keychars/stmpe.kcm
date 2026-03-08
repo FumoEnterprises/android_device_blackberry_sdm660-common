@@ -328,6 +328,12 @@ key F7 {
     base:                               '"'
 }
 
+key PLUS {
+    label:                              '?'
+    base:                               '?'
+
+}
+
 key F8 {
     label:                              '!'
     base:                               '!'
