@@ -456,28 +456,3 @@ if [ -f /sys/class/kgsl/kgsl-3d0/gpu_available_frequencies ]; then
     setprop vendor.gpu.available_frequencies "$gpu_freq"
 fi
 
-# == HW navigation keys property
-# If navkeys == 0 we are gesture-only, disable hw nav keys (qemu.hw.mainkeys = 1),
-#                                                          (disable 0dbutton in sysfs)
-# If navkeys == 1 but navkeys_both is set, enable both (qemu.hw.mainkeys = 0)
-# If navkeys == 1 we are physical-only (qemu.hw.mainkeys = 1)
-
-navkeys=`getprop persist.sys.hwkeys`
-navkeys_both=`getprop persist.sys.hwkeys.both`
-
-# Reset props if they're empty
-if [ "$navkeys" = "" ]; then setprop persist.sys.hwkeys 1; fi
-if [ "$navkeys_both" = "" ]; then setprop persist.sys.hwkeys.both 0; fi
-
-if [ "$navkeys" = "1" ]; then
-    if [ "$navkeys_both" = "1" ]; then
-        echo 1 > /sys/devices/soc/c178000.i2c/i2c-4/4-0070/input/input3/0dbutton
-        setprop qemu.hw.mainkeys 0
-    else
-        echo 1 > /sys/devices/soc/c178000.i2c/i2c-4/4-0070/input/input3/0dbutton
-        setprop qemu.hw.mainkeys 1
-    fi
-elif [ "$navkeys" = "0" ]; then
-    echo 0 > /sys/devices/soc/c178000.i2c/i2c-4/4-0070/input/input3/0dbutton
-    setprop qemu.hw.mainkeys 0
-fi

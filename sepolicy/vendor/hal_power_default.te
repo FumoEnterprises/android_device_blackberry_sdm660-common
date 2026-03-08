@@ -1,2 +1,2 @@
-allow hal_power_default self:capability sys_resource;
+allow hal_power_default self:capability {dac_override sys_resource};
 allow hal_power_default sysfs_touch_wake_gesture:file rw_file_perms;

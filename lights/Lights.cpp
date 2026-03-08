@@ -70,15 +70,6 @@ ndk::ScopedAStatus Lights::setLightState(int id, const HwLightState& state) {
             brightness = RgbaToBrightness(state.color);
 
             WriteToFile(kLCDFile, brightness * BRIGHTNESS_MAX / 0xFF);
-
-            // keyboard brightness is WAY dimmer compared to lcd and buttons
-            // why? because yes :)
-            if (brightness > 0) {
-                keyboardbrightness = std::min(255u, 40u + brightness * 2);
-            }
-            WriteToFile(kKeyboardFile, keyboardbrightness);
-
-            WriteToFile(kButtonsFile, brightness * BRIGHTNESS_MAX / 0xFF);
             break;
         /* See above comment in kAvailableLights
         case (int)LightType::KEYBOARD:
