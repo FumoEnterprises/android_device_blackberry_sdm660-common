@@ -337,23 +337,6 @@ PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/privapp-permissions-qti.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-qti.xml \
     $(COMMON_PATH)/configs/qti_whitelist.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/qti_whitelist.xml \
 
-# RCS
-PRODUCT_PACKAGES += \
-    com.android.ims.rcsmanager \
-    PresencePolling \
-    RcsService
-
-# RIL
-PRODUCT_PACKAGES += \
-    android.hardware.radio@1.1.vendor \
-    android.hardware.radio.config@1.0 \
-    android.hardware.radio.c_shim@1.0 \
-    android.hardware.radio@1.4-service.legacy \
-    android.hardware.radio.config@1.1-service.wrapper \
-    android.hardware.secure_element@1.0.vendor \
-    android.hardware.radio.deprecated@1.0.vendor \
-    libxml2
-
 # Ramdisk
 PRODUCT_PACKAGES += \
     fstab.qcom \
