@@ -3,10 +3,6 @@
 
 # ANT+
 system/lib64/com.qualcomm.qti.ant@1.0.so
-vendor/lib/com.qualcomm.qti.ant@1.0_vendor.so
-vendor/lib/hw/com.qualcomm.qti.ant@1.0-impl.so
-vendor/lib64/com.qualcomm.qti.ant@1.0_vendor.so
-vendor/lib64/hw/com.qualcomm.qti.ant@1.0-impl.so
 
 # Bluetooth - from DDV_sprout - 00WW_3_690_SP07
 vendor/bin/hw/android.hardware.bluetooth@1.0-service-qti|07d96d0d3c4a500b14ea3c97e02b9eb5ee2bbc4d
@@ -627,5 +623,3 @@ vendor/lib64/libsdmutils.so
 vendor/lib64/vendor.qti.hardware.qteeconnector@1.0.so
 vendor/lib/vendor.qti.hardware.qteeconnector@1.0.so
 
-# Keyboard - from Athena - ACQ160
-system/app/BlackBerryKeyboard/BlackBerryKeyboard.apk|029b7df8df106d2aef6f7099052cc0882f76a1a4
