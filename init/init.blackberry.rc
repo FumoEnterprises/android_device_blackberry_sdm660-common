@@ -42,6 +42,15 @@ on property:ro.bootmode=charger && property:init.svc.vendor.qcom-post-boot=stopp
     write /sys/devices/system/cpu/cpu6/online 0
     write /sys/devices/system/cpu/cpu7/online 0
 
+# Touchscreen
+on post-fs-data
+    chown system system /sys/devices/virtual/tp_device/tp_glove/glove_enable
+    chown system system /sys/devices/virtual/tp_device/tp_button/button_enable
+    chown system system /sys/class/tp_device/tp_gesture/gesture_enable
+    chmod 0644 /sys/devices/virtual/tp_device/tp_glove/glove_enable
+    chmod 0644 /sys/devices/virtual/tp_device/tp_button/button_enable
+    chmod 0644 /sys/class/tp_device/tp_gesture/gesture_enable
+
 # Power
 on property:sys.boot_completed=1
     # Enable PowerHAL hint processing

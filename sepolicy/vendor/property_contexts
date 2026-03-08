@@ -34,8 +34,3 @@ persist.vendor.wigig.npt.enable         u:object_r:vendor_radio_prop:s0
 
 # Hardware
 ro.hardware.chipname                    u:object_r:exported_default_prop:s0
-
-# bochenekk mods - hwkeys stuff
-persist.sys.hwkeys                      u:object_r:vendor_hwkey_prop:s0
-persist.sys.hwkeys.both                 u:object_r:vendor_hwkey_prop:s0
-qemu.hw.mainkeys                        u:object_r:vendor_hwkey_prop:s0

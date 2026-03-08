@@ -71,11 +71,6 @@ ndk::ScopedAStatus Lights::setLightState(int id, const HwLightState& state) {
             brightness = RgbaToBrightness(state.color);
 
             WriteToFile(kLCDFile, brightness * BRIGHTNESS_MAX / 0xFF);
-            // Only enable button LEDs if hw keys are enabled
-            if (GetBoolProperty("persist.sys.hwkeys", false))
-                WriteToFile(kButtonsFile, brightness * BRIGHTNESS_MAX / 0xFF);
-            else
-                WriteToFile(kButtonsFile, 0);
             break;
         case (int)LightType::KEYBOARD:
             WriteToFile(kKeyboardFile, RgbaToBrightness(state.color) * BRIGHTNESS_MAX / 0xFF);

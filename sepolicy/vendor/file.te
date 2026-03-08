@@ -13,6 +13,7 @@ type rfs_tombstone_data_file, data_file_type, file_type;
 type gx_fpd_data_file, file_type, data_file_type;
 
 # Touch
+type sysfs_touch_nav_buttons, sysfs_type, fs_type;
 type sysfs_touch_glove_mode, sysfs_type, fs_type;
 type sysfs_touch_wake_gesture, sysfs_type, fs_type;
 
