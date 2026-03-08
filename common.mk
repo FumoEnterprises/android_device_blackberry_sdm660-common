@@ -147,7 +147,6 @@ PRODUCT_PACKAGES += \
 
 # Device customizations
 PRODUCT_PACKAGES += \
-    BlackBerryParts \
     Doze
 
 # DRM
