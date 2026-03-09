@@ -168,12 +168,6 @@ PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,$(COMMON_PATH)/configs/keylayout/keylayout/,$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/) \
     $(call find-copy-subdir-files,*,$(COMMON_PATH)/configs/keylayout/idc,$(TARGET_COPY_OUT_VENDOR)/usr/idc/)
 
-# FM
-PRODUCT_PACKAGES += \
-    FM2
-
-$(call soong_config_set_bool,libfmjni,no_fm_firmware,true)
-
 # Framework Detect
 PRODUCT_PACKAGES += \
     libqti_vndfwk_detect \
