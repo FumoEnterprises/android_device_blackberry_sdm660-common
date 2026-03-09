@@ -135,6 +135,9 @@ dalvik.vm.heapsize=512m
 dalvik.vm.heapstartsize=8m
 dalvik.vm.heaptargetutilization=0.75
 
+# Display
+ro.hwui.render_ahead=20
+
 # DRM
 drm.service.enabled=true
 ro.com.widevine.cachesize=16777216
