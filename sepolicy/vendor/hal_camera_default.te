@@ -1,4 +1,5 @@
 get_prop(hal_camera_default, bootanim_system_prop)
+get_prop(hal_camera_default, vendor_camera_prop)
 set_prop(hal_camera_default, vendor_camera_prop)
 get_prop(hal_camera_default, persist_debug_prop)
 
@@ -7,5 +8,5 @@ allow hal_camera_default persist_file:dir search;
 # Allow to find graphics allocator service
 allow hal_camera_default hal_graphics_allocator_service:service_manager find;
 
-# The camera wants to read u:object_r:default_prop:s0 SO badly, stop this.
-dontaudit hal_camera_default default_prop:file read;
+# The camera wants to read system props. Let this be an exception and not a rule, please...
+allow hal_camera_default default_prop:file r_file_perms;

@@ -11,7 +11,8 @@ camera.                                     u:object_r:vendor_camera_prop:s0
 ro.camera.                                  u:object_r:vendor_camera_prop:s0
 ro.vendor.camera.                           u:object_r:vendor_camera_prop:s0
 persist.camera.                             u:object_r:vendor_camera_prop:s0
-vendor.camera.skip_unconfigure.packagelist  u:object_r:vendor_camera_prop:s0
+vendor.camera                               u:object_r:vendor_camera_prop:s0
+video.disable.ubwc                          u:object_r:vendor_camera_prop:s0
 
 # Display
 sdm.disable_hdr_lut_gen                 u:object_r:vendor_display_prop:s0
