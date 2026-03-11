@@ -331,7 +331,6 @@ key F7 {
 key PLUS {
     label:                              '?'
     base:                               '?'
-
 }
 
 key F8 {
