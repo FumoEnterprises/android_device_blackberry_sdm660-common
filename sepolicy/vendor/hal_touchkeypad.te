@@ -10,3 +10,11 @@ allow hal_touchkeypad sysfs_touch_keypad:lnk_file read;
 allow hal_touchkeypad default_android_service:service_manager add;
 binder_use(hal_touchkeypad)
 binder_call(platform_app, hal_touchkeypad)
+
+# Read input device: /dev/input/event* (keypress monitoring for auto-suppress)
+allow hal_touchkeypad input_device:chr_file { open read ioctl getattr };
+allow hal_touchkeypad input_device:dir { open read search };
+
+# Persist properties for state + timeout
+set_prop(hal_touchkeypad, vendor_touchkeypad_prop)
+get_prop(hal_touchkeypad, vendor_touchkeypad_prop)

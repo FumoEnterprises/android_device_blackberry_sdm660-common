@@ -19,3 +19,4 @@ type sysfs_touch_wake_gesture, sysfs_type, fs_type;
 
 # Touch keypad
 type sysfs_touch_keypad, sysfs_type, fs_type;
+type vendor_touchkeypad_prop, property_type;
